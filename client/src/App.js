@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from "../components/Nav";
-import Jumbotron from "../components/Jumbotron";
+import Nav from "./components/Nav";
+import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import Dog from "./pages/Dog";
 import Doglist from "./pages/Doglist";
 import Nomatch from "./pages/Nomatch";
 import Volunteer from "./pages/Volunteer";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/dog" component={Dog} />
           <Route exact path="/doglist" component={Doglist} />
           <Route exact path="/volunteer" component={Volunteer} />
+          <Route exact path="/login" component={Login} />
           <Route component={Nomatch} />
         </Switch>
       </div>
