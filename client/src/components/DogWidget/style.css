@@ -1,0 +1,11 @@
+.btn-lg{
+    padding:3px;
+    background-color:lightcoral;
+}
+.btn-sm{
+    padding:0px;
+    background-color: lightskyblue;
+}
+.returnBtn{
+    margin-left: 20px;
+}

@@ -5,7 +5,7 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/sspaSoc"
+  "mongodb://localhost/dogSocialization"
 );
 
 const dogSeed = [
@@ -25,7 +25,7 @@ const dogSeed = [
     name: "Harvey",
     pic: "https://i.postimg.cc/8CCGWMfP/Harvey.jpg",
     kennel:16,
-    shelterID:A754995,
+    shelterID:"A754995",
     intakeDate:1/7/2019,
     decription:"8 Yrs NEUTERED, black & white Siberian Husky mix",
     playStyle:"GD",
@@ -37,7 +37,7 @@ const dogSeed = [
     name: "Raisinet",
     pic: "https://i.postimg.cc/pLRRWg2j/Raisinet.jpg",
     kennel:11,
-    shelterID:A755433,
+    shelterID:"A755433",
     intakeDate:1/15/2019,
     decription:"3 Yrs female, brown & black German Shepherd Dog",
     playStyle:"GD",
@@ -49,7 +49,7 @@ const dogSeed = [
     name: "Benson",
     pic: "https://i.postimg.cc/rwjcKQmP/Benson.jpg",
     kennel:1,
-    shelterID:A753693,
+    shelterID:"A753693",
     intakeDate:12/13/2018,
     decription:"2 Yrs NEUTERED, black & white Pit Bull Terrier",
     playStyle:"Soft RR",
@@ -61,7 +61,7 @@ const dogSeed = [
     name: "Yuki",
     pic: "https://i.postimg.cc/XvDbgq9K/Yuki.jpg",
     kennel:14,
-    shelterID:A754337,
+    shelterID:"A754337",
     intakeDate:12/24/2018,
     decription:"2 Yrs female, tan & white Pit Bull Terrier mix",
     playStyle:"W",
