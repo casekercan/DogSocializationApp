@@ -4,7 +4,10 @@ import axios from "axios";
 
 
 export default {
-  search: function () {
+
+  //get all dogs
+  getDogs: function () {
     return axios.get("/api/dogs");
-  }
+  },
+
 };
