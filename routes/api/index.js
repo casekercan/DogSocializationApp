@@ -3,10 +3,10 @@ const appController = require("../../controllers/appController");
 
 // Matches with "/api/"
 router.route("/dogs")
-  .get(appController.findAll);
+  .get(appController.findAllDogs)
 
-// Matches with "/api/:id"
-router.route("/:id")
-  .delete(appController.remove);
+router.route("/dogs/:id")
+  .get(appController.findOneDog)
+
 
 module.exports = router;
