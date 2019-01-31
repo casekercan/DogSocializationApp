@@ -4,6 +4,7 @@ import "./style.css";
 
 
 class LoginWidget extends Component {
+
     render() {
         return (
             <div className="inner-container">

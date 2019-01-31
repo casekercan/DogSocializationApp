@@ -10,4 +10,9 @@ export default {
     return axios.get("/api/dogs");
   },
 
+  //get one dog
+  getDog: function (id) {
+    return axios.get("/api/dogs/" + id)
+  }
+
 };
