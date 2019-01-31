@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import LoginWidget from "../components/LoginWidget";
-
-import "../styles/style.css";
+// import LoginWidget from "../components/LoginWidget";
+import FadeTransition from "../src/transitions/fadeTransition";
+import "../styles/login.css";
 
 class Login extends Component {
     render() {
@@ -14,113 +14,94 @@ class Login extends Component {
     }
 }
 
+      return (
+        <div className="inner-container">
+          <div className="header">
+            Register
+          </div>
+          <div className="box">
+  
+            <div className="input-group">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                className="login-input"
+                placeholder="Username"
+                onChange={this
+                .onUsernameChange
+                .bind(this)}/>
+              <small className="danger-error">{usernameErr
+                  ? usernameErr
+                  : ""}</small>
+            </div>
+  
+            <div className="input-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                name="email"
+                className="login-input"
+                placeholder="Email"
+                onChange={this
+                .onEmailChange
+                .bind(this)}/>
+              <small className="danger-error">{emailErr
+                  ? emailErr
+                  : ""}</small>
+            </div>
+  
+            <div className="input-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                className="login-input"
+                placeholder="Password"
+                onChange={this
+                .onPasswordChange
+                .bind(this)}/>
+              <small className="danger-error">{passwordErr
+                  ? passwordErr
+                  : ""}</small>
+  
+              {this.state.password && <div className="password-state">
+                <div
+                  className={"pwd pwd-weak " + (pwdWeak
+                  ? "show"
+                  : "")}></div>
+                <div
+                  className={"pwd pwd-medium " + (pwdMedium
+                  ? "show"
+                  : "")}></div>
+                <div
+                  className={"pwd pwd-strong " + (pwdStrong
+                  ? "show"
+                  : "")}></div>
+              </div>}
+  
+            </div>
+  
+            <button
+              type="button"
+              className="login-btn"
+              onHover={this
+              .openPopup
+              .bind(this)}
+              onClick={this
+              .openPopup
+              .bind(this)}>Register</button>
+  
+          </div>
+        </div>
+  
+      );
+  
+    }
 
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             isLoginOpen: true,
-//             isRegisterOpen: false
-//         };
-//     }
-
-//     showRegisterBox() {
-//         this.state({isRegisterOpen: true, isLoginOpen: false});
-//     }
-
-
-//     render() {
-//         return (
-//             <div className="root-container">
-//                 <div className="box-controller">
-//                     <div className={"controller " + (this.state.isLoginOpen ? "selected-controller": "")} onClick={this.showLoginBox.bind(this)}>Login</div>
-
-//                     <div className={"controller " + (this.state.isRegisterOpen ? "selected-controller": "")} onClick={this.showRegisterBox.bind(this)}>Register</div>
-//             </div>
-
-//             <FadeTransition isOpen={this.state.isLoginOpen} duration={500}>
-//                 <div className="box-container">
-//                     <LoginBox/>
-//                 </div>
-//             </FadeTransition>
-
-//             <FadeTransition isOpen={this.state.isRegisterOpen} duration={500}>
-//                 <div className="box-container">
-//                     <RegisterBox/>
-//                 </div>
-//             </FadeTransition>
-
-
-//             </div>
-//         );
-//     }
-// }
-
-// class LoginBox extends React.Component{
-
-//     constructor(props) {
-//         super(props);
-//         this.state = {};
-//     }
-
-//     submitLogin(e) {}
-
-//     render() {
-//         return (
-//             <div className="inner-container">
-//                 <div className="header">
-//                  Login
-//                 </div>
-
-//                     <div className="box">
-
-//                         <div className="input-group">
-//                         <label htmlFor="username">Username</label>
-//                         <input
-//                             type="text"
-//                             name="username"
-//                             className="login-input"
-//                             placeholder="Username"/>
-//                         </div>
-
-//                         <div className="input-group">
-//                         <label htmlFor="password">Password</label>
-//                         <input
-//                             type="password"
-//                             name="password"
-//                             className="login-input"
-//                             placeholder="Password"/>
-//                         </div>
-
-//                         <button
-//                         type="button"
-//                         className="login-btn"
-//                         onClick={this
-//                         .submitLogin
-//                         .bind(this)}>Login</button>
-
-//                         </div>
-//             </div>
-//         );
-//     }
-// }
-
-// function pop(props) {
-//     return
-// }
-
-// class RegisterBox extends React.Component{
-
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             username: "",
-//             email: "",
-//             password: "";
-//             errors:
-//         }
-//     }
-
-// }
-
-export default Login;
+}
+reactDOM.render(
+    <App/>, document.getElementById("root"));
+  
+// export default Login;
 
