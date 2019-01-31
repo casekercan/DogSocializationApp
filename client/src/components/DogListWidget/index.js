@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
-
-
+import { Link } from "react-router-dom";
 
 
 class DogListWidget extends Component {
@@ -19,9 +18,6 @@ class DogListWidget extends Component {
         API.getDogs().then(res => this.setState({ dogs: res.data })).catch(err => console.log(err));
     };
 
-    viewdog = (id) => {
-
-    }
 
     render() {
         return (
@@ -40,7 +36,8 @@ class DogListWidget extends Component {
                             <th>{dog.name}</th>
                             <th>{dog.kennel}</th>
                             <th>{dog.socialization} Need to add data</th>
-                            <th><button className="btn btn-primary" onClick={() => this.viewdog(dog._id)}>View More</button></th>
+                            <th>  <Link to={"/dog/" + dog._id} > Learn More </Link> </th>
+
                         </tr>
                     ))}
                 </tbody>
