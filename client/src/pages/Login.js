@@ -292,8 +292,7 @@ class RegisterBox extends React.Component{
     }
 
 }
-reactDOM.render(
-    <App/>, document.getElementById("root"));
+
   
-// export default Login;
+export default Login;
 
