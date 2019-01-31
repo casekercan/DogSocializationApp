@@ -1,8 +1,7 @@
 import React from "react";
-
 import Transition from "react-transition-group/Transition";
 
-export default class FadeTransition extends React.Component {
+class FadeTransition extends React.Component {
 
   constructor(props) {
     super(props);
@@ -33,7 +32,7 @@ export default class FadeTransition extends React.Component {
     return (
       <Transition in={this.props.isOpen} timeout={this.props.duration}>
         {(state) => {
-          if (state == "exited") 
+          if (state == "exited")
             return null;
           return React
             .Children
@@ -49,3 +48,5 @@ export default class FadeTransition extends React.Component {
   }
 
 }
+
+export default FadeTransition;
