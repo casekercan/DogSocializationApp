@@ -8,7 +8,6 @@ class Dog extends Component {
     render() {
         return (
             <div className="container">
-                <h1> Single Dog info Page</h1>
                 <DogWidget />
             </div>
         )

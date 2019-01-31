@@ -5,17 +5,25 @@ function DogWidget() {
     return (
         <div className="container">
             <div className="row">
-                <div class="col">
+                <div class="col infoContainer">
                     <button className="btn btn-lg signoutBtn">Signout Dog</button>
                     <button className="btn btn-lg returnBtn">Return Dog</button>
-                    
-                    <img />
+                    <hr/>
+                    <img src="..." alt="dog pic" class="img-thumbnail"/>
+                    <h4>
                     <span name="kennelLabel">Kennel</span><span name="kennelNo"></span>
+                    </h4>
+                    <h4>
                     <span name="nameLabel">Name</span><span name="dogName"></span>
+                    </h4>
+                    <h5>
                     <span name="IDLabel">ID</span><span name="ID"></span>
+                    </h5>
+                    <h5>
                     <span name="notesLabel">Notes</span><span name="notes"></span>
+                    </h5>
                 </div>
-                <div class="col">
+                <div class="col socContainer">
                     <span name="socLabel">Socialization</span>
                     <button className="btn btn-sm">Edit</button>
                     <button className="btn btn-sm">Submit</button>
