@@ -19,7 +19,9 @@ const dogSeed = [
     playStyle: "W",
     active: true,
     notes: "no other dogs, will re-direct when walking in close proximity to dogs, approval needed to walk dog",
-    socialization: [{ type: "Walk", duration: 40, ampm: "am" }, { type: "BRBreak", duration: 15, ampm: "pm" }]
+    socialization: [{ type: "Walk", duration: 40, ampm: "am" }, { type: "BRBreak", duration: 15, ampm: "pm" }],
+    checkout:"",
+    location: "Grassy 1"
   },
   {
     name: "Harvey",
@@ -31,7 +33,9 @@ const dogSeed = [
     playStyle: "GD",
     active: true,
     notes: "gd, social",
-    socialization: [{ type: "Group", duration: 40, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }]
+    socialization: [{ type: "Group", duration: 40, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }],
+    checkout:"",
+    location: "North Concrete"
   },
   {
     name: "Raisinet",
@@ -43,7 +47,9 @@ const dogSeed = [
     playStyle: "GD",
     active: true,
     notes: "gd, social, runs from humans in yard, hard to catch",
-    socialization: [{ type: "BRBreak", duration: 10, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }]
+    socialization: [{ type: "BRBreak", duration: 10, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }],
+    checkout:"",
+    location: "East Group Area"
   },
   {
     name: "Benson",
@@ -55,7 +61,9 @@ const dogSeed = [
     playStyle: "Soft RR",
     active: true,
     notes: "soft rr, social, sexually motivated",
-    socialization: [{ type: "Group", duration: 40, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }]
+    socialization: [{ type: "Group", duration: 40, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }],
+    checkout:"",
+    location: "East Group Area"
   },
   {
     name: "Yuki",
@@ -67,7 +75,52 @@ const dogSeed = [
     playStyle: "W",
     active: true,
     notes: "",
-    socialization: [{ type: "Walk", duration: 30, ampm: "am" }, { type: "BRBreak", duration: 10, ampm: "am" }, { type: "Walk", duration: 30, ampm: "pm" }]
+    socialization: [{ type: "Walk", duration: 30, ampm: "am" }, { type: "BRBreak", duration: 10, ampm: "am" }, { type: "Walk", duration: 30, ampm: "pm" }],
+    checkout:"",
+    location: "East Group Area"
+  },
+];
+
+const staffSeed=[
+  {
+    name:"Delyse",
+    pic:"",
+    email:"dgan@gmail.com",
+    notes:"",
+    worked:[],
+    checkout:01/30/2019,
+    location:"East Group Area",
+    active:true
+  },
+  {
+    name:"Robert",
+    pic:"",
+    email:"rive@gmail.com",
+    notes:"",
+    worked:[],
+    checkout:"",
+    location:"Grassy 1",
+    active:false
+  },
+  {
+    name:"Sandi",
+    pic:"",
+    email:"sandi@gmail.com",
+    notes:"",
+    worked:[],
+    checkout:"",
+    location:"Off Campus",
+    active:true
+  },
+  {
+    name:"Caroline",
+    pic:"",
+    email:"carol@gmail.com",
+    notes:"",
+    worked:[],
+    checkout:01/29/2019,
+    location:"Off Campus",
+    active:true
   },
 ];
 
@@ -76,6 +129,18 @@ db.Dog
   .then(() => db.Dog.collection.insertMany(dogSeed))
   .then(data => {
     console.log(data.result.n + " dog records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+db.Volunteer
+  .remove({})
+  .then(() => db.Volunteer.collection.insertMany(staffSeed))
+  .then(data => {
+    console.log(data.result.n + " volunteer records inserted!");
     process.exit(0);
   })
   .catch(err => {
