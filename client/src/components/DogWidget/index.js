@@ -3,8 +3,6 @@ import "./style.css";
 import API from "../../utils/API";
 
 
-
-
 class DogWidget extends Component {
     constructor(props) {
         super(props)
@@ -13,12 +11,12 @@ class DogWidget extends Component {
         };
     }
 
-
     componentDidMount() {
         API.getDog(this.props.props)
             .then(res => this.setState({ dog: res.data }))
             .catch(err => console.log(err));
     }
+
     render() {
         return (
             <div className="container" >
@@ -26,43 +24,80 @@ class DogWidget extends Component {
                     <div class="col infoContainer">
                         <button className="btn btn-lg signoutBtn">Signout Dog</button>
                         <button className="btn btn-lg returnBtn">Return Dog</button>
-                        <hr />
-                        <img src={this.state.dog.pic} alt="dog pic" class="img-thumbnail" />
-                        <h4>
-                            <span name="kennelLabel">Kennel</span><span name="kennelNo">{this.state.dog.kennel}</span>
-                        </h4>
-                        <h4>
-                            <span name="nameLabel">Name</span><span name="dogName">{this.state.dog.name}</span>
-                        </h4>
-                        <h5>
-                            <span name="IDLabel">ID</span><span name="ID">What ID?</span>
-                        </h5>
-                        <h5>
-                            <span name="notesLabel">Notes</span><span name="notes">{this.state.dog.notes}</span>
-                        </h5>
+                        <hr/>
+                        <div className="d-flex">
+                            <img src={this.state.dog.pic} alt="dog pic" class="img-thumbnail" />
+                            <div>
+                                <h3>
+                                    <span name="dogName"><bold>{this.state.dog.name}</bold></span>
+                                </h3>
+                                <h3>
+                                    <span name="kennelLabel">Kennel: </span><span name="kennelNo">{this.state.dog.kennel}</span>
+                                </h3>
+                                <h5>
+                                    <span name="IDLabel">ID: </span><span name="ID">{this.state.dog.shelterID}</span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div className="d-flex flex-column">
+                            <div>
+                                <h3 name="notesLabel">Notes:</h3>
+                            </div>
+                            <div>
+                                <h5 name="notes" className="notes">{this.state.dog.notes}</h5>
+                            </div>
+                            <div>
+                            <button className="btn btn-lg editBtn">Edit Dog</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="col socContainer">
-                        <span name="socLabel">Socialization</span>
-                        <button className="btn btn-sm">Edit</button>
-                        <button className="btn btn-sm">Submit</button>
-                        <table name="socPlan">
+                        <h3 name="socLabel">Socialization</h3>
+                        
+                        <table name="socPlan" className="table table-sm">
+                            <thead>
                             <tr>
-                                <th>Type</th>
-                                <th>Time</th>
-                                <th>When</th>
-                                <th>Actions</th>
+                                <th scope="col" >Type</th>
+                                <th scope="col" >Time</th>
+                                <th scope="col" >When</th>
+                                <th scope="col" className="col">Actions</th>
                             </tr>
+                            </thead>
                             {/*Map through array of socialization plan*/}
-                            <tr>
-                                <td></td>
+                            <tbody>
+                            <tr key={this.state.dog._id} className="table-active">
+                                <td>Walk</td>
+                                <td>40</td>
+                                <td>am</td>
+                                <td>
+                                    <button className="btn btn-sm">Edit</button>
+                                    <button className="btn btn-sm">Delete</button>
+                                </td>
                             </tr>
                             {/*Empty row to add new plan*/}
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><button className="btn btn-sm" name="addSocPlan">Add</button></td>
+                            <tr className="table-info">
+                                <td>
+                                    <div className="col">
+                                    <input className="form-control form-control-sm" type="text"/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="col">
+                                    <input className="form-control form-control-sm" type="text"/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="col">
+                                    <input className="form-control form-control-sm" type="text"/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="col">
+                                    <button className="btn btn-sm" name="addSocPlan">Add</button>
+                                    </div>
+                                </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>

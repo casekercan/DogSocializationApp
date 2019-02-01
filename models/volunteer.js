@@ -5,6 +5,7 @@ const volunteerSchema = new Schema({
     name: String,
     pic: String,
     email:String,
+    mobile:String,
     notes:String,
     worked:[{date:Date,duration:Number}],
     checkout:Date,
