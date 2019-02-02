@@ -15,12 +15,12 @@ export default {
     return axios.get("/api/dogs/" + id);
   },
 
-  getStaff: function(){
-    return axios.get("/api/staff");
+  getAllStaff: function () {
+    return axios.get("/api/allstaff");
   },
 
-  getVolunteer: function(id){
-    return axios.get("api/volunteer/"+ id);
+  getStaff: function (id) {
+    return axios.get("/api/staff/" + id);
   }
 
 };

@@ -8,7 +8,7 @@ class Staff extends Component {
     render() {
         return (
             <div className="container">
-                <StaffWidget />
+                <StaffWidget props={this.props.match.params.id} />
             </div>
         )
     }
