@@ -7,7 +7,7 @@ class DogWidget extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            dog: {}
+            dog: {},
         };
     }
 
@@ -19,12 +19,14 @@ class DogWidget extends Component {
 
     render() {
         return (
+
+
             <div className="container" >
                 <div className="row">
                     <div class="col infoContainer">
                         <button className="btn btn-lg signoutBtn">Signout Dog</button>
                         <button className="btn btn-lg returnBtn">Return Dog</button>
-                        <hr/>
+                        <hr />
                         <div className="d-flex">
                             <img src={this.state.dog.pic} alt="dog pic" class="img-thumbnail" />
                             <div>
@@ -35,7 +37,7 @@ class DogWidget extends Component {
                                     <span name="kennelLabel">Kennel: </span><span name="kennelNo">{this.state.dog.kennel}</span>
                                 </h3>
                                 <h5>
-                                    <span name="IDLabel">ID: </span><span name="ID">{this.state.dog.shelterID}</span>
+                                    <span name="IDLabel">ID: </span><span name="ID"> {this.state.dog.shelterID}</span>
                                 </h5>
                             </div>
                         </div>
@@ -47,56 +49,57 @@ class DogWidget extends Component {
                                 <h5 name="notes" className="notes">{this.state.dog.notes}</h5>
                             </div>
                             <div>
-                            <button className="btn btn-lg editBtn">Edit Dog</button>
+                                <button className="btn btn-lg editBtn">Edit Dog</button>
                             </div>
                         </div>
                     </div>
                     <div class="col socContainer">
                         <h3 name="socLabel">Socialization</h3>
-                        
+
                         <table name="socPlan" className="table table-sm">
                             <thead>
-                            <tr>
-                                <th scope="col" >Type</th>
-                                <th scope="col" >Time</th>
-                                <th scope="col" >When</th>
-                                <th scope="col" className="col">Actions</th>
-                            </tr>
+                                <tr>
+                                    <th scope="col" >Type</th>
+                                    <th scope="col" >Time</th>
+                                    <th scope="col" >When</th>
+                                    <th scope="col" className="col">Actions</th>
+                                </tr>
                             </thead>
                             {/*Map through array of socialization plan*/}
                             <tbody>
-                            <tr key={this.state.dog._id} className="table-active">
-                                <td>Walk</td>
-                                <td>40</td>
-                                <td>am</td>
-                                <td>
-                                    <button className="btn btn-sm">Edit</button>
-                                    <button className="btn btn-sm">Delete</button>
-                                </td>
-                            </tr>
-                            {/*Empty row to add new plan*/}
-                            <tr className="table-info">
-                                <td>
-                                    <div className="col">
-                                    <input className="form-control form-control-sm" type="text"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="col">
-                                    <input className="form-control form-control-sm" type="text"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="col">
-                                    <input className="form-control form-control-sm" type="text"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="col">
-                                    <button className="btn btn-sm" name="addSocPlan">Add</button>
-                                    </div>
-                                </td>
-                            </tr>
+
+                                <tr key={this.state.dog._id} className="table-active">
+                                    <td>Walk</td>
+                                    <td>40</td>
+                                    <td></td>
+                                    <td>
+                                        <button className="btn btn-sm">Edit</button>
+                                        <button className="btn btn-sm">Delete</button>
+                                    </td>
+                                </tr>
+                                {/*Empty row to add new plan*/}
+                                <tr className="table-info">
+                                    <td>
+                                        <div className="col">
+                                            <input className="form-control form-control-sm" type="text" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="col">
+                                            <input className="form-control form-control-sm" type="text" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="col">
+                                            <input className="form-control form-control-sm" type="text" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="col">
+                                            <button className="btn btn-sm" name="addSocPlan">Add</button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
