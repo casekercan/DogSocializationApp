@@ -8,11 +8,11 @@ router.route("/dogs")
 router.route("/dogs/:id")
   .get(appController.findOneDog);
 
-router.route("/staff")
+router.route("/allstaff")
   .get(appController.findAllStaff);
 
-router.route("/volunteer/:id")
-  .get(appController.findVolunteer);
+router.route("/staff/:id")
+  .get(appController.findStaff);
 
 
 module.exports = router;

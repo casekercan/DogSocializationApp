@@ -23,36 +23,36 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   // remove dog from active list and archive
-  deActivateDog: function(req,res){
+  deActivateDog: function (req, res) {
 
   },
-  
-  findAllStaff: function(req,res){
-    db.Volunteer
-    .find({active:true})
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
+
+  findAllStaff: function (req, res) {
+    db.Staff
+      .find({ active: true })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  findVolunteer: function (req, res) {
-    db.Volunteer
+  findStaff: function (req, res) {
+    db.Staff
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   createStaff: function (req, res) {
-    db.Volunteer
+    db.Staff
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   removeStaff: function (req, res) {
-    db.Volunteer
+    db.Staff
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  deActivateStaff: function(req,res){
+  deActivateStaff: function (req, res) {
 
   }
 
