@@ -15,7 +15,7 @@ class VolunteerList extends Component {
 
 
     findAllStaff = () => {
-        API.getStaff().then(res => this.setState({ voteers: res.data })).catch(err => console.log(err));
+        API.getAllStaff().then(res => this.setState({ voteers: res.data })).catch(err => console.log(err));
     };
 
 

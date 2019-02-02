@@ -8,7 +8,7 @@ class Dog extends Component {
     render() {
         return (
             <div className="container">
-                <DogWidget props={this.props.match.params.id} secondprops={"hey"} />
+                <DogWidget props={this.props.match.params.id} />
             </div>
         )
     }
