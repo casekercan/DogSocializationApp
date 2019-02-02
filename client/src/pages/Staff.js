@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import VolunteerList from "../components/VolunteerList";
 import "../styles/style.css";
 
-class VolunteerList extends Component {
+class Staff extends Component {
 
 
     render() {
@@ -14,4 +14,4 @@ class VolunteerList extends Component {
     }
 }
 
-export default VolunteerList;
+export default Staff;
