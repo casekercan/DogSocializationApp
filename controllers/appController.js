@@ -15,7 +15,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  remove: function (req, res) {
+  removePup: function (req, res) {
     db.Dog
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -29,7 +29,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
+  findDogsLoc: function (req, res) {
+    db.Dog
+      .find({location:req.params.loc})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findAllStaff: function (req, res) {
     db.Staff
       .find({ active: true })

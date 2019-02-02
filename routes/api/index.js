@@ -9,7 +9,13 @@ router.route("/dogs/:id")
   .get(appController.findOneDog);
 
 router.route("/dogs/deactivate/:id")
-  .get(appController.deActivateDog)
+  .get(appController.deActivateDog);
+
+router.route("/dogs/delete/:id")
+  .get(appController.removePup);
+
+router.route("/dogs/location/:loc")
+  .get(appController.findDogsLoc);
 
 router.route("/allstaff")
   .get(appController.findAllStaff);
