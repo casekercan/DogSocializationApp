@@ -7,20 +7,27 @@ class DogWidget extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            dog: {},
+            dog: {
+                socialization: []
+            },
         };
     }
 
     componentDidMount() {
         API.getDog(this.props.props)
-            .then(res => this.setState({ dog: res.data }))
-            .catch(err => console.log(err));
+            .then(res => this.setState({
+                dog: res.data
+            })).catch(err => console.log(err));
     }
+
+
+    createTable = () => {
+
+    }
+
 
     render() {
         return (
-
-
             <div className="container" >
                 <div className="row">
                     <div class="col infoContainer">
@@ -68,15 +75,17 @@ class DogWidget extends Component {
                             {/*Map through array of socialization plan*/}
                             <tbody>
 
-                                <tr key={this.state.dog._id} className="table-active">
-                                    <td>Walk</td>
-                                    <td>40</td>
-                                    <td></td>
-                                    <td>
-                                        <button className="btn btn-sm">Edit</button>
-                                        <button className="btn btn-sm">Delete</button>
-                                    </td>
-                                </tr>
+                                {this.state.dog.socialization.map(item =>
+                                    <tr key={this.state.dog._id} className="table-active">
+                                        <td>{item[0]}</td>
+                                        <td>{item[1]}</td>
+                                        <td>{item[2]}</td>
+                                        <td>
+                                            <button className="btn btn-sm">Edit</button>
+                                            <button className="btn btn-sm">Delete</button>
+                                        </td>
+                                    </tr>
+                                )}
                                 {/*Empty row to add new plan*/}
                                 <tr className="table-info">
                                     <td>

@@ -75,7 +75,7 @@ const dogSeed = [
     playStyle: "W",
     active: true,
     notes: "",
-    socialization: [["Walk", 30, "am"], ["BRBreak", 10, "am"]["Walk", 30, "pm"]],
+    socialization: [["Walk", 30, "am"], ["BRBreak", 10, "am"], ["Walk", 30, "pm"]],
     checkout: "",
     location: "East Group Area"
   },
