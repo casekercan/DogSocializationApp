@@ -19,7 +19,7 @@ const dogSeed = [
     playStyle: "W",
     active: true,
     notes: "no other dogs, will re-direct when walking in close proximity to dogs, approval needed to walk dog",
-    socialization: [{ type: "Walk", duration: 40, ampm: "am" }, { type: "BRBreak", duration: 15, ampm: "pm" }],
+    socialization: [["Walk", 40, "am"], ["BRBreak", 15, "pm"]],
     checkout: "",
     location: "Grassy 1"
   },
@@ -33,7 +33,7 @@ const dogSeed = [
     playStyle: "GD",
     active: true,
     notes: "gd, social",
-    socialization: [{ type: "Group", duration: 40, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }],
+    socialization: [["Group", 40, "am"], ["Group", 40, "pm"]],
     checkout: "",
     location: "North Concrete"
   },
@@ -47,7 +47,7 @@ const dogSeed = [
     playStyle: "GD",
     active: true,
     notes: "gd, social, runs from humans in yard, hard to catch",
-    socialization: [{ type: "BRBreak", duration: 10, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }],
+    socialization: [["BRBreak", 10, "am"], ["Group", 40, "pm"]],
     checkout: "",
     location: "East Group Area"
   },
@@ -61,7 +61,7 @@ const dogSeed = [
     playStyle: "Soft RR",
     active: true,
     notes: "soft rr, social, sexually motivated",
-    socialization: [{ type: "Group", duration: 40, ampm: "am" }, { type: "Group", duration: 40, ampm: "pm" }],
+    socialization: [["Group", 40, "am"], ["Group", 40, "pm"]],
     checkout: "",
     location: "East Group Area"
   },
@@ -75,7 +75,7 @@ const dogSeed = [
     playStyle: "W",
     active: true,
     notes: "",
-    socialization: [{ type: "Walk", duration: 30, ampm: "am" }, { type: "BRBreak", duration: 10, ampm: "am" }, { type: "Walk", duration: 30, ampm: "pm" }],
+    socialization: [["Walk", 30, "am"], ["BRBreak", 10, "am"]["Walk", 30, "pm"]],
     checkout: "",
     location: "East Group Area"
   },
