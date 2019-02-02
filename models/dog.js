@@ -11,6 +11,7 @@ const dogSchema = new Schema({
     playStyle:String,
     active:Boolean,
     notes:String,
+    location:String,
     socialization:[{type:String,duration:Number,ampm:String}]
 });
 
