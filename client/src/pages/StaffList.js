@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import VolunteerWidget from "../components/VolunteerWidget";
+import StaffListWidget from "../components/StaffListWidget";
 import "../styles/style.css";
 
-class Volunteer extends Component {
+class StaffList extends Component {
 
 
     render() {
         return (
             <div className="container">
-                <VolunteerWidget />
+                <StaffListWidget />
             </div>
         )
     }
 }
 
-export default Volunteer;
-
+export default StaffList;

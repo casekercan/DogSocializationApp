@@ -1,13 +1,13 @@
 import React from "react";
 import "./style.css";
 
-function VolunteerWidget() {
+function StaffListWidget() {
     return (
         <div>
-            
+
         </div>
     );
 }
 
-export default VolunteerWidget;
+export default StaffListWidget;
 

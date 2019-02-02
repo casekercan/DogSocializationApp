@@ -11,13 +11,10 @@ function Nav() {
 
             <ul className="navbar-nav mt-2 mt-lg-0">
                 <li className="nav-item">
-                    <a className="nav-link" href="/dog/:id">Dog</a>
-                </li>
-                <li className="nav-item">
                     <a className="nav-link" href="/doglist">All Dogs</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/staff">Volunteers</a>
+                    <a className="nav-link" href="/stafflist">All Staff</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/login">Login/Logout</a>
