@@ -24,7 +24,10 @@ module.exports = {
   },
   // remove dog from active list and archive
   deActivateDog: function (req, res) {
-
+    db.Dog
+      .update({_id:req.params.id},{active:false})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
 
   findAllStaff: function (req, res) {
@@ -53,7 +56,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   deActivateStaff: function (req, res) {
-
+    db.Staff
+      .update({_id:req.params.id},{active:false})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 
 };
