@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import VolunteerList from "../components/VolunteerList";
+import StaffWidget from "../components/StaffWidget";
 import "../styles/style.css";
 
 class Staff extends Component {
@@ -8,10 +8,11 @@ class Staff extends Component {
     render() {
         return (
             <div className="container">
-                <VolunteerList />
+                <StaffWidget />
             </div>
         )
     }
 }
 
 export default Staff;
+

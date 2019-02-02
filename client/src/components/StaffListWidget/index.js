@@ -35,7 +35,7 @@ class VolunteerList extends Component {
                             <th>{voteer.name}</th>
                             <th>{voteer.email}</th>
                             <th>{voteer.mobile}</th>
-                            <th>  <Link to={"/volunteer/" + voteer._id} >More</Link> </th>
+                            <th>  <Link to={"/staff/" + voteer._id} >More</Link> </th>
 
                         </tr>
                     ))}
