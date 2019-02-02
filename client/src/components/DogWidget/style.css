@@ -13,3 +13,10 @@
 .infoContainer,.socContainer{
     margin-top: 25px;
 }
+.editBtn{
+    margin-top:25px;
+    background-color: burlywood;
+}
+.notes{
+    padding:0px 10px;
+}

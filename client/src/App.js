@@ -7,6 +7,7 @@ import Dog from "./pages/Dog";
 import Doglist from "./pages/Doglist";
 import Nomatch from "./pages/Nomatch";
 import Volunteer from "./pages/Volunteer";
+import Staff from "./pages/Staff";
 import Login from "./pages/Login";
 
 function App() {
@@ -19,14 +20,14 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/dog/:id" component={Dog} />
           <Route exact path="/doglist" component={Doglist} />
-          <Route exact path="/volunteer" component={Volunteer} />
+          <Route exact path="/staff" component={Staff} />
+          <Route exact path="/volunteer/:id" component={Volunteer} />
           <Route exact path="/login" component={Login} />
           <Route component={Nomatch} />
         </Switch>
       </div>
     </Router>
   )
-
 }
 
 export default App;

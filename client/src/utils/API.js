@@ -12,7 +12,15 @@ export default {
 
   //get one dog
   getDog: function (id) {
-    return axios.get("/api/dogs/" + id)
+    return axios.get("/api/dogs/" + id);
+  },
+
+  getStaff: function(){
+    return axios.get("/api/staff");
+  },
+
+  getVolunteer: function(id){
+    return axios.get("api/volunteer/"+ id);
   }
 
 };

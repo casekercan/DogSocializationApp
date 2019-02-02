@@ -17,7 +17,7 @@ function Nav() {
                     <a className="nav-link" href="/doglist">All Dogs</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/volunteer">Volunteer</a>
+                    <a className="nav-link" href="/staff">Volunteers</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/login">Login/Logout</a>
