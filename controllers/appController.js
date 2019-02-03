@@ -9,6 +9,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findInactDogs: function (req, res) {
+    db.Dog
+      .find({ active: false })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findOneDog: function (req, res) {
     db.Dog
       .findById(req.params.id)
@@ -36,6 +42,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAllStaff: function (req, res) {
+    db.Staff
+      .find({ active: true })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findInactStaff: function (req, res) {
     db.Staff
       .find({ active: true })
       .then(dbModel => res.json(dbModel))

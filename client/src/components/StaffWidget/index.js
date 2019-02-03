@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
+import moment from "moment";
 
 
 class StaffListWidget extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            staff: {}
+            staff: {
+                worked:[]
+            }
         };
     };
 
@@ -64,10 +67,12 @@ class StaffListWidget extends Component {
                             </thead>
                             {/*Map through array of shifts*/}
                             <tbody>
-                            <tr key={this.state.staff._id} className="table-active">
-                                <td>Jan 29, 2019</td>
-                                <td>4</td>
-                            </tr>
+                                {this.state.staff.worked.map(item=>
+                                    <tr key={this.state.staff._id} className="table-active">
+                                        <td>{moment(item[0]).format("MM DD YYYY")}</td>
+                                        <td>{item[1]}</td>
+                                    </tr>
+                                )}
                             {/*Empty row to add new shift*/}
                             <tr className="table-info">
                                 <td>

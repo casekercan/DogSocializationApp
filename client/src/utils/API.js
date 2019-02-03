@@ -29,10 +29,20 @@ export default {
   getDogsLoc: function (loc) {
     return axios.get("/api/dogs/location/"+loc);
   },
+
+  // find all inactive dogs
+  getInactDogs: function(){
+    return axios.get("/api/inactdogs");
+  },
   
   // get all staff
   getAllStaff: function () {
     return axios.get("/api/allstaff");
+  },
+
+  //get inactive staff
+  getInactStaff: function(){
+    return axios.get("/api/inactstaff")
   },
 
   // get one staff member
