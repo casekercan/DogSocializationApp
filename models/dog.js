@@ -10,10 +10,31 @@ const dogSchema = new Schema({
     decription: String,
     playStyle: String,
     active: Boolean,
-    checkout:Date,
-    location:String,
+    checkout: Date,
+    location: String,
     notes: String,
-    socialization: [[String, Number, String, Date]],
+    socialization: [
+        {
+            name: {
+                type: String,
+                required: true
+            },
+            duration: {
+                type: Number,
+                required: true
+            },
+            ampm: {
+                type: String,
+                required: true
+            },
+            done: {
+                type: Boolean,
+                required: true,
+                default: false
+            },
+            date: Date
+        }
+    ],
 });
 
 const Dog = mongoose.model("Dog", dogSchema);
