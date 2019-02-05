@@ -3,45 +3,16 @@ import "./style.css";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import CheckoutDog from "../CheckoutDog";
 
-class MyVerticallyCenteredModal extends React.Component {
-    render() {
-      return (
-        <Modal
-          {...this.props}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Centered Modal</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.props.onHide}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      );
-    }
-  }
-  
+
 
 class DogListWidget extends Component {
     constructor() {
         super();
         this.state = {
             dogs: [],
-            modalShow:false
+            modalShow: false
         };
     }
 
@@ -75,11 +46,11 @@ class DogListWidget extends Component {
                             <th>
                                 {dog.socialization.map(soc => (
                                     <Button
-                                    variant="primary"
-                                    onClick={() => this.setState({ modalShow: true })}
-                                    className="socEvent badge badge-primary text-wrap">{soc.name}/{soc.duration}/{soc.ampm}</Button>
+                                        variant="primary"
+                                        onClick={() => this.setState({ modalShow: true })}
+                                        className="socEvent badge badge-primary text-wrap">{soc.name}/{soc.duration}/{soc.ampm}</Button>
                                 ))}
-                                <MyVerticallyCenteredModal show={this.state.modalShow} onHide={modalClose}/>
+                                <CheckoutDog show={this.state.modalShow} onHide={modalClose} />
                             </th>
                             <th>  <Link to={"/dog/" + dog._id} >More</Link> </th>
                         </tr>
