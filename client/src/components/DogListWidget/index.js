@@ -29,7 +29,7 @@ class DogListWidget extends Component {
     };
 
     loadModal = (dog) => {
-        this.setState({ modalInfo: dog })
+        this.setState({ modalInfo: dog });
         this.setState({ modalShow: true })
     }
 
@@ -52,11 +52,13 @@ class DogListWidget extends Component {
                             <th>{dog.name}</th>
                             <th>{dog.kennel}</th>
                             <th>
-                                {dog.socialization.map(soc => (
+                                {dog.socialization.map((soc,i) => (
                                     <Button
                                         variant="primary"
                                         onClick={() => this.loadModal(dog)}
-                                        className="socEvent badge badge-primary text-wrap">{soc.name}/{soc.duration}/{soc.ampm}</Button>
+                                        className="socEvent badge badge-primary text-wrap"
+                                        name={i}
+                                    >{soc.name}/{soc.duration}/{soc.ampm}</Button>
                                 ))}
                                 <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                             </th>

@@ -174,7 +174,8 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 10], [01 - 31 - 2019, 10], [02 - 01 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 2 / 2 / 2019,
     location: "East Group Area",
-    active: true
+    active: true,
+    admin:true
   },
   {
     name: "Robert",
@@ -185,7 +186,8 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 8], [01 - 31 - 2019, 6], [02 - 01 - 2019, 8], [02 - 02 - 2019, 4]],
     checkout: "",
     location: "Grassy 1",
-    active: true
+    active: true,
+    admin:true
   },
   {
     name: "Sandi",
@@ -196,7 +198,8 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 10], [02 - 01 - 2019, 6], [02 - 02 - 2019, 10]],
     checkout: "",
     location: "Off Campus",
-    active: true
+    active: true,
+    admin:true
   },
   {
     name: "Caroline",
@@ -207,7 +210,8 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 01 / 29 / 2019,
     location: "Off Campus",
-    active: true
+    active: true,
+    admin: false
   },
 ];
 

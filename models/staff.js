@@ -7,10 +7,10 @@ const staffSchema = new Schema({
     email: String,
     mobile: String,
     notes: String,
-    worked: [{ date: Date, duration: Number }],
     checkout: Date,
     location: String,
-    active: Boolean
+    active: Boolean,
+    admin:Boolean
 });
 
 const Staff = mongoose.model("Staff", staffSchema);
