@@ -12,7 +12,10 @@ class DogListWidget extends Component {
         super();
         this.state = {
             dogs: [],
-            modalShow: false
+            modalShow: false,
+            modalInfo: {
+                socialization: []
+            }
         };
     }
 
@@ -24,6 +27,11 @@ class DogListWidget extends Component {
     findalldogs = () => {
         API.getDogs().then(res => this.setState({ dogs: res.data })).catch(err => console.log(err));
     };
+
+    loadModal = (dog) => {
+        this.setState({ modalInfo: dog })
+        this.setState({ modalShow: true })
+    }
 
     render() {
         let modalClose = () => this.setState({ modalShow: false });
@@ -47,10 +55,10 @@ class DogListWidget extends Component {
                                 {dog.socialization.map(soc => (
                                     <Button
                                         variant="primary"
-                                        onClick={() => this.setState({ modalShow: true })}
+                                        onClick={() => this.loadModal(dog)}
                                         className="socEvent badge badge-primary text-wrap">{soc.name}/{soc.duration}/{soc.ampm}</Button>
                                 ))}
-                                <CheckoutDog show={this.state.modalShow} onHide={modalClose} />
+                                <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                             </th>
                             <th>  <Link to={"/dog/" + dog._id} >More</Link> </th>
                         </tr>
