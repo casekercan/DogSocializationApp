@@ -1,11 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 
-class CheckoutDog extends React.Component {
+class CheckoutDog extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            dog: {}
+        };
+    }
+
+
     render() {
+        let dog = this.props.props;
         return (
             <Modal
                 {...this.props}
@@ -15,16 +24,24 @@ class CheckoutDog extends React.Component {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Modal heading
-            </Modal.Title>
+                        {dog.name}
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Centered Modal</h4>
+                    <h4>{dog.name}</h4>
                     <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-                        ac consectetur ac, vestibulum at eros.
-            </p>
+                        {dog.socialization.map(soc =>
+                            <tr key={dog._id} className="table-active">
+                                <td>{soc.name}</td>
+                                <td>{soc.duration}</td>
+                                <td>{soc.ampm}</td>
+                                <td>
+                                    <button className="btn btn-sm">Edit</button>
+                                    <button className="btn btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        )}
+                    </p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.props.onHide}>Close</Button>
