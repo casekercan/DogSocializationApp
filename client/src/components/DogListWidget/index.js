@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import CheckoutDog from "./CheckoutDog";
-
 
 class DogListWidget extends Component {
-    state = {
-        dogs: [],
-        show:false
-    };
+    constructor() {
+        super();
+        this.state = {
+            showModal: false,
+            dogs: []
+        };
+    }
+
 
     componentDidMount() {
         this.findalldogs();
@@ -20,22 +22,20 @@ class DogListWidget extends Component {
         API.getDogs().then(res => this.setState({ dogs: res.data })).catch(err => console.log(err));
     };
 
-    showModal = () => {
-        this.setState({show:true})
+
+    handleOpenModal() {
+        this.setState({ showModal: true });
     }
 
-    hideModal = () => {
-        this.setState({show:false})
+    handleCloseModal() {
+        this.setState({ showModal: false });
     }
 
 
     render() {
         return (
             <table className="table table-striped">
-                <CheckoutDog show={this.state.show} handleClose={this.hideModal}>
-                    <p>Modal</p>
-                    <p>Data</p>
-                </CheckoutDog>
+
                 <thead>
                     <tr>
                         <th scope="col">Dog Name</th>
@@ -51,7 +51,7 @@ class DogListWidget extends Component {
                             <th>{dog.kennel}</th>
                             <th>
                                 {dog.socialization.map(soc => (
-                                    <span type="button" onClick={this.showModal} className="socEvent badge badge-primary text-wrap">{soc[0]}/{soc[1]}/{soc[2]}</span>
+                                    <button className="socEvent badge badge-primary text-wrap" onClick={() => this.handleOpenModal()}>{soc.name}/{soc.duration}/{soc.ampm}</button>
                                 ))}
                             </th>
                             <th>  <Link to={"/dog/" + dog._id} >More</Link> </th>

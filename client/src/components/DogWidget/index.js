@@ -8,6 +8,17 @@ class DogWidget extends Component {
         super(props)
         this.state = {
             dog: {
+                name: "",
+                pic: "",
+                kennel: 0,
+                selterID: "",
+                intakeDate: "",
+                description: "",
+                playStyle: "",
+                active: true,
+                checkout: "",
+                location: "",
+                notes: "",
                 socialization: []
             },
         };
@@ -18,11 +29,6 @@ class DogWidget extends Component {
             .then(res => this.setState({
                 dog: res.data
             })).catch(err => console.log(err));
-    }
-
-
-    createTable = () => {
-
     }
 
 
@@ -75,11 +81,11 @@ class DogWidget extends Component {
                             {/*Map through array of socialization plan*/}
                             <tbody>
 
-                                {this.state.dog.socialization.map(item =>
+                                {this.state.dog.socialization.map(soc =>
                                     <tr key={this.state.dog._id} className="table-active">
-                                        <td>{item[0]}</td>
-                                        <td>{item[1]}</td>
-                                        <td>{item[2]}</td>
+                                        <td>{soc.name}</td>
+                                        <td>{soc.duration}</td>
+                                        <td>{soc.ampm}</td>
                                         <td>
                                             <button className="btn btn-sm">Edit</button>
                                             <button className="btn btn-sm">Delete</button>

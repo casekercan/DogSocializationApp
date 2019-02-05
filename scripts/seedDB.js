@@ -19,7 +19,22 @@ const dogSeed = [
     playStyle: "W",
     active: true,
     notes: "no other dogs, will re-direct when walking in close proximity to dogs, approval needed to walk dog",
-    socialization: [["Walk", 40, "am",""], ["BRBreak", 15, "pm",""]],
+    socialization: [
+      {
+        name: "Walk",
+        duration: 40,
+        ampm: "am",
+        done: false,
+        date: ""
+      },
+      {
+        name: "BRBreak",
+        duration: 15,
+        ampm: "pm",
+        done: false,
+        date: ""
+      }
+    ],
     checkout: "",
     location: "Kennel"
   },
@@ -33,7 +48,22 @@ const dogSeed = [
     playStyle: "GD",
     active: true,
     notes: "gd, social",
-    socialization: [["Group", 40, "am",""], ["Group", 40, "pm",""]],
+    socialization: [
+      {
+        name: "Group",
+        duration: 40,
+        ampm: "am",
+        done: false,
+        date: ""
+      },
+      {
+        name: "Group",
+        duration: 40,
+        ampm: "pm",
+        done: false,
+        date: ""
+      }
+    ],
     checkout: "",
     location: "North Concrete"
   },
@@ -47,7 +77,22 @@ const dogSeed = [
     playStyle: "GD",
     active: true,
     notes: "gd, social, runs from humans in yard, hard to catch",
-    socialization: [["BRBreak", 10, "am",""], ["Group", 40, "pm",""]],
+    socialization: [
+      {
+        name: "BRBreak",
+        duration: 10,
+        ampm: "am",
+        done: false,
+        date: ""
+      },
+      {
+        name: "Group",
+        duration: 40,
+        ampm: "pm",
+        done: false,
+        date: ""
+      }
+    ],
     checkout: "",
     location: "East Group Area"
   },
@@ -61,7 +106,22 @@ const dogSeed = [
     playStyle: "Soft RR",
     active: true,
     notes: "soft rr, social, sexually motivated",
-    socialization: [["Group", 40, "am",""], ["Group", 40, "pm",""]],
+    socialization: [
+      {
+        name: "Group",
+        duration: 40,
+        ampm: "am",
+        done: false,
+        date: ""
+      },
+      {
+        name: "Group",
+        duration: 40,
+        ampm: "pm",
+        done: false,
+        date: ""
+      }
+    ],
     checkout: "",
     location: "East Group Area"
   },
@@ -75,7 +135,30 @@ const dogSeed = [
     playStyle: "W",
     active: true,
     notes: "",
-    socialization: [["Walk", 30, "am",""], ["BRBreak", 10, "am",""], ["Walk", 30, "pm",""]],
+    socialization: [
+
+      {
+        name: "Walk",
+        duration: 30,
+        ampm: "am",
+        done: false,
+        date: ""
+      },
+      {
+        name: "BRBreak",
+        duration: 10,
+        ampm: "am",
+        done: false,
+        date: ""
+      },
+      {
+        name: "Walk",
+        duration: 30,
+        ampm: "pm",
+        done: false,
+        date: ""
+      }
+    ],
     checkout: "",
     location: "East Group Area"
   },
@@ -88,7 +171,7 @@ const staffSeed = [
     email: "dgan@gmail.com",
     notes: "",
     mobile: "916-555-1212",
-    worked: [[01-30-2019,10],[01-31-2019,10],[02-01-2019,12],[02-02-2019,8]],
+    worked: [[01 - 30 - 2019, 10], [01 - 31 - 2019, 10], [02 - 01 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 2 / 2 / 2019,
     location: "East Group Area",
     active: true
@@ -99,7 +182,7 @@ const staffSeed = [
     email: "rive@gmail.com",
     notes: "",
     mobile: "530-555-1212",
-    worked: [[01-30-2019,8],[01-31-2019,6],[02-01-2019,8],[02-02-2019,4]],
+    worked: [[01 - 30 - 2019, 8], [01 - 31 - 2019, 6], [02 - 01 - 2019, 8], [02 - 02 - 2019, 4]],
     checkout: "",
     location: "Grassy 1",
     active: true
@@ -110,7 +193,7 @@ const staffSeed = [
     email: "sandi@gmail.com",
     notes: "",
     mobile: "415-555-1212",
-    worked: [[01-30-2019,10],[02-01-2019,6],[02-02-2019,10]],
+    worked: [[01 - 30 - 2019, 10], [02 - 01 - 2019, 6], [02 - 02 - 2019, 10]],
     checkout: "",
     location: "Off Campus",
     active: true
@@ -121,7 +204,7 @@ const staffSeed = [
     email: "carol@gmail.com",
     notes: "",
     mobile: "209-555-1212",
-    worked: [[01-30-2019,12],[02-02-2019,8]],
+    worked: [[01 - 30 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 01 / 29 / 2019,
     location: "Off Campus",
     active: true
