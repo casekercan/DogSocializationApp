@@ -12,6 +12,7 @@ class CheckoutDog extends Component {
         };
     }
 
+
     render() {
         let dog = this.props.props;
         return (
