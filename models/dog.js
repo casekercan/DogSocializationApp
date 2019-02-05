@@ -10,8 +10,10 @@ const dogSchema = new Schema({
     decription: String,
     playStyle: String,
     active: Boolean,
+    checkout:Date,
+    location:String,
     notes: String,
-    socialization: [[String, Number, String]],
+    socialization: [[String, Number, String, Date]],
 });
 
 const Dog = mongoose.model("Dog", dogSchema);

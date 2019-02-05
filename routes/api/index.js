@@ -5,6 +5,9 @@ const appController = require("../../controllers/appController");
 router.route("/dogs")
   .get(appController.findAllDogs);
 
+router.route("/inactdogs")
+  .get(appController.findInactDogs);
+
 router.route("/dogs/:id")
   .get(appController.findOneDog);
 
@@ -19,6 +22,9 @@ router.route("/dogs/location/:loc")
 
 router.route("/allstaff")
   .get(appController.findAllStaff);
+
+router.route("/inactstaff")
+  .get(appController.findInactStaff);
 
 router.route("/staff/:id")
   .get(appController.findStaff);

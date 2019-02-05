@@ -1,0 +1,8 @@
+.buttonSpace{
+    margin-top:10px;
+    float:right;
+}
+
+.newDogBtn,.allDogsBtn,.newStaffBtn,.allStaffBtn{
+    margin-right:10px;
+}
