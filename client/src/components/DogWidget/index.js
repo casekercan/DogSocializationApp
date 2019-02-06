@@ -3,7 +3,7 @@ import "./style.css";
 import API from "../../utils/API";
 import Button from "react-bootstrap/Button";
 import CheckoutDog from "../CheckoutDog";
-import AddEditDog from "../AddEditDogModal";
+import AddEditDog from "../AddEditDog";
 
 
 class DogWidget extends Component {
@@ -29,7 +29,9 @@ class DogWidget extends Component {
                 socialization:[]
             },
             modal2Show:false,
-            //modal2Info:this.state.dog
+            modal2Info:{
+                socialization:[]
+            }
         };
     }
 
@@ -88,15 +90,34 @@ class DogWidget extends Component {
                             <div>
                                 <Button className="btn btn-lg editBtn"
                                     variant="primary"
-                                    onClick={()=>this.loadModal2()}>Edit Dog</Button>
+                                    onClick={()=>this.loadModal2(this.state.dog)}>Edit Dog</Button>
                                 <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
                             </div>
                         </div>
                     </div>
                     <div class="col socContainer">
                         <h3 name="socLabel">Socialization Plan</h3>
+                        <p>
+                            <thead>
+                                <tr>
+                                    {/* <th scope="col" className="cell">Select</th> */}
+                                    <th scope="col" className="cell">Type</th>
+                                    <th scope="col" className="cell">Duration</th>
+                                    <th scope="col" className="cell">AM/PM</th>
+                                </tr>
+                            </thead>
+                            {this.state.dog.socialization.map(soc =>
+                            <tbody> 
+                                <tr key={this.state.dog._id} className="table-active">
+                                    <td className="cell">{soc.name}</td>
+                                    <td className="cell">{soc.duration}</td>
+                                    <td className="cell">{soc.ampm}</td>
+                                </tr>
+                            </tbody>
+                            )}
+                        </p>
 
-                        <table name="socPlan" className="table table-sm">
+                        {/* <table name="socPlan" className="table table-sm">
                             <thead>
                                 <tr>
                                     <th scope="col" >Type</th>
@@ -106,7 +127,7 @@ class DogWidget extends Component {
                                 </tr>
                             </thead>
                             {/*Map through array of socialization plan*/}
-                            <tbody>
+                            {/* <tbody>
 
                                 {this.state.dog.socialization.map(soc =>
                                     <tr key={this.state.dog._id} className="table-active">
@@ -120,7 +141,7 @@ class DogWidget extends Component {
                                     </tr>
                                 )}
                                 {/*Empty row to add new plan*/}
-                                <tr className="table-info">
+                                {/* <tr className="table-info">
                                     <td>
                                         <div className="col">
                                             <input className="form-control form-control-sm" type="text" />
@@ -143,7 +164,7 @@ class DogWidget extends Component {
                                     </td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> */}
                     </div>
                 </div>
             </div>

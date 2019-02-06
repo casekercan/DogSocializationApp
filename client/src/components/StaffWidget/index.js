@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
-import moment from "moment";
+import Button from "react-bootstrap/Button";
+import AddEditStaff from "../AddEditStaff";
 
 
 class StaffListWidget extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            staff: {
-                worked:[]
-            }
+            staff: {}
         };
     };
 
@@ -20,7 +19,13 @@ class StaffListWidget extends Component {
             .catch(err => console.log(err));
     }
 
+    loadModal = (staff) => {
+        this.setState({ modalInfo: staff });
+        this.setState({ modalShow: true })
+    }
+
     render() {
+        let modalClose = ()=> this.setState({modalShow:false});
         return (
             
             <div className="container" >
@@ -39,7 +44,7 @@ class StaffListWidget extends Component {
                                     <span name="emailLabel">ID: </span><span name="ID">{this.state.staff.email}</span>
                                 </h5>
                                 <h5>
-                                    <span name="mobileLabel">ID: </span><span name="ID">{this.state.staff.mobile}</span>
+                                    <span name="mobileLabel">Mobile: </span><span name="ID">{this.state.staff.mobile}</span>
                                 </h5>
                             </div>
                         </div>
@@ -51,7 +56,11 @@ class StaffListWidget extends Component {
                                 <h5 name="notes" className="notes">{this.state.staff.notes}</h5>
                             </div>
                             <div>
-                            <button className="btn btn-lg editBtn">Edit Staff</button>
+                            <Button 
+                            variant="primary"
+                            className="btn btn-lg editBtn"
+                            onClick={()=>this.loadModal(this.state.staff)}>Edit Staff</Button>
+                            <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                             </div>
                         </div>
                     </div>
