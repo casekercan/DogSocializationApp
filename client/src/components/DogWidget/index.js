@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
+import Button from "react-bootstrap/Button";
+import CheckoutDog from "../CheckoutDog";
+import AddEditDog from "../AddEditDogModal";
 
 
 class DogWidget extends Component {
@@ -21,6 +24,12 @@ class DogWidget extends Component {
                 notes: "",
                 socialization: []
             },
+            modalShow:false,
+            modalInfo:{
+                socialization:[]
+            },
+            modal2Show:false,
+            //modal2Info:this.state.dog
         };
     }
 
@@ -31,14 +40,29 @@ class DogWidget extends Component {
             })).catch(err => console.log(err));
     }
 
+    loadModal = (dog) => {
+        this.setState({ modalInfo: dog });
+        this.setState({ modalShow: true })
+    }
+
+    loadModal2 = (dog) =>{
+        this.setState({ modal2Info: dog });
+        this.setState({ modal2Show: true })
+    }
 
     render() {
+        let modalClose = () => this.setState({modalShow:false});
+        let modal2Close = () => this.setState({modal2Show:false});
         return (
             <div className="container" >
                 <div className="row">
                     <div class="col infoContainer">
-                        <button className="btn btn-lg signoutBtn">Signout Dog</button>
-                        <button className="btn btn-lg returnBtn">Return Dog</button>
+                        <Button 
+                            variant="primary"
+                            className="btn btn-lg signoutBtn"
+                            onClick={()=>this.loadModal(this.state.dog)}>Signout Dog</Button>
+                        <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
+                        <button className="btn btn-lg returnBtn">Kennel Return</button>
                         <hr />
                         <div className="d-flex">
                             <img src={this.state.dog.pic} alt="dog pic" class="img-thumbnail" />
@@ -62,12 +86,15 @@ class DogWidget extends Component {
                                 <h5 name="notes" className="notes">{this.state.dog.notes}</h5>
                             </div>
                             <div>
-                                <button className="btn btn-lg editBtn">Edit Dog</button>
+                                <Button className="btn btn-lg editBtn"
+                                    variant="primary"
+                                    onClick={()=>this.loadModal2()}>Edit Dog</Button>
+                                <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
                             </div>
                         </div>
                     </div>
                     <div class="col socContainer">
-                        <h3 name="socLabel">Socialization</h3>
+                        <h3 name="socLabel">Socialization Plan</h3>
 
                         <table name="socPlan" className="table table-sm">
                             <thead>

@@ -55,7 +55,7 @@ class StaffListWidget extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class="col socContainer">
+                    {/* <div class="col socContainer">
                         <h3 name="shiftsLabel">Shifts</h3>
                         
                         <table name="shifts" className="table table-sm">
@@ -66,15 +66,15 @@ class StaffListWidget extends Component {
                             </tr>
                             </thead>
                             {/*Map through array of shifts*/}
-                            <tbody>
+                            {/* <tbody>
                                 {this.state.staff.worked.map(item=>
                                     <tr key={this.state.staff._id} className="table-active">
                                         <td>{moment(item[0]).format("MM DD YYYY")}</td>
                                         <td>{item[1]}</td>
                                     </tr>
-                                )}
+                                )} */}
                             {/*Empty row to add new shift*/}
-                            <tr className="table-info">
+                            {/* <tr className="table-info">
                                 <td>
                                     <div className="col">
                                     <input className="form-control form-control-sm" type="text"/>
@@ -91,7 +91,7 @@ class StaffListWidget extends Component {
                             </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )
