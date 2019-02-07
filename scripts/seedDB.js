@@ -65,7 +65,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "North Concrete"
+    location: "Off-Campus"
   },
   {
     name: "Raisinet",
@@ -160,7 +160,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "East Group Area"
+    location: "North Group Area"
   },
 ];
 
@@ -173,9 +173,9 @@ const staffSeed = [
     mobile: "916-555-1212",
     worked: [[01 - 30 - 2019, 10], [01 - 31 - 2019, 10], [02 - 01 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 2 / 2 / 2019,
-    location: "East Group Area",
+    location: "",
     active: true,
-    admin:true
+    admin: true
   },
   {
     name: "Robert",
@@ -185,9 +185,9 @@ const staffSeed = [
     mobile: "530-555-1212",
     worked: [[01 - 30 - 2019, 8], [01 - 31 - 2019, 6], [02 - 01 - 2019, 8], [02 - 02 - 2019, 4]],
     checkout: "",
-    location: "Grassy 1",
+    location: "",
     active: true,
-    admin:true
+    admin: true
   },
   {
     name: "Sandi",
@@ -197,9 +197,9 @@ const staffSeed = [
     mobile: "415-555-1212",
     worked: [[01 - 30 - 2019, 10], [02 - 01 - 2019, 6], [02 - 02 - 2019, 10]],
     checkout: "",
-    location: "Off Campus",
+    location: "",
     active: true,
-    admin:true
+    admin: true
   },
   {
     name: "Caroline",
@@ -209,7 +209,7 @@ const staffSeed = [
     mobile: "209-555-1212",
     worked: [[01 - 30 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 01 / 29 / 2019,
-    location: "Off Campus",
+    location: "",
     active: true,
     admin: false
   },
