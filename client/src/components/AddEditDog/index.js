@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Form from "../Form";
+import DogForm from "../DogForm";
 
 class AddEditDog extends Component {
 
@@ -21,7 +21,7 @@ class AddEditDog extends Component {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form dog={this.props.props} />
+                    <DogForm dog={this.props.props} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.props.onHide}>Add Dog</Button>
