@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 
 
 class AddEditDog extends Component {
@@ -12,9 +13,8 @@ class AddEditDog extends Component {
         };
     }
 
-
     render() {
-        let dog = this.props.props;
+        let dogg = this.props.props;
         return (
             <Modal
                 {...this.props}
@@ -76,11 +76,38 @@ class AddEditDog extends Component {
                         </div>
                         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"/>
                     </div>
-                    <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Socialization</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"/>
+                    <div>
+                        <h4>Socialization Plan</h4>
+                        <thead>
+                            <tr>
+                                <th scope="col" >Type</th>
+                                <th scope="col" >Time</th>
+                                <th scope="col" >When</th>
+                                <th scope="col" className="col">Actions</th>
+                            </tr>
+                        </thead>
+                        {dogg.socialization.map(soc =>
+                        <tbody>
+                            <tr key={dogg._id} className="table-active">
+                                <td>{soc.name}</td>
+                                <td>{soc.duration}</td>
+                                <td>{soc.ampm}</td>
+                                <td>
+                                    <button className="btn btn-sm">Edit</button>
+                                    <button className="btn btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        )}
+                    </div>
+                    <hr/>
+                    <div>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Prepend>
+                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                        </InputGroup.Prepend>
+                        ACTIVE
+                    </InputGroup>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
