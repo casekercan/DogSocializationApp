@@ -1,0 +1,20 @@
+.box {
+    border: black 3px solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.table-header {
+    font-weight: bold;
+}
+
+
+th {
+    font-weight: normal;  
+}

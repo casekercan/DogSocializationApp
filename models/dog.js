@@ -11,7 +11,11 @@ const dogSchema = new Schema({
     playStyle: String,
     active: Boolean,
     checkout: Date,
-    location: String,
+    location: {
+        type: String,
+        default: "Kennel",
+        required: true
+    },
     notes: String,
     socialization: [
         {
