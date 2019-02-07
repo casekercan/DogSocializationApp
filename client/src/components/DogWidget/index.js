@@ -11,26 +11,15 @@ class DogWidget extends Component {
         super(props)
         this.state = {
             dog: {
-                name: "",
-                pic: "",
-                kennel: 0,
-                selterID: "",
-                intakeDate: "",
-                description: "",
-                playStyle: "",
-                active: true,
-                checkout: "",
-                location: "",
-                notes: "",
                 socialization: []
             },
-            modalShow:false,
-            modalInfo:{
-                socialization:[]
+            modalShow: false,
+            modalInfo: {
+                socialization: []
             },
-            modal2Show:false,
-            modal2Info:{
-                socialization:[]
+            modal2Show: false,
+            modal2Info: {
+                socialization: []
             }
         };
     }
@@ -47,22 +36,22 @@ class DogWidget extends Component {
         this.setState({ modalShow: true })
     }
 
-    loadModal2 = (dog) =>{
+    loadModal2 = (dog) => {
         this.setState({ modal2Info: dog });
         this.setState({ modal2Show: true })
     }
 
     render() {
-        let modalClose = () => this.setState({modalShow:false});
-        let modal2Close = () => this.setState({modal2Show:false});
+        let modalClose = () => this.setState({ modalShow: false });
+        let modal2Close = () => this.setState({ modal2Show: false });
         return (
             <div className="container" >
                 <div className="row">
                     <div class="col infoContainer">
-                        <Button 
+                        <Button
                             variant="primary"
                             className="btn btn-lg signoutBtn"
-                            onClick={()=>this.loadModal(this.state.dog)}>Signout Dog</Button>
+                            onClick={() => this.loadModal(this.state.dog)}>Signout Dog</Button>
                         <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                         <button className="btn btn-lg returnBtn">Kennel Return</button>
                         <hr />
@@ -90,7 +79,7 @@ class DogWidget extends Component {
                             <div>
                                 <Button className="btn btn-lg editBtn"
                                     variant="primary"
-                                    onClick={()=>this.loadModal2(this.state.dog)}>Edit Dog</Button>
+                                    onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
                                 <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
                             </div>
                         </div>
@@ -107,13 +96,13 @@ class DogWidget extends Component {
                                 </tr>
                             </thead>
                             {this.state.dog.socialization.map(soc =>
-                            <tbody> 
-                                <tr key={this.state.dog._id} className="table-active">
-                                    <td className="cell">{soc.name}</td>
-                                    <td className="cell">{soc.duration}</td>
-                                    <td className="cell">{soc.ampm}</td>
-                                </tr>
-                            </tbody>
+                                <tbody>
+                                    <tr key={this.state.dog._id} className="table-active">
+                                        <td className="cell">{soc.name}</td>
+                                        <td className="cell">{soc.duration}</td>
+                                        <td className="cell">{soc.ampm}</td>
+                                    </tr>
+                                </tbody>
                             )}
                         </p>
 
@@ -127,7 +116,7 @@ class DogWidget extends Component {
                                 </tr>
                             </thead>
                             {/*Map through array of socialization plan*/}
-                            {/* <tbody>
+                        {/* <tbody>
 
                                 {this.state.dog.socialization.map(soc =>
                                     <tr key={this.state.dog._id} className="table-active">
@@ -141,7 +130,7 @@ class DogWidget extends Component {
                                     </tr>
                                 )}
                                 {/*Empty row to add new plan*/}
-                                {/* <tr className="table-info">
+                        {/* <tr className="table-info">
                                     <td>
                                         <div className="col">
                                             <input className="form-control form-control-sm" type="text" />
