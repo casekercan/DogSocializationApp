@@ -5,16 +5,11 @@ import Button from "react-bootstrap/Button";
 import AddEditStaff from "../components/AddEditStaff";
 
 class StaffList extends Component {
-
-    constructor(props){
-        super(props)
-        this.state={
-            staff:{}
-        }
+    state={
+        modalShow:false
     }
 
-    loadModal = (staff) => {
-        this.setState({modalInfo: staff})
+    loadModal = () => {
         this.setState({ modalShow: true })
     }
 
@@ -27,7 +22,7 @@ class StaffList extends Component {
                             variant="primary"
                             className="btn btn-lg newStaffBtn"
                             onClick={()=>this.loadModal()}>New Staff</Button>
-                            <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
+                            <AddEditStaff show={this.state.modalShow} onHide={modalClose} />
                     <button className="btn btn-lg allStaffBtn">View Inactive</button>
                 </div>
                 <StaffListWidget />

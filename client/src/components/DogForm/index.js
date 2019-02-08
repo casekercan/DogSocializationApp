@@ -3,7 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import "./style.css";
 
 
-class Form extends Component {
+class DogForm extends Component {
 
     constructor(props) {
         super(props)
@@ -174,4 +174,4 @@ class Form extends Component {
         );
     }
 }
-export default Form;
+export default DogForm;

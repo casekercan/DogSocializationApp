@@ -33,7 +33,7 @@ class Locations extends Component {
     render() {
         //create variables to filter by location
         let kennel = this.state.dogs.filter(dog => dog.location === "Kennel");
-        let offCampus = this.state.dogs.filter(dog => dog.location === "Off-Campus");
+        let offCampus = this.state.dogs.filter(dog => dog.location === "Off Campus");
         let theTrack = this.state.dogs.filter(dog => dog.location === "The Track");
         let eastGroup = this.state.dogs.filter(dog => dog.location === "East Group Area");
         let northGroup = this.state.dogs.filter(dog => dog.location === "North Group Area");
@@ -96,7 +96,7 @@ class Locations extends Component {
                         </div>
                         {/* Off-Campus */}
                         <div className="box">
-                            <h3>Off-Campus</h3>
+                            <h3>Off Campus</h3>
                             {this.checkfordata(offCampus) ?
                                 <table className="table table-striped">
                                     <thead>
