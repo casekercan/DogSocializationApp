@@ -65,7 +65,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "Off-Campus"
+    location: "Off Campus"
   },
   {
     name: "Raisinet",
