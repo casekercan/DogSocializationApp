@@ -8,7 +8,6 @@ function Nav() {
 
             <a className="navbar-brand" href="/"> HOME</a>
 
-
             <ul className="navbar-nav mt-2 mt-lg-0">
                 <li className="nav-item">
                     <a className="nav-link" href="/doglist">All Dogs</a>
@@ -19,10 +18,6 @@ function Nav() {
                 <li className="nav-item">
                     <a className="nav-link" href="/login">Login/Logout</a>
                 </li>
-
-
-
-
             </ul>
         </nav>
     );

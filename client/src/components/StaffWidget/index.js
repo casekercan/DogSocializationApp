@@ -38,19 +38,19 @@ class StaffListWidget extends Component {
                             <img src={this.state.staff.pic} alt="staff pic" class="img-thumbnail" />
                             <div>
                                 <h3>
-                                    <span name="staffName"><bold>{this.state.staff.name}</bold></span>
+                                    <span name="staffName" className="labels">{this.state.staff.name}</span>
                                 </h3>
                                 <h5>
-                                    <span name="emailLabel">ID: </span><span name="ID">{this.state.staff.email}</span>
+                                    <span name="emailLabel" className="labels">ID: </span><span name="ID">{this.state.staff.email}</span>
                                 </h5>
                                 <h5>
-                                    <span name="mobileLabel">Mobile: </span><span name="ID">{this.state.staff.mobile}</span>
+                                    <span name="mobileLabel" className="labels">Mobile: </span><span name="ID">{this.state.staff.mobile}</span>
                                 </h5>
                             </div>
                         </div>
                         <div className="d-flex flex-column">
                             <div>
-                                <h3 name="notesLabel">Notes:</h3>
+                                <h3 name="notesLabel" className="labels">Notes:</h3>
                             </div>
                             <div>
                                 <h5 name="notes" className="notes">{this.state.staff.notes}</h5>

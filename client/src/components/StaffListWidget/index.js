@@ -24,9 +24,9 @@ class VolunteerList extends Component {
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Volunteer</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Mobile</th>
+                        <th scope="col" className="headings">Volunteer</th>
+                        <th scope="col" className="headings">E-mail</th>
+                        <th scope="col" className="headings">Mobile</th>
                     </tr>
                 </thead>
                 <tbody>
