@@ -40,9 +40,9 @@ class DogListWidget extends Component {
 
                 <thead>
                     <tr>
-                        <th scope="col">Dog Name</th>
-                        <th scope="col">Kennel #</th>
-                        <th scope="col">Socialization Program</th>
+                        <th scope="col" className="headings">Dog Name</th>
+                        <th scope="col" className="headings">Kennel #</th>
+                        <th scope="col" className="headings">Socialization Program</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
