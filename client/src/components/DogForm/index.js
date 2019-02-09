@@ -121,7 +121,7 @@ class DogForm extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                     </div>
-                    <input name="notes" value={this.state.notes} onChange={this.handleInputChange} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                    <input name="notes" value={this.state.notes} onChange={this.handleInputChange} type="textarea" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
                 </div>
                 <div>
                     <h4>Socialization Plan</h4>

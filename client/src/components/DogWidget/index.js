@@ -59,23 +59,30 @@ class DogWidget extends Component {
                             <img src={this.state.dog.pic} alt="dog pic" class="img-thumbnail" />
                             <div>
                                 <h3>
-                                    <span name="dogName"><bold>{this.state.dog.name}</bold></span>
+                                    <span name="dogName" className="labels">{this.state.dog.name}</span>
                                 </h3>
                                 <h3>
-                                    <span name="kennelLabel">Kennel: </span><span name="kennelNo">{this.state.dog.kennel}</span>
+                                    <span name="kennelLabel" className="labels">Kennel: </span><span name="kennelNo">{this.state.dog.kennel}</span>
                                 </h3>
                                 <h5>
-                                    <span name="IDLabel">ID: </span><span name="ID"> {this.state.dog.shelterID}</span>
+                                    <span name="IDLabel" className="labels">ID: </span><span name="ID"> {this.state.dog.shelterID}</span>
                                 </h5>
                             </div>
                         </div>
                         <div className="d-flex flex-column">
                             <div>
-                                <h3 name="notesLabel">Notes:</h3>
+                                <h3 name="descriptionLabel" className="labels">Description:</h3>
+                            </div>
+                            <div>
+                                <h5 name="description" className="notes">{this.state.dog.description}</h5>
+                            </div>
+                            <div>
+                                <h3 name="notesLabel" className="labels">Notes:</h3>
                             </div>
                             <div>
                                 <h5 name="notes" className="notes">{this.state.dog.notes}</h5>
                             </div>
+                            
                             <div>
                                 <Button className="btn btn-lg editBtn"
                                     variant="primary"
@@ -85,7 +92,7 @@ class DogWidget extends Component {
                         </div>
                     </div>
                     <div class="col socContainer">
-                        <h3 name="socLabel">Socialization Plan</h3>
+                        <h3 name="socLabel" className="labels">Socialization Plan</h3>
                         <p>
                             <thead>
                                 <tr>
