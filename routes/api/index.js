@@ -2,37 +2,26 @@ const router = require("express").Router();
 const appController = require("../../controllers/appController");
 
 // Matches with "/api/"
+
+//find all dogs
 router.route("/dogs")
   .get(appController.findAllDogs);
 
-router.route("/inactdogs")
-  .get(appController.findInactDogs);
-
+//get one dog
 router.route("/dogs/:id")
   .get(appController.findOneDog);
 
-router.route("/dogs/deactivate/:id")
-  .get(appController.deActivateDog);
+//get one dog to edit.
+router.route("/dogedit/:id")
+  .get(appController.editOneDog);
 
-router.route("/dogs/delete/:id")
-  .get(appController.removePup);
-
-router.route("/dogs/location/:loc")
-  .get(appController.findDogsLoc);
-
+//find all staff
 router.route("/allstaff")
   .get(appController.findAllStaff);
 
-router.route("/inactstaff")
-  .get(appController.findInactStaff);
-
+//find one staff
 router.route("/staff/:id")
   .get(appController.findStaff);
 
-router.route("/staff/delete/:id")
-  .get(appController.removeStaff);
-
-router.route("/staff/deactivate/:id")
-  .get(appController.deActivateStaff);
 
 module.exports = router;
