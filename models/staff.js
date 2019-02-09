@@ -6,6 +6,7 @@ const staffSchema = new Schema({
     pic: String,
     email: String,
     mobile: String,
+    password:String,
     notes: String,
     checkout: Date,
     location: String,
