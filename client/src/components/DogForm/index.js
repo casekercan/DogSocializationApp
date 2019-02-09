@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
-import Form from "react-bootstrap/Form";
 import "./style.css";
 
 
@@ -164,9 +163,12 @@ class DogForm extends Component {
                 </div>
                 <hr />
                 <div>
-                    <Form.Group controlId="formBasicChecbox">
-                        <Form.Check type="checkbox" label="ACTIVE" checked={this.state.active} />
-                    </Form.Group>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Prepend>
+                            <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                        </InputGroup.Prepend>
+                        ACTIVE
+                    </InputGroup>
                 </div>
             </div>
         );
