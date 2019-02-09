@@ -8,13 +8,7 @@ class DogForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            socialization: [
-                {
-                    type: "",
-                    duration: 0,
-                    ampm: ""
-                }
-            ]
+            socialization: [],
         };
     }
 
@@ -25,6 +19,7 @@ class DogForm extends Component {
     loadState = data => {
         this.setState({ ...data })
     }
+
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
@@ -33,13 +28,41 @@ class DogForm extends Component {
         });
     };
 
-    checkfordata = (data) => {
-        if (data[0].type === "") {
-            return false
-        } else {
-            return true
-        }
-    }
+    handleSocializationNameChange = idx => evt => {
+        const newSocialization = this.state.socialization.map((soc, sidx) => {
+            if (idx !== sidx) return soc;
+            return { ...soc, name: evt.target.value };
+        });
+
+        this.setState({ socialization: newSocialization });
+    };
+
+    handleSocializationDurationChange = idx => evt => {
+        const newSocialization = this.state.socialization.map((soc, sidx) => {
+            if (idx !== sidx) return soc;
+            return { ...soc, duration: evt.target.value };
+        });
+
+        this.setState({ socialization: newSocialization });
+    };
+
+    handleSocializationAmpmChange = idx => evt => {
+        const newSocialization = this.state.socialization.map((soc, sidx) => {
+            if (idx !== sidx) return soc;
+            return { ...soc, ampm: evt.target.value };
+        });
+
+        this.setState({ socialization: newSocialization });
+    };
+
+
+    handleAddSocialization = () => {
+        this.setState({
+            socialization: this.state.socialization.concat([{ name: "", duration: 0, ampm: "" }])
+        });
+    };
+
+
 
     render() {
         return (
@@ -90,7 +113,7 @@ class DogForm extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                     </div>
-                    <input name="notes" value={this.state.notes} onChange={this.handleInputChange} type="textarea" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                    <input name="notes" value={this.state.notes} onChange={this.handleInputChange} type="number" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
                 </div>
                 <div>
                     <h4>Socialization Plan</h4>
@@ -99,36 +122,37 @@ class DogForm extends Component {
                             <th scope="col" >Type</th>
                             <th scope="col" >Time</th>
                             <th scope="col" >When</th>
-                            <th scope="col" className="col">Actions</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
-                    {this.checkfordata(this.state.socialization) ?
-                        this.state.socialization.map(soc =>
-                            <tbody>
-                                <tr key={this.state._id} className="table-active">
-                                    <td>{soc.name}</td>
-                                    <td>{soc.duration}</td>
-                                    <td>{soc.ampm}</td>
-                                    <td>
-                                        <button className="btn btn-sm">Edit</button>
-                                        <button className="btn btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        ) :
-                        <tbody id="socialization">
-                            <tr className="table-active">
-                                <td><input name="socialization.type" value={this.state.socialization.type} onChange={this.handleInputChange} type="text" className="form-control" /></td>
-                                <td><input name="socialization.duration" value={this.state.socialization.duration} onChange={this.handleInputChange} type="number" className="form-control" /></td>
-                                <td><input name="socialization.ampm" value={this.state.socialization.ampm} onChange={this.handleInputChange} type="text" className="form-control" />
-                                </td>
-                                <td>
-                                    <button className="btn btn-sm">Add More</button>
-                                </td>
-                            </tr>
 
-                        </tbody>
-                    }
+                    {this.state.socialization.map((soc, idx) => (
+                        <div className="socialization">
+                            <input
+                                type="text"
+                                placeholder={`Socialization #${idx + 1} name`}
+                                value={soc.name}
+                                onChange={this.handleSocializationNameChange(idx)}
+                            />
+                            <input
+                                type="number"
+                                placeholder={`Socialization #${idx + 1} duration`}
+                                value={soc.duration}
+                                onChange={this.handleSocializationDurationChange(idx)}
+                            />
+                            <input
+                                type="text"
+                                placeholder={`Socialization #${idx + 1} AM or PM?`}
+                                value={soc.ampm}
+                                onChange={this.handleSocializationAmpmChange(idx)}
+                            />
+                            <button
+                                type="button"
+                                onClick={this.handleAddSocialization}
+                                className="small" >Add Socialization </button>
+
+                        </div>
+                    ))}
                 </div>
                 <hr />
                 <div>
