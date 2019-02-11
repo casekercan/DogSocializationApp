@@ -15,51 +15,22 @@ export default {
     return axios.get("/api/dogs/" + id);
   },
 
-  // change dog status to inactive
-  deActivDog: function(id) {
-    return axios.put("/api/dogs/deactivate/"+id);
+  //get one dog to edit or Add
+  updateDog: function (dog) {
+    return axios.post("/api/dog", dog);
   },
 
-  // remove a dog
-  removeDog: function(id){
-    return axios.delete("/api/dogs/delete/"+id);
-  },
 
-  // find dogs at a location
-  getDogsLoc: function (loc) {
-    return axios.get("/api/dogs/location/"+loc);
-  },
-
-  // find all inactive dogs
-  getInactDogs: function(){
-    return axios.get("/api/inactdogs");
-  },
-  
   // get all staff
   getAllStaff: function () {
     return axios.get("/api/allstaff");
   },
 
-  //get inactive staff
-  getInactStaff: function(){
-    return axios.get("/api/inactstaff")
-  },
 
   // get one staff member
   getStaff: function (id) {
     return axios.get("/api/staff/" + id);
-  },
+  }
 
-  // change staff status to inactive
-  deActivStaff: function(id){
-    return axios.put("/api/staff/deactivate/"+id);
-  },
-
-  // remove one of staff
-  removeStaff: function(id) {
-    return axios.delete("/api/staff/delete/"+id);
-  },
-
-  
 
 };

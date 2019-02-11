@@ -6,10 +6,16 @@ const dogSchema = new Schema({
     pic: String,
     kennel: Number,
     shelterID: String,
-    intakeDate: Date,
-    decription: String,
+    intakeDate: {
+        type: Date,
+        default: Date.now
+    },
+    description: String,
     playStyle: String,
-    active: Boolean,
+    active: {
+        type: Boolean,
+        default: true
+    },
     checkout: Date,
     location: {
         type: String,

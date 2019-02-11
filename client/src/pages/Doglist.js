@@ -8,15 +8,21 @@ import AddEditDog from "../components/AddEditDog";
 
 class DogList extends Component {
     state = {
-        modalShow: false
+        modalShow: false,
+
     }
 
     loadModal = () => {
-        this.setState({ modalShow: true })
+        this.setState({ modalShow: true });
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
+        let modalClose = () => {
+            this.setState({ modalShow: false }, () => {
+                window.location.reload();
+            });
+        };
+
         return (
             <div className="container">
                 <div className="buttonSpace">
