@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -59,6 +59,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,6 +67,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -81,6 +83,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -88,6 +91,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -103,6 +107,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -110,6 +115,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -127,6 +133,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -134,6 +141,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -151,6 +159,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -158,6 +167,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -173,6 +183,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -180,6 +191,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -195,6 +207,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -202,6 +215,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -219,6 +233,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -226,6 +241,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -241,6 +257,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -248,6 +265,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -263,6 +281,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -270,6 +289,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -285,6 +305,7 @@ class Locations extends Component {
                                         <tr>
                                             <th className="table-header">Dog Name</th>
                                             <th className="table-header">Kennel #</th>
+                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -292,6 +313,7 @@ class Locations extends Component {
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
                                                 <th>{dog.kennel}</th>
+                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
