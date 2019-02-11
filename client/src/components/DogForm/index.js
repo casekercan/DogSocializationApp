@@ -20,11 +20,17 @@ class DogForm extends Component {
         this.setState({ ...data })
     }
 
+    updateMainState = () => {
+        this.props.update(this.state);
+    }
+
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
         this.setState({
             [name]: value
+        }, () => {
+            this.updateMainState();
         });
     };
 
@@ -34,7 +40,12 @@ class DogForm extends Component {
             return { ...soc, name: evt.target.value };
         });
 
-        this.setState({ socialization: newSocialization });
+        this.setState({
+            socialization: newSocialization
+        }, () => {
+            this.updateMainState();
+        });
+
     };
 
     handleSocializationDurationChange = idx => evt => {
@@ -43,7 +54,12 @@ class DogForm extends Component {
             return { ...soc, duration: evt.target.value };
         });
 
-        this.setState({ socialization: newSocialization });
+        this.setState({
+            socialization: newSocialization
+        }, () => {
+            this.updateMainState();
+        });
+
     };
 
     handleSocializationAmpmChange = idx => evt => {
@@ -52,7 +68,12 @@ class DogForm extends Component {
             return { ...soc, ampm: evt.target.value };
         });
 
-        this.setState({ socialization: newSocialization });
+        this.setState({
+            socialization: newSocialization
+        }, () => {
+            this.updateMainState();
+        });
+
     };
 
 
@@ -147,7 +168,6 @@ class DogForm extends Component {
                                 onChange={this.handleSocializationAmpmChange(idx)}
                             />
                         </div>
-
                     ))}
                     <button
                         type="button"
@@ -164,6 +184,8 @@ class DogForm extends Component {
                     </InputGroup>
                 </div>
             </div>
+
+
         );
     }
 }

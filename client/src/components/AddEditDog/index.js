@@ -7,12 +7,18 @@ import API from "../../utils/API";
 
 
 class AddEditDog extends Component {
-    updateDog = () => {
-        API.editDog()
-            .then(res => this.setState({ books: res.data }))
-            .catch(err => console.log(err));
+
+    updateState = (newState) => {
+        this.setState({
+            ...newState
+        })
     }
 
+    updateDog = (dog) => {
+        API.updateDog(dog)
+            .then(this.props.onHide)
+            .catch(err => console.log(err));
+    }
 
     render() {
         return (
@@ -20,19 +26,18 @@ class AddEditDog extends Component {
                 {...this.props}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
+                centered >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Add or Edit Dog
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <DogForm dog={this.props.props} />
+                    <DogForm dog={this.props.props} update={this.updateState} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.onHide}>Add Dog</Button>
-                    <Button onClick={this.props.onHide} >Edit Dog</Button>
+                    <Button onClick={this.props.onHide}>Close</Button>
+                    <Button onClick={() => this.updateDog(this.state)}>Save</Button>
                 </Modal.Footer>
             </Modal>
         );

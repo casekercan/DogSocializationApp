@@ -42,8 +42,16 @@ class DogWidget extends Component {
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        let modal2Close = () => this.setState({ modal2Show: false });
+        let modalClose = () => {
+            this.setState({ modalShow: false }, () => {
+                window.location.reload();
+            });
+        };
+
+        let modal2Close = () => this.setState({ modal2Show: false }, () => {
+            window.location.reload();
+        });
+
         return (
             <div className="container" >
                 <div className="row">
@@ -82,7 +90,7 @@ class DogWidget extends Component {
                             <div>
                                 <h5 name="notes" className="notes">{this.state.dog.notes}</h5>
                             </div>
-                            
+
                             <div>
                                 <Button className="btn btn-lg editBtn"
                                     variant="primary"

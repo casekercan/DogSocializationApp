@@ -15,9 +15,9 @@ export default {
     return axios.get("/api/dogs/" + id);
   },
 
-  //get one dog to edit
-  editDog: function (id) {
-    return axios.get("/api/dogedit/" + id);
+  //get one dog to edit or Add
+  updateDog: function (dog) {
+    return axios.post("/api/dog", dog);
   },
 
 
