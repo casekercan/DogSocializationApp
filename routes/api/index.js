@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const appController = require("../../controllers/appController");
 
-// Matches with "/api/"
+
+// Matches with "/api"
 
 //find all dogs
 router.route("/dogs")
@@ -23,5 +24,8 @@ router.route("/allstaff")
 router.route("/staff/:id")
   .get(appController.findStaff);
 
+
+// router.route("/staff/find/:email")
+//   .get(appController.findOneStaff);
 
 module.exports = router;

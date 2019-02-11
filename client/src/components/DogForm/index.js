@@ -138,6 +138,7 @@ class DogForm extends Component {
                 </div>
                 <div>
                     <h4>Socialization Plan</h4>
+                    <table>
                     <thead>
                         <tr>
                             <th scope="col" >Type</th>
@@ -146,7 +147,6 @@ class DogForm extends Component {
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
-
                     {this.state.socialization.map((soc, idx) => (
                         <div className="socialization">
                             <input
@@ -169,6 +169,8 @@ class DogForm extends Component {
                             />
                         </div>
                     ))}
+
+                    </table>
                     <button
                         type="button"
                         onClick={this.handleAddSocialization}
