@@ -35,7 +35,7 @@ router.route("/staff/delete/:id")
 router.route("/staff/deactivate/:id")
   .get(appController.deActivateStaff);
 
-router.route("/staff/find/:email")
-  .get(appController.findOneStaff);
+// router.route("/staff/find/:email")
+//   .get(appController.findOneStaff);
 
 module.exports = router;
