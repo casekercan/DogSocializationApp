@@ -20,11 +20,17 @@ class DogForm extends Component {
         this.setState({ ...data })
     }
 
+    updateMainState = () => {
+        this.props.update(this.state);
+    }
+
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
         this.setState({
             [name]: value
+        }, () => {
+            this.updateMainState();
         });
     };
 
@@ -34,7 +40,12 @@ class DogForm extends Component {
             return { ...soc, name: evt.target.value };
         });
 
-        this.setState({ socialization: newSocialization });
+        this.setState({
+            socialization: newSocialization
+        }, () => {
+            this.updateMainState();
+        });
+
     };
 
     handleSocializationDurationChange = idx => evt => {
@@ -43,7 +54,12 @@ class DogForm extends Component {
             return { ...soc, duration: evt.target.value };
         });
 
-        this.setState({ socialization: newSocialization });
+        this.setState({
+            socialization: newSocialization
+        }, () => {
+            this.updateMainState();
+        });
+
     };
 
     handleSocializationAmpmChange = idx => evt => {
@@ -52,7 +68,12 @@ class DogForm extends Component {
             return { ...soc, ampm: evt.target.value };
         });
 
-        this.setState({ socialization: newSocialization });
+        this.setState({
+            socialization: newSocialization
+        }, () => {
+            this.updateMainState();
+        });
+
     };
 
 
@@ -113,7 +134,7 @@ class DogForm extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                     </div>
-                    <input name="notes" value={this.state.notes} onChange={this.handleInputChange} type="number" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                    <input name="notes" value={this.state.notes} onChange={this.handleInputChange} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
                 </div>
                 <div>
                     <h4>Socialization Plan</h4>
@@ -146,14 +167,14 @@ class DogForm extends Component {
                                 value={soc.ampm}
                                 onChange={this.handleSocializationAmpmChange(idx)}
                             />
-                            <button
-                                type="button"
-                                onClick={this.handleAddSocialization}
-                                className="small" >Add Socialization </button>
-
                         </div>
                     ))}
+
                     </table>
+                    <button
+                        type="button"
+                        onClick={this.handleAddSocialization}
+                        className="small" >Add Another Socialization</button>
                 </div>
                 <hr />
                 <div>
@@ -165,6 +186,8 @@ class DogForm extends Component {
                     </InputGroup>
                 </div>
             </div>
+
+
         );
     }
 }

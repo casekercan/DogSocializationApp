@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
+//import Form from "react-bootstrap/Form";
 import "./style.css";
 
 
-class StaffForm extends Component{
+class StaffForm extends Component {
 
     constructor(props) {
         super(props)
@@ -34,13 +35,13 @@ class StaffForm extends Component{
         }
     }
 
-    render(){
-        return(
-        <div>
-            <div className="input-group input-group-sm mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="inputGroup-sizing-sm">Name</span>
-                </div>
+    render() {
+        return (
+            <div>
+                <div className="input-group input-group-sm mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Name</span>
+                    </div>
                 <input name="name" value={this.state.name} className="form-control" onChange={this.handleInputChange} type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
             </div>
             <div className="input-group input-group-sm mb-3">
@@ -80,8 +81,8 @@ class StaffForm extends Component{
                     </InputGroup.Prepend>
                     ACTIVE
                 </InputGroup>
+                </div>
             </div>
-        </div>
         );
     }
 }
