@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const appController = require("../../controllers/appController");
 
-// Matches with "/api/"
+// Matches with "/api"
 router.route("/dogs")
   .get(appController.findAllDogs);
 
@@ -34,5 +34,8 @@ router.route("/staff/delete/:id")
 
 router.route("/staff/deactivate/:id")
   .get(appController.deActivateStaff);
+
+router.route("/staff/find/:email")
+  .get(appController.findOneStaff);
 
 module.exports = router;
