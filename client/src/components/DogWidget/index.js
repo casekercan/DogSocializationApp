@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "../../styles/dog.css";
 import API from "../../utils/API";
 import Button from "react-bootstrap/Button";
 import CheckoutDog from "../CheckoutDog";

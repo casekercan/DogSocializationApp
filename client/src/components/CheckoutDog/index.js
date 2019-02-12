@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "../../styles/style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -29,7 +29,7 @@ class CheckoutDog extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <h6 className="instructions">Check plan and location dog is moved to</h6>
-                    <hr/>
+                    <hr />
                     <div d-flex>
                         <p>
                             <thead>
@@ -41,18 +41,18 @@ class CheckoutDog extends Component {
                                 </tr>
                             </thead>
                             {dog.socialization.map(soc =>
-                            <tbody> 
-                                <tr key={dog._id} className="table-active">
-                                    <td className="cell">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
-                                        </div>
-                                    </td>
-                                    <td className="cell">{soc.name}</td>
-                                    <td className="cell">{soc.duration}</td>
-                                    <td className="cell">{soc.ampm}</td>
-                                </tr>
-                            </tbody>
+                                <tbody>
+                                    <tr key={dog._id} className="table-active">
+                                        <td className="cell">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
+                                            </div>
+                                        </td>
+                                        <td className="cell">{soc.name}</td>
+                                        <td className="cell">{soc.duration}</td>
+                                        <td className="cell">{soc.ampm}</td>
+                                    </tr>
+                                </tbody>
                             )}
                         </p>
                         <p>

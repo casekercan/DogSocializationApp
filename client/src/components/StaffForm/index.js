@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
-import "./style.css";
+import "../../styles/style.css";
 
 
 class StaffForm extends Component {
