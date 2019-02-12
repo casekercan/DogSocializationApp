@@ -21,7 +21,7 @@ app.use(routes);
 // Connect to the Mongo DB
 var CONNECTION_URI = process.env.MONGODB_URI || "mongodb://localhost/dogSocialization";
 
-mongoose.connect(CONNECTION_URI, {useNewUrlParser: true}).then(() => {
+mongoose.connect(CONNECTION_URI, { useNewUrlParser: true }).then(() => {
   console.log('Connected to MongoDB.');
 }).catch(err => console.log(err));
 
