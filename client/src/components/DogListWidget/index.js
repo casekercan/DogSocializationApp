@@ -61,7 +61,6 @@ class DogListWidget extends Component {
     }
 
 
-
     render() {
         let modalClose = () => this.setState({ modalShow: false });
         let modalClose2 = () => {
