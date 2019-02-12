@@ -25,16 +25,19 @@ export default {
     return axios.post("/api/dog", dog);
   },
 
-
   // get all staff
   getAllStaff: function () {
     return axios.get("/api/allstaff");
   },
 
-
   // get one staff member
   getStaff: function (id) {
     return axios.get("/api/staff/" + id);
+  },
+
+  // add or edit one Staff
+  updateStaff: function(vteer){
+    return axios.post("/api/vteer",vteer);
   }
 
 

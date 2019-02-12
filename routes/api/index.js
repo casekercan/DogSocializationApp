@@ -28,6 +28,9 @@ router.route("/allstaff")
 router.route("/staff/:id")
   .get(appController.findStaff);
 
+router.route("/vteer")
+  .post(appController.updateStaff);
+
 
 // router.route("/staff/find/:email")
 //   .get(appController.findOneStaff);

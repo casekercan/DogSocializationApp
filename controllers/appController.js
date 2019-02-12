@@ -48,6 +48,19 @@ module.exports = {
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+
+  updateStaff: function (req, res) {
+    var query = { _id: req.body._id };
+    if (!query._id) {
+      query._id = new mongoose.mongo.ObjectID();
+    }
+    db.Staff
+      .findOneAndUpdate(query, req.body, {
+        upsert: true, setDefaultsOnInsert: true
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
 
 };

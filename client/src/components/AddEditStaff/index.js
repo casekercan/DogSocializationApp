@@ -3,8 +3,21 @@ import "./style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StaffForm from "../StaffForm";
+import API from "../../utils/API";
 
 class AddEditStaff extends Component {
+
+    updateState = (newState) => {
+        this.setState({
+            ...newState
+        })
+    }
+
+    updateStaff = (vteer) => {
+        API.updateStaff(vteer)
+            .then(this.props.onHide)
+            .catch(err => console.log(err));
+    }
     
     render() {
         return (
@@ -20,11 +33,11 @@ class AddEditStaff extends Component {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <StaffForm staff={this.props.props} />
+                    <StaffForm staff={this.props.props} update={this.updateState}/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.onHide}>Add Staff</Button>
-                    <Button onClick={this.props.onHide}>Edit Staff</Button>
+                    <Button onClick={this.props.onHide}>Close</Button>
+                    <Button onClick={()=> this.updateStaff(this.state)}>Save</Button>
                 </Modal.Footer>
             </Modal>
         );
