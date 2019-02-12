@@ -3,7 +3,7 @@ import "../../styles/style.css";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import AddEditStaff from "../components/AddEditStaff";
+import AddEditStaff from "../AddEditStaff";
 
 
 class VolunteerList extends Component {
@@ -51,9 +51,16 @@ class VolunteerList extends Component {
 
     loadModal = () => {
         this.setState({ modalShow: true })
+    };
+
+    checkstatus = (avail) => {
+        if (avail) {
+            return <span className="available-badge badge badge-success">  </span>
+
+        } else {
+            return <span className="available-badge badge badge-danger">  </span>
+        }
     }
-
-
 
     render() {
         let modalClose = () => this.setState({ modalShow: false }, () => {
@@ -64,9 +71,9 @@ class VolunteerList extends Component {
         let button;
 
         if (isInactive) {
-            button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findAllStaff()}>View Active</Button>;
+            button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findAllStaff()}>Staff Currently Logged-In </Button>;
         } else {
-            button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>View Inactive</Button>;
+            button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>Staff Not Logged-In</Button>;
         }
 
         return (
@@ -85,6 +92,7 @@ class VolunteerList extends Component {
                             <th scope="col" className="headings">Volunteer</th>
                             <th scope="col" className="headings">E-mail</th>
                             <th scope="col" className="headings">Mobile</th>
+                            <th scope="col" className="headings">Available?</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,6 +101,7 @@ class VolunteerList extends Component {
                                 <th>{voteer.name}</th>
                                 <th>{voteer.email}</th>
                                 <th>{voteer.mobile}</th>
+                                <th>{this.checkstatus(voteer.available)}</th>
                                 <th>  <Link to={"/staff/" + voteer._id} >More</Link> </th>
 
                             </tr>

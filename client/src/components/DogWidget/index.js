@@ -51,6 +51,7 @@ class DogWidget extends Component {
 
     }
 
+
     render() {
         let modalClose = () => {
             this.setState({ modalShow: false }, () => {
