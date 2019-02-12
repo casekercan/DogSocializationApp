@@ -5,9 +5,14 @@ import axios from "axios";
 
 export default {
 
-  //get all dogs
+  //get all active dogs
   getDogs: function () {
     return axios.get("/api/dogs");
+  },
+  //get all inactive dogs
+
+  getInactiveDogs: function () {
+    return axios.get("/api/dogsinactive");
   },
 
   //get one dog

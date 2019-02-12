@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 
 class Locations extends Component {
     state = {
-        dogs: []
+        dogs: [],
+        staff: []
     }
     componentDidMount() {
         this.pullcurrentLocation();
@@ -19,7 +20,10 @@ class Locations extends Component {
             .then(res =>
                 this.setState({ dogs: res.data })
             ).catch(err => console.log(err));
-
+        API.getAllStaff()
+            .then(res =>
+                this.setState({ staff: res.data })
+            ).catch(err => console.log(err));
     }
 
     checkfordata = (data) => {
@@ -43,13 +47,34 @@ class Locations extends Component {
         let grassy2 = this.state.dogs.filter(dog => dog.location === "Grassy 2");
         let grassy3 = this.state.dogs.filter(dog => dog.location === "Grassy 3");
         let southConcrete = this.state.dogs.filter(dog => dog.location === "South Concrete Area");
+        let activeStaff = this.state.staff.filter(staff => staff.active === true);
 
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-3 col-sm-6 " >
                         {/* active staff */}
-                        <h3>CURRENT STAFF LIST</h3>
+                        <div className="box">
+                            <h3>CURRENT STAFF LIST</h3>
+                            {this.checkfordata(activeStaff) ?
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th className="table-header">Staff Name</th>
+                                            <th className="table-header"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {activeStaff.map(staff => (
+                                            <tr key={staff._id}>
+                                                <th>{staff.name}</th>
+                                                <th><Link to={"/staff/" + staff._id}>More</Link></th>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                : "NO CURRENT STAFF"}
+                        </div>
                         {/* North Concrete */}
                         <div className="box">
                             <h3>North Concrete</h3>

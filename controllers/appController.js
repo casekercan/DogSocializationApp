@@ -11,6 +11,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findInactiveDogs: function (req, res) {
+    db.Dog
+      .find({ active: false })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findOneDog: function (req, res) {
     db.Dog
       .findById(req.params.id)

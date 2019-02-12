@@ -46,7 +46,7 @@ const dogSeed = [
     intakeDate: 1 / 7 / 2019,
     description: "8 Yrs NEUTERED, black & white Siberian Husky mix",
     playStyle: "GD",
-    active: true,
+    active: false,
     notes: "gd, social",
     socialization: [
       {
@@ -174,7 +174,7 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 10], [01 - 31 - 2019, 10], [02 - 01 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 2 / 2 / 2019,
     location: "",
-    password:"12345",
+    password: "12345",
     active: true,
     admin: true
   },
@@ -187,7 +187,7 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 8], [01 - 31 - 2019, 6], [02 - 01 - 2019, 8], [02 - 02 - 2019, 4]],
     checkout: "",
     location: "",
-    password:"12345",
+    password: "12345",
     active: true,
     admin: true
   },
@@ -200,7 +200,7 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 10], [02 - 01 - 2019, 6], [02 - 02 - 2019, 10]],
     checkout: "",
     location: "",
-    password:"12345",
+    password: "12345",
     active: true,
     admin: true
   },
@@ -213,7 +213,7 @@ const staffSeed = [
     worked: [[01 - 30 - 2019, 12], [02 - 02 - 2019, 8]],
     checkout: 01 / 29 / 2019,
     location: "",
-    password:"12345",
+    password: "12345",
     active: true,
     admin: false
   },
