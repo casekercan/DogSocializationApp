@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
+import Button from "react-bootstrap/Button";
+import API from "../../utils/API";
+import { Redirect } from 'react-router';
 
 
 class DogForm extends Component {
@@ -9,9 +12,11 @@ class DogForm extends Component {
         this.state = {
             socialization: [],
             isChecked: true,
+            redirect: false
         };
 
     }
+
 
     componentDidMount() {
         this.loadState(this.props.dog);
@@ -100,9 +105,19 @@ class DogForm extends Component {
         });
     };
 
+    deleteDog = (id) => {
+        API.deleteDog(id)
+            .then(this.setState({ redirect: true }))
+            .catch(err => console.log(err));
+    }
 
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect push to="/doglist" />;
+        }
+
 
         return (
             <div>
@@ -204,6 +219,7 @@ class DogForm extends Component {
                         onChange={this.handleCheckboxChange} />
                     ACTIVE
                 </div>
+                <Button className="btn btn-danger" onClick={() => this.deleteDog(this.state._id)}>Delete Dog</Button>
             </div>
 
 
