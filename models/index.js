@@ -1,4 +1,4 @@
 module.exports = {
   Dog: require("./dog"),
-  Staff: require("./staff")
+  Staff: require("./staff"),
 };

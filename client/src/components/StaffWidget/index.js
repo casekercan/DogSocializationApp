@@ -25,7 +25,9 @@ class StaffListWidget extends Component {
     }
 
     render() {
-        let modalClose = ()=> this.setState({modalShow:false});
+        let modalClose = () => this.setState({modalShow:false},()=>{
+            window.location.reload();
+        });
         return (
             
             <div className="container" >
