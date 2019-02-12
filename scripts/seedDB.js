@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const moment= require ("moment");
 
 // This file empties the Dogs collection and inserts the 5 dogs below
 
@@ -14,7 +15,7 @@ const dogSeed = [
     pic: "https://i.postimg.cc/kXx7dnd9/Tennison.jpg",
     kennel: 95,
     shelterID: "A754918",
-    intakeDate: 1 / 5 / 2019,
+    intakeDate: "2019-1-5",
     description: "male, brown & black German Shepherd Dog",
     playStyle: "W",
     active: true,
@@ -45,7 +46,7 @@ const dogSeed = [
     pic: "https://i.postimg.cc/8CCGWMfP/Harvey.jpg",
     kennel: 16,
     shelterID: "A754995",
-    intakeDate: 1 / 7 / 2019,
+    intakeDate: "2019-1-7",
     description: "8 Yrs NEUTERED, black & white Siberian Husky mix",
     playStyle: "GD",
     active: true,
@@ -69,14 +70,14 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "Kennel"
+    location: "The Dirt"
   },
   {
     name: "Raisinet",
     pic: "https://i.postimg.cc/pLRRWg2j/Raisinet.jpg",
     kennel: 11,
     shelterID: "A755433",
-    intakeDate: 1 / 15 / 2019,
+    intakeDate: "1-15-19",
     description: "3 Yrs female, brown & black German Shepherd Dog",
     playStyle: "GD",
     active: true,
@@ -107,7 +108,7 @@ const dogSeed = [
     pic: "https://i.postimg.cc/rwjcKQmP/Benson.jpg",
     kennel: 1,
     shelterID: "A753693",
-    intakeDate: 12 / 13 / 2018,
+    intakeDate: "12-13-2018",
     description: "2 Yrs NEUTERED, black & white Pit Bull Terrier",
     playStyle: "Soft RR",
     active: true,
@@ -137,7 +138,7 @@ const dogSeed = [
     pic: "https://i.postimg.cc/XvDbgq9K/Yuki.jpg",
     kennel: 14,
     shelterID: "A754337",
-    intakeDate: 12 / 24 / 2018,
+    intakeDate: "12-24-2018",
     description: "2 Yrs female, tan & white Pit Bull Terrier mix",
     playStyle: "W",
     active: true,
@@ -170,7 +171,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "Kennel"
+    location: "North Group Area"
   },
 ];
 

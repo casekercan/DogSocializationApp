@@ -48,7 +48,11 @@ export default {
   // add or edit one Staff
   updateStaff: function (vteer) {
     return axios.post("/api/staff", vteer);
-  }
+  },
+
+  getInactiveStaff: function () {
+    return axios.get("/api/staffinactive");
+  },
 
 
 };

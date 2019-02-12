@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import Button from "react-bootstrap/Button";
 import CheckoutDog from "../CheckoutDog";
 import AddEditDog from "../AddEditDog";
+import moment from "moment";
 
 
 class DogWidget extends Component {
@@ -91,6 +92,12 @@ class DogWidget extends Component {
                             </div>
                         </div>
                         <div className="d-flex flex-column">
+                            <div>
+                                <h3 name="descriptionLabel" className="labels">Intake Date:</h3>
+                            </div>
+                            <div>
+                                <h5 name="description" className="notes">{moment(this.state.dog.intakeDate).format("M-D-YYYY")}</h5>
+                            </div>
                             <div>
                                 <h3 name="descriptionLabel" className="labels">Description:</h3>
                             </div>

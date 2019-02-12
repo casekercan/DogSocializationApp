@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const moment= require("moment");
 
 const dogSchema = new Schema({
     name: String,
@@ -8,7 +9,7 @@ const dogSchema = new Schema({
     shelterID: String,
     intakeDate: {
         type: Date,
-        default: Date.now
+        default: moment().format("D-M-YYYY")
     },
     description: String,
     playStyle: String,
