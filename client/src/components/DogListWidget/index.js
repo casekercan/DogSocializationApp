@@ -33,6 +33,17 @@ class DogListWidget extends Component {
             }))
             .catch(err => console.log(err));
     };
+    findalldogs = () => {
+        API.getDogs()
+            .then(res => this.setState({
+                dogs: res.data
+            }, () => {
+                this.setState({
+                    inactive: false
+                })
+            }))
+            .catch(err => console.log(err));
+    }
 
     findInactive = () => {
         API.getInactiveDogs()
@@ -84,7 +95,6 @@ class DogListWidget extends Component {
                 </div>
 
                 <table className="table table-striped">
-
                     <thead>
                         <tr>
                             <th scope="col" className="headings">Dog Name</th>
