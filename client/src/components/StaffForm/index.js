@@ -18,21 +18,27 @@ class StaffForm extends Component {
         this.setState({ ...data })
     }
 
+    updateMainState=()=>{
+        this.props.update(this.state);
+    }
+
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
         this.setState({
             [name]: value
+        }, ()=>{
+            this.updateMainState();
         });
     };
 
-    checkfordata = (data) => {
-        if (data.length <= 0) {
-            return false
-        } else {
-            return true
-        }
-    }
+    // checkfordata = (data) => {
+    //     if (data.length <= 0) {
+    //         return false
+    //     } else {
+    //         return true
+    //     }
+    // }
 
     render() {
         return (
@@ -76,12 +82,20 @@ class StaffForm extends Component {
             <div>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
-                        <InputGroup.Checkbox checked={this.state.active} aria-label="Checkbox for following text input" />
+                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
                     </InputGroup.Prepend>
                     ACTIVE
                 </InputGroup>
-                </div>
             </div>
+            <div>
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                    </InputGroup.Prepend>
+                    ADMINISTRATOR
+                </InputGroup>
+            </div>
+        </div>
         );
     }
 }

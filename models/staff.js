@@ -2,16 +2,26 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const staffSchema = new Schema({
-    name: String,
+    name: {
+        type:String,required:true
+    },
     pic: String,
-    email: String,
+    email: {
+        type:String,required:true
+    },
     mobile: String,
-    password:String,
+    password:{
+        type:String,required:true
+    },
     notes: String,
     checkout: Date,
     location: String,
-    active: Boolean,
-    admin:Boolean
+    active: {
+        type:Boolean,default:true
+    },
+    admin:{
+        type:Boolean,default: false,required: true
+    }
 });
 
 const Staff = mongoose.model("Staff", staffSchema);

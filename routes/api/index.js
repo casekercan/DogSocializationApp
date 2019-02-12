@@ -28,7 +28,7 @@ router.route("/allstaff")
 router.route("/staff/:id")
   .get(appController.findStaff);
 
-router.route("/vteer")
+router.route("/staff")
   .post(appController.updateStaff);
 
 
