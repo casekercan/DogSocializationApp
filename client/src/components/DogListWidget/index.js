@@ -23,11 +23,6 @@ class DogListWidget extends Component {
     }
 
     componentDidMount() {
-        this.findalldogs();
-    };
-
-
-    findalldogs = () => {
         API.getDogs()
             .then(res => this.setState({
                 dogs: res.data

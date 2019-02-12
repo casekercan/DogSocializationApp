@@ -24,7 +24,10 @@ export default {
   updateDog: function (dog) {
     return axios.post("/api/dog", dog);
   },
-
+  //delete Dog
+  deleteDog: function (id) {
+    return axios.delete("/api/dogdelete/" + id);
+  },
 
   // get all staff
   getAllStaff: function () {
