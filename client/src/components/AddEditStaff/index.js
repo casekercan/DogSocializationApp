@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "../../styles/style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StaffForm from "../StaffForm";
@@ -18,7 +18,7 @@ class AddEditStaff extends Component {
             .then(this.props.onHide)
             .catch(err => console.log(err));
     }
-    
+
     render() {
         return (
             <Modal
@@ -33,11 +33,11 @@ class AddEditStaff extends Component {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <StaffForm staff={this.props.props} update={this.updateState}/>
+                    <StaffForm staff={this.props.props} update={this.updateState} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.props.onHide}>Close</Button>
-                    <Button onClick={()=> this.updateStaff(this.state)}>Save</Button>
+                    <Button onClick={() => this.updateStaff(this.state)}>Save</Button>
                 </Modal.Footer>
             </Modal>
         );

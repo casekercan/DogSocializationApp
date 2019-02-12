@@ -37,11 +37,28 @@ class Locations extends Component {
 
     checkstatus = (avail) => {
         if (avail) {
-            return <span className="badge badge-success">  </span>
+            return <span className="available-badge badge badge-success">  </span>
 
         } else {
-            return <span className="badge badge-danger">  </span>
+            return <span className="available-badge badge badge-danger">  </span>
         }
+    }
+
+
+    checkprogress = (soc) => {
+        let notdone = [];
+        for (let i = 0; i < soc.length; i++) {
+            if (soc[i].done === false) {
+                notdone.push(soc[i]);
+            }
+        }
+
+        if (notdone.length > 0) {
+            return <span className="badge badge-danger">X</span>
+        } else {
+            return <span className="badge badge-success">✓</span>
+        }
+
     }
 
     render() {
@@ -64,7 +81,7 @@ class Locations extends Component {
                 <div className="row">
                     <div className="col-lg-3 col-sm-6 " >
                         {/* active staff */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>CURRENT STAFF LIST</h3>
                             {this.checkfordata(activeStaff) ?
                                 <table className="table table-striped">
@@ -88,14 +105,14 @@ class Locations extends Component {
                                 : "NO CURRENT STAFF"}
                         </div>
                         {/* North Concrete */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>North Concrete</h3>
                             {this.checkfordata(northConcrete) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -103,8 +120,7 @@ class Locations extends Component {
                                         {northConcrete.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>                    <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -112,14 +128,14 @@ class Locations extends Component {
                                 : "NO DOGS"}
                         </div>
                         {/* The Track */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>The Track</h3>
                             {this.checkfordata(theTrack) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -127,7 +143,7 @@ class Locations extends Component {
                                         {theTrack.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -136,14 +152,14 @@ class Locations extends Component {
                                 : "NO DOGS"}
                         </div>
                         {/* Off-Campus */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>Off Campus</h3>
                             {this.checkfordata(offCampus) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -151,7 +167,7 @@ class Locations extends Component {
                                         {offCampus.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -162,14 +178,14 @@ class Locations extends Component {
                     </div>
                     <div className="col-lg-3 col-sm-6">
                         {/* Kennel */}
-                        <div className="box kennel">
+                        <div className="box-location kennel">
                             <h3>Kennel</h3>
                             {this.checkfordata(kennel) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -177,7 +193,7 @@ class Locations extends Component {
                                         {kennel.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -188,14 +204,14 @@ class Locations extends Component {
                     </div>
                     <div className="col-lg-3 col-sm-6">
                         {/* East Group Area */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>East Group Area</h3>
                             {this.checkfordata(eastGroup) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -203,7 +219,7 @@ class Locations extends Component {
                                         {eastGroup.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -212,14 +228,14 @@ class Locations extends Component {
                                 : "NO DOGS"}
                         </div>
                         {/* The Dirt */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>The Dirt</h3>
                             {this.checkfordata(dirt) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -227,7 +243,7 @@ class Locations extends Component {
                                         {dirt.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -236,14 +252,14 @@ class Locations extends Component {
                                 : "NO DOGS"}
                         </div>
                         {/* North Group Area */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>North Group Area</h3>
                             {this.checkfordata(northGroup) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -251,7 +267,7 @@ class Locations extends Component {
                                         {northGroup.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -262,14 +278,14 @@ class Locations extends Component {
                     </div>
                     <div className="col-lg-3 col-sm-6">
                         {/* Grassy 1 */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>Grassy 1</h3>
                             {this.checkfordata(grassy1) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -277,7 +293,7 @@ class Locations extends Component {
                                         {grassy1.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -286,14 +302,14 @@ class Locations extends Component {
                                 : "NO DOGS"}
                         </div>
                         {/* Grassy 2 */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>Grassy 2</h3>
                             {this.checkfordata(grassy2) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -301,7 +317,7 @@ class Locations extends Component {
                                         {grassy2.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -310,14 +326,14 @@ class Locations extends Component {
                                 : "NO DOGS"}
                         </div>
                         {/* Grassy 3 */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>Grassy 3</h3>
                             {this.checkfordata(grassy3) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -325,7 +341,7 @@ class Locations extends Component {
                                         {grassy3.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -334,14 +350,14 @@ class Locations extends Component {
                                 : "NO DOGS"}
                         </div>
                         {/* South Concrete Area */}
-                        <div className="box">
+                        <div className="box-location">
                             <h3>South Concrete Area</h3>
                             {this.checkfordata(southConcrete) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
                                             <th className="table-header">Dog Name</th>
-                                            <th className="table-header">Kennel #</th>
+                                            <th className="table-header">Progress</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -349,7 +365,7 @@ class Locations extends Component {
                                         {southConcrete.map(dog => (
                                             <tr key={dog._id}>
                                                 <th>{dog.name}</th>
-                                                <th>{dog.kennel}</th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>
                                                 <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}

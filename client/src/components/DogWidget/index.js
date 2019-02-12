@@ -41,6 +41,16 @@ class DogWidget extends Component {
         this.setState({ modal2Show: true })
     }
 
+    checkprogress = (done) => {
+
+        if (done === false) {
+            return <span className="badge badge-danger">X</span>
+        } else {
+            return <span className="badge badge-success">✓</span>
+        }
+
+    }
+
     render() {
         let modalClose = () => {
             this.setState({ modalShow: false }, () => {
@@ -51,6 +61,8 @@ class DogWidget extends Component {
         let modal2Close = () => this.setState({ modal2Show: false }, () => {
             window.location.reload();
         });
+
+
 
         return (
             <div className="container" >
@@ -104,10 +116,10 @@ class DogWidget extends Component {
                         <p>
                             <thead>
                                 <tr>
-                                    {/* <th scope="col" className="cell">Select</th> */}
                                     <th scope="col" className="cell">Type</th>
                                     <th scope="col" className="cell">Duration</th>
                                     <th scope="col" className="cell">AM/PM</th>
+                                    <th scope="col" className="cell">Finished?</th>
                                 </tr>
                             </thead>
                             {this.state.dog.socialization.map(soc =>
@@ -116,59 +128,11 @@ class DogWidget extends Component {
                                         <td className="cell">{soc.name}</td>
                                         <td className="cell">{soc.duration}</td>
                                         <td className="cell">{soc.ampm}</td>
+                                        <td className="cell">{this.checkprogress(soc.done)}</td>
                                     </tr>
                                 </tbody>
                             )}
                         </p>
-
-                        {/* <table name="socPlan" className="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col" >Type</th>
-                                    <th scope="col" >Time</th>
-                                    <th scope="col" >When</th>
-                                    <th scope="col" className="col">Actions</th>
-                                </tr>
-                            </thead>
-                            {/*Map through array of socialization plan*/}
-                        {/* <tbody>
-
-                                {this.state.dog.socialization.map(soc =>
-                                    <tr key={this.state.dog._id} className="table-active">
-                                        <td>{soc.name}</td>
-                                        <td>{soc.duration}</td>
-                                        <td>{soc.ampm}</td>
-                                        <td>
-                                            <button className="btn btn-sm">Edit</button>
-                                            <button className="btn btn-sm">Delete</button>
-                                        </td>
-                                    </tr>
-                                )}
-                                {/*Empty row to add new plan*/}
-                        {/* <tr className="table-info">
-                                    <td>
-                                        <div className="col">
-                                            <input className="form-control form-control-sm" type="text" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="col">
-                                            <input className="form-control form-control-sm" type="text" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="col">
-                                            <input className="form-control form-control-sm" type="text" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="col">
-                                            <button className="btn btn-sm" name="addSocPlan">Add</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table> */}
                     </div>
                 </div>
             </div>

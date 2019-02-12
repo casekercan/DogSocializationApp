@@ -24,7 +24,7 @@ const dogSeed = [
         name: "Walk",
         duration: 40,
         ampm: "am",
-        done: false,
+        done: true,
         inprogress: false
 
       },
@@ -32,7 +32,7 @@ const dogSeed = [
         name: "BRBreak",
         duration: 15,
         ampm: "pm",
-        done: false,
+        done: true,
         inprogress: false
 
       }

@@ -12,6 +12,15 @@ class CheckoutDog extends Component {
         };
     }
 
+    checkprogress = (done) => {
+
+        if (done === false) {
+            return <span className="badge badge-danger">X</span>
+        } else {
+            return <span className="badge badge-success">✓</span>
+        }
+
+    }
 
     render() {
         let dog = this.props.props;
@@ -38,6 +47,7 @@ class CheckoutDog extends Component {
                                     <th scope="col" className="cell">Type</th>
                                     <th scope="col" className="cell">Duration</th>
                                     <th scope="col" className="cell">AM/PM</th>
+                                    <th scope="col" className="cell">Finished?</th>
                                 </tr>
                             </thead>
                             {dog.socialization.map(soc =>
@@ -51,6 +61,7 @@ class CheckoutDog extends Component {
                                         <td className="cell">{soc.name}</td>
                                         <td className="cell">{soc.duration}</td>
                                         <td className="cell">{soc.ampm}</td>
+                                        <td className="cell">{this.checkprogress(soc.done)}</td>
                                     </tr>
                                 </tbody>
                             )}
