@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 //import FadeTransition from "../../transitions/fadeTransition";
-import "./style.css";
 
 
 class LoginWidget extends Component {

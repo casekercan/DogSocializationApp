@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "../../styles/style.css";
 import API from "../../utils/API";
 import Button from "react-bootstrap/Button";
 import AddEditStaff from "../AddEditStaff";
@@ -25,17 +25,17 @@ class StaffListWidget extends Component {
     }
 
     render() {
-        let modalClose = () => this.setState({modalShow:false},()=>{
+        let modalClose = () => this.setState({ modalShow: false }, () => {
             window.location.reload();
         });
         return (
-            
+
             <div className="container" >
                 <div className="row">
                     <div class="col infoContainer">
                         <button className="btn btn-lg signoutBtn">Start Shift</button>
                         <button className="btn btn-lg returnBtn">End Shift</button>
-                        <hr/>
+                        <hr />
                         <div className="d-flex">
                             <img src={this.state.staff.pic} alt="staff pic" class="img-thumbnail" />
                             <div>
@@ -58,11 +58,11 @@ class StaffListWidget extends Component {
                                 <h5 name="notes" className="notes">{this.state.staff.notes}</h5>
                             </div>
                             <div>
-                            <Button 
-                            variant="primary"
-                            className="btn btn-lg editBtn"
-                            onClick={()=>this.loadModal(this.state.staff)}>Edit Staff</Button>
-                            <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
+                                <Button
+                                    variant="primary"
+                                    className="btn btn-lg editBtn"
+                                    onClick={() => this.loadModal(this.state.staff)}>Edit Staff</Button>
+                                <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                             </div>
                         </div>
                     </div>
@@ -77,15 +77,15 @@ class StaffListWidget extends Component {
                             </tr>
                             </thead>
                             {/*Map through array of shifts*/}
-                            {/* <tbody>
+                    {/* <tbody>
                                 {this.state.staff.worked.map(item=>
                                     <tr key={this.state.staff._id} className="table-active">
                                         <td>{moment(item[0]).format("MM DD YYYY")}</td>
                                         <td>{item[1]}</td>
                                     </tr>
                                 )} */}
-                            {/*Empty row to add new shift*/}
-                            {/* <tr className="table-info">
+                    {/*Empty row to add new shift*/}
+                    {/* <tr className="table-info">
                                 <td>
                                     <div className="col">
                                     <input className="form-control form-control-sm" type="text"/>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./style.css";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import CheckoutDog from "../CheckoutDog";
 import AddEditDog from "../AddEditDog";
+import "../../styles/style.css"
 
 
 

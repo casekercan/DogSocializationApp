@@ -1,4 +1,4 @@
-.box {
+.box-location {
     border: black 3px solid;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -15,7 +15,6 @@ h3 {
     font-weight: bold;
 }
 
-
 th {
     font-weight: normal;  
 }
@@ -30,7 +29,7 @@ max-height: 600px;
 overflow-y: scroll;
 }
 
-.badge {
+.available-badge {
     height: 20px;
     width: 20px;
 }

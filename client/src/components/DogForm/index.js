@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "../../styles/style.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 import { Redirect } from 'react-router';
