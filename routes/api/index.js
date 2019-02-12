@@ -27,6 +27,10 @@ router.route("/dogdelete/:id")
 router.route("/allstaff")
   .get(appController.findAllStaff);
 
+//find all inactive staff
+router.route("/staffinactive")
+  .get(appController.findInactiveStaff);
+
 //find one staff
 router.route("/staff/:id")
   .get(appController.findStaff);

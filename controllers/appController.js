@@ -48,6 +48,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findInactiveStaff: function (req, res) {
+    db.Staff
+      .find({ active: false })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findStaff: function (req, res) {
     db.Staff
       .findById(req.params.id)
