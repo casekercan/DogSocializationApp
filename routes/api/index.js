@@ -34,6 +34,10 @@ router.route("/staff/:id")
 router.route("/staff")
   .post(appController.updateStaff);
 
+//find all inactive staff
+router.route("/staffinactive")
+  .get(appController.findInactiveStaff);
+
 
 // router.route("/staff/find/:email")
 //   .get(appController.findOneStaff);

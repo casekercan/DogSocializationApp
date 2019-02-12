@@ -17,7 +17,6 @@ class DogForm extends Component {
 
     }
 
-
     componentDidMount() {
         this.loadState(this.props.dog);
     }

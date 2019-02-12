@@ -24,6 +24,7 @@ const staffSchema = new Schema({
     },
     active: {
         type: Boolean,
+        required: true,
         default: true
     },
     admin: {
