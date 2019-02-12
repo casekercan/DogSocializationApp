@@ -48,7 +48,7 @@ const dogSeed = [
     intakeDate: 1 / 7 / 2019,
     description: "8 Yrs NEUTERED, black & white Siberian Husky mix",
     playStyle: "GD",
-    active: false,
+    active: true,
     notes: "gd, social",
     socialization: [
       {
@@ -69,7 +69,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "Off Campus"
+    location: "Kennel"
   },
   {
     name: "Raisinet",
@@ -100,7 +100,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "East Group Area"
+    location: "Kennel"
   },
   {
     name: "Benson",
@@ -130,7 +130,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "East Group Area"
+    location: "Kennel"
   },
   {
     name: "Yuki",
@@ -170,7 +170,7 @@ const dogSeed = [
       }
     ],
     checkout: "",
-    location: "North Group Area"
+    location: "Kennel"
   },
 ];
 
@@ -208,7 +208,7 @@ const staffSeed = [
     available: false,
     location: "",
     password: "12345",
-    active: false,
+    active: true,
     admin: true
   },
   {

@@ -34,6 +34,16 @@ class Locations extends Component {
         }
     }
 
+
+    checkstatus = (avail) => {
+        if (avail) {
+            return <span className="badge badge-success">  </span>
+
+        } else {
+            return <span className="badge badge-danger">  </span>
+        }
+    }
+
     render() {
         //create variables to filter by location
         let kennel = this.state.dogs.filter(dog => dog.location === "Kennel");
@@ -61,6 +71,7 @@ class Locations extends Component {
                                     <thead>
                                         <tr>
                                             <th className="table-header">Staff Name</th>
+                                            <th className="table-header">Available?</th>
                                             <th className="table-header"></th>
                                         </tr>
                                     </thead>
@@ -68,6 +79,7 @@ class Locations extends Component {
                                         {activeStaff.map(staff => (
                                             <tr key={staff._id}>
                                                 <th>{staff.name}</th>
+                                                <th>{this.checkstatus(staff.available)}</th>
                                                 <th><Link to={"/staff/" + staff._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -150,7 +162,7 @@ class Locations extends Component {
                     </div>
                     <div className="col-lg-3 col-sm-6">
                         {/* Kennel */}
-                        <div className="box">
+                        <div className="box kennel">
                             <h3>Kennel</h3>
                             {this.checkfordata(kennel) ?
                                 <table className="table table-striped">
