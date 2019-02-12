@@ -4,9 +4,13 @@ const appController = require("../../controllers/appController");
 
 // Matches with "/api"
 
-//find all dogs
+//find all  active dogs
 router.route("/dogs")
   .get(appController.findAllDogs);
+
+//find all inactive dogs
+router.route("/dogsinactive")
+  .get(appController.findInactiveDogs);
 
 //get one dog
 router.route("/dogs/:id")
