@@ -35,7 +35,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
+  deleteDog: function (req, res) {
+    db.Dog
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findAllStaff: function (req, res) {
     db.Staff
       .find({ active: true })

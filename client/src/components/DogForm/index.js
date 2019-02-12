@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import InputGroup from "react-bootstrap/InputGroup";
 import "./style.css";
+import Button from "react-bootstrap/Button";
+import API from "../../utils/API";
+import { Redirect } from 'react-router';
 
 
 class DogForm extends Component {
@@ -9,24 +11,44 @@ class DogForm extends Component {
         super(props)
         this.state = {
             socialization: [],
+            isChecked: true,
+            redirect: false
         };
+
     }
 
+
     componentDidMount() {
-        this.loadState(this.props.dog)
+        this.loadState(this.props.dog);
     }
 
     loadState = data => {
-        this.setState({ ...data })
+        this.setState({ ...data }, () => {
+            this.state.active ? this.setState({ isChecked: true }) : this.setState({ isChecked: false })
+        })
     }
 
     updateMainState = () => {
         this.props.update(this.state);
     }
 
+    handleCheckboxChange = event => {
+        const name = event.target.name;
+
+        this.setState({ isChecked: event.target.checked }, () => {
+            this.setState({
+                [name]: this.state.isChecked
+            }, () => {
+                this.updateMainState();
+            });
+        });
+
+    }
+
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
+
         this.setState({
             [name]: value
         }, () => {
@@ -83,9 +105,20 @@ class DogForm extends Component {
         });
     };
 
+    deleteDog = (id) => {
+        API.deleteDog(id)
+            .then(this.setState({ redirect: true }))
+            .catch(err => console.log(err));
+    }
 
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect push to="/doglist" />;
+        }
+
+
         return (
             <div>
                 <div className="input-group input-group-sm mb-3">
@@ -139,36 +172,36 @@ class DogForm extends Component {
                 <div>
                     <h4>Socialization Plan</h4>
                     <table>
-                    <thead>
-                        <tr>
-                            <th scope="col" >Type</th>
-                            <th scope="col" >Time</th>
-                            <th scope="col" >When</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    {this.state.socialization.map((soc, idx) => (
-                        <div className="socialization">
-                            <input
-                                type="text"
-                                placeholder={`Socialization #${idx + 1} name`}
-                                value={soc.name}
-                                onChange={this.handleSocializationNameChange(idx)}
-                            />
-                            <input
-                                type="number"
-                                placeholder={`Socialization #${idx + 1} duration`}
-                                value={soc.duration}
-                                onChange={this.handleSocializationDurationChange(idx)}
-                            />
-                            <input
-                                type="text"
-                                placeholder={`Socialization #${idx + 1} AM or PM?`}
-                                value={soc.ampm}
-                                onChange={this.handleSocializationAmpmChange(idx)}
-                            />
-                        </div>
-                    ))}
+                        <thead>
+                            <tr>
+                                <th scope="col" >Type</th>
+                                <th scope="col" >Time</th>
+                                <th scope="col" >When</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        {this.state.socialization.map((soc, idx) => (
+                            <div className="socialization">
+                                <input
+                                    type="text"
+                                    placeholder={`Socialization #${idx + 1} name`}
+                                    value={soc.name}
+                                    onChange={this.handleSocializationNameChange(idx)}
+                                />
+                                <input
+                                    type="number"
+                                    placeholder={`Socialization #${idx + 1} duration`}
+                                    value={soc.duration}
+                                    onChange={this.handleSocializationDurationChange(idx)}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder={`Socialization #${idx + 1} AM or PM?`}
+                                    value={soc.ampm}
+                                    onChange={this.handleSocializationAmpmChange(idx)}
+                                />
+                            </div>
+                        ))}
 
                     </table>
                     <button
@@ -178,13 +211,15 @@ class DogForm extends Component {
                 </div>
                 <hr />
                 <div>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                        </InputGroup.Prepend>
-                        ACTIVE
-                    </InputGroup>
+                    <input
+                        type="checkbox"
+                        name="active"
+                        value={this.state.isChecked}
+                        checked={this.state.isChecked}
+                        onChange={this.handleCheckboxChange} />
+                    ACTIVE
                 </div>
+                <Button className="btn btn-danger" onClick={() => this.deleteDog(this.state._id)}>Delete Dog</Button>
             </div>
 
 

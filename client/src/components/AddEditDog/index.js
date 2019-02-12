@@ -6,7 +6,9 @@ import DogForm from "../DogForm";
 import API from "../../utils/API";
 
 
+
 class AddEditDog extends Component {
+
 
     updateState = (newState) => {
         this.setState({
@@ -21,6 +23,7 @@ class AddEditDog extends Component {
     }
 
     render() {
+
         return (
             <Modal
                 {...this.props}
