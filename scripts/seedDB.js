@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-const moment= require ("moment");
+//const moment= require ("moment");
 
 // This file empties the Dogs collection and inserts the 5 dogs below
 
