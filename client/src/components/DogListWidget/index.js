@@ -33,6 +33,17 @@ class DogListWidget extends Component {
             }))
             .catch(err => console.log(err));
     };
+    findalldogs = () => {
+        API.getDogs()
+            .then(res => this.setState({
+                dogs: res.data
+            }, () => {
+                this.setState({
+                    inactive: false
+                })
+            }))
+            .catch(err => console.log(err));
+    }
 
     findInactive = () => {
         API.getInactiveDogs()
@@ -55,6 +66,21 @@ class DogListWidget extends Component {
         this.setState({ modalShow2: true });
     }
 
+    checkprogress = (soc) => {
+        let notdone = [];
+        for (let i = 0; i < soc.length; i++) {
+            if (soc[i].done === false) {
+                notdone.push(soc[i]);
+            }
+        }
+
+        if (notdone.length > 0) {
+            return <span className="badge badge-danger">X</span>
+        } else {
+            return <span className="badge badge-success">✓</span>
+        }
+
+    }
 
     render() {
         let modalClose = () => this.setState({ modalShow: false });
@@ -84,12 +110,12 @@ class DogListWidget extends Component {
                 </div>
 
                 <table className="table table-striped">
-
                     <thead>
                         <tr>
                             <th scope="col" className="headings">Dog Name</th>
                             <th scope="col" className="headings">Kennel #</th>
                             <th scope="col" className="headings">Socialization Program</th>
+                            <th scope="col" className="headings">Socialization Completed?</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -109,6 +135,7 @@ class DogListWidget extends Component {
                                     ))}
                                     <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                                 </th>
+                                <th>{this.checkprogress(dog.socialization)}</th>
                                 <th>  <Link to={"/dog/" + dog._id} >More</Link> </th>
                             </tr>
                         ))}

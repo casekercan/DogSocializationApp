@@ -24,7 +24,7 @@ export default {
   updateDog: function (dog) {
     return axios.post("/api/dog", dog);
   },
-  
+
   //delete Dog
   deleteDog: function (id) {
     return axios.delete("/api/dogdelete/" + id);
@@ -35,13 +35,18 @@ export default {
     return axios.get("/api/allstaff");
   },
 
+  //get all inactive staff
+  getInactiveStaff: function () {
+    return axios.get("/api/staffinactive");
+  },
+
   // get one staff member
   getStaff: function (id) {
     return axios.get("/api/staff/" + id);
   },
 
   // add or edit one Staff
-  updateStaff: function(vteer){
+  updateStaff: function (vteer) {
     return axios.post("/api/staff", vteer);
   }
 
