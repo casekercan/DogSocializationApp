@@ -25,14 +25,16 @@ const dogSeed = [
         duration: 40,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "BRBreak",
         duration: 15,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
@@ -46,7 +48,7 @@ const dogSeed = [
     intakeDate: 1 / 7 / 2019,
     description: "8 Yrs NEUTERED, black & white Siberian Husky mix",
     playStyle: "GD",
-    active: false,
+    active: true,
     notes: "gd, social",
     socialization: [
       {
@@ -54,18 +56,20 @@ const dogSeed = [
         duration: 40,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "Group",
         duration: 40,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
-    location: "Off Campus"
+    location: "Kennel"
   },
   {
     name: "Raisinet",
@@ -83,18 +87,20 @@ const dogSeed = [
         duration: 10,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "Group",
         duration: 40,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
-    location: "East Group Area"
+    location: "Kennel"
   },
   {
     name: "Benson",
@@ -112,18 +118,19 @@ const dogSeed = [
         duration: 40,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
       },
       {
         name: "Group",
         duration: 40,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
-    location: "East Group Area"
+    location: "Kennel"
   },
   {
     name: "Yuki",
@@ -142,25 +149,28 @@ const dogSeed = [
         duration: 30,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "BRBreak",
         duration: 10,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "Walk",
         duration: 30,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
-    location: "North Group Area"
+    location: "Kennel"
   },
 ];
 
@@ -171,7 +181,7 @@ const staffSeed = [
     email: "dgan@gmail.com",
     notes: "",
     mobile: "916-555-1212",
-    checkout: 2 / 2 / 2019,
+    available: true,
     location: "",
     password: "12345",
     active: true,
@@ -183,7 +193,7 @@ const staffSeed = [
     email: "rive@gmail.com",
     notes: "",
     mobile: "530-555-1212",
-    checkout: "",
+    available: false,
     location: "",
     password: "12345",
     active: true,
@@ -195,7 +205,7 @@ const staffSeed = [
     email: "sandi@gmail.com",
     notes: "",
     mobile: "415-555-1212",
-    checkout: "",
+    available: false,
     location: "",
     password: "12345",
     active: true,
@@ -207,10 +217,10 @@ const staffSeed = [
     email: "carol@gmail.com",
     notes: "",
     mobile: "209-555-1212",
-    checkout: 01 / 29 / 2019,
+    available: false,
     location: "",
     password: "12345",
-    active: true,
+    active: false,
     admin: false
   },
 ];

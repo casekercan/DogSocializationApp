@@ -42,7 +42,10 @@ const dogSchema = new Schema({
                 required: true,
                 default: false
             },
-            date: Date
+            inprogress: {
+                type: Boolean,
+                default: false
+            }
         }
     ],
 });

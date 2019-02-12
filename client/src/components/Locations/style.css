@@ -19,3 +19,18 @@ h3 {
 th {
     font-weight: normal;  
 }
+
+
+.table td, .table th {
+    padding: .25rem;
+}
+
+.kennel  {
+max-height: 600px;
+overflow-y: scroll;
+}
+
+.badge {
+    height: 20px;
+    width: 20px;
+}
