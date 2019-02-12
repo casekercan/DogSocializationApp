@@ -25,14 +25,16 @@ const dogSeed = [
         duration: 40,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "BRBreak",
         duration: 15,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
@@ -54,14 +56,16 @@ const dogSeed = [
         duration: 40,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "Group",
         duration: 40,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
@@ -83,14 +87,16 @@ const dogSeed = [
         duration: 10,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "Group",
         duration: 40,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
@@ -112,14 +118,15 @@ const dogSeed = [
         duration: 40,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
       },
       {
         name: "Group",
         duration: 40,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
@@ -142,21 +149,24 @@ const dogSeed = [
         duration: 30,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "BRBreak",
         duration: 10,
         ampm: "am",
         done: false,
-        date: ""
+        inprogress: false
+
       },
       {
         name: "Walk",
         duration: 30,
         ampm: "pm",
         done: false,
-        date: ""
+        inprogress: false
+
       }
     ],
     checkout: "",
@@ -171,7 +181,7 @@ const staffSeed = [
     email: "dgan@gmail.com",
     notes: "",
     mobile: "916-555-1212",
-    checkout: 2 / 2 / 2019,
+    available: true,
     location: "",
     password: "12345",
     active: true,
@@ -183,7 +193,7 @@ const staffSeed = [
     email: "rive@gmail.com",
     notes: "",
     mobile: "530-555-1212",
-    checkout: "",
+    available: false,
     location: "",
     password: "12345",
     active: true,
@@ -195,10 +205,10 @@ const staffSeed = [
     email: "sandi@gmail.com",
     notes: "",
     mobile: "415-555-1212",
-    checkout: "",
+    available: false,
     location: "",
     password: "12345",
-    active: true,
+    active: false,
     admin: true
   },
   {
@@ -207,10 +217,10 @@ const staffSeed = [
     email: "carol@gmail.com",
     notes: "",
     mobile: "209-555-1212",
-    checkout: 01 / 29 / 2019,
+    available: false,
     location: "",
     password: "12345",
-    active: true,
+    active: false,
     admin: false
   },
 ];
