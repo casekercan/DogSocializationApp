@@ -18,7 +18,7 @@ router.route("/dogs/:id")
 
 //get one dog to edit.
 router.route("/dog")
-  .post(appController.updateDog)
+  .post(appController.updateDog);
 
 router.route("/dogdelete/:id")
   .delete(appController.deleteDog);
@@ -42,6 +42,10 @@ router.route("/staff")
 router.route("/staffinactive")
   .get(appController.findInactiveStaff);
 
+// delete one staff by ID
+
+router.route("/staffdelete/:id")
+  .delete(appController.deleteStaff);
 
 // router.route("/staff/find/:email")
 //   .get(appController.findOneStaff);

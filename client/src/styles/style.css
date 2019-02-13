@@ -35,3 +35,8 @@
 .headings{
     font-weight: bold;
 }
+
+.socTableCell{
+    background-color:lightpink;
+    width:80px
+}

@@ -1,13 +1,17 @@
 import React, { Component } from "react";
-import InputGroup from "react-bootstrap/InputGroup";
 import "../../styles/style.css";
-
+import API from "../../utils/API";
+import Button from "react-bootstrap/Button";
+import { Redirect } from 'react-router';
 
 class StaffForm extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {};
+        this.state = {
+            redirect: false,
+            isChecked: false
+        };
     }
 
     componentDidMount() {
@@ -15,11 +19,19 @@ class StaffForm extends Component {
     }
 
     loadState = data => {
-        this.setState({ ...data })
+        this.setState({ ...data },()=>{
+            this.state.admin ? this.setState({ isChecked: true }) : this.setState({ isChecked: false })
+        })
     }
 
     updateMainState = () => {
         this.props.update(this.state);
+    }
+
+    deleteStaff = (id) => {
+        API.deleteStaff(id)
+            .then(this.setState({ redirect: true }))
+            .catch(err => console.log(err));
     }
 
     handleInputChange = event => {
@@ -32,6 +44,19 @@ class StaffForm extends Component {
         });
     };
 
+    handleCheckbox = event => {
+        const name = event.target.name;
+
+        this.setState({ isChecked: event.target.checked }, () => {
+            this.setState({
+                [name]: this.state.isChecked
+            }, () => {
+                this.updateMainState();
+            });
+        });
+
+    }
+
     // checkfordata = (data) => {
     //     if (data.length <= 0) {
     //         return false
@@ -41,6 +66,11 @@ class StaffForm extends Component {
     // }
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect push to="/stafflist" />;
+        }
+
         return (
             <div>
                 <div className="input-group input-group-sm mb-3">
@@ -80,13 +110,16 @@ class StaffForm extends Component {
                     <input name="notes" value={this.state.notes} onChange={this.handleInputChange} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
                 </div>
                 <div>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                        </InputGroup.Prepend>
-                        ADMINISTRATOR
-                </InputGroup>
+                    <input
+                        type="checkbox"
+                        name="admin"
+                        value={this.state.isChecked}
+                        checked={this.state.isChecked}
+                        onChange={this.handleCheckbox} />
+                    ADMINISTRATOR
                 </div>
+                <hr/>
+                <Button className="btn btn-danger" onClick={() => this.deleteStaff(this.state._id)}>Delete Staff</Button>
             </div>
         );
     }

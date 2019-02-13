@@ -69,7 +69,7 @@ class DogWidget extends Component {
         return (
             <div className="container" >
                 <div className="row">
-                    <div class="col infoContainer">
+                    <div className="col infoContainer">
                         <Button
                             variant="primary"
                             className="btn btn-lg signoutBtn"
@@ -78,7 +78,7 @@ class DogWidget extends Component {
                         <button className="btn btn-lg returnBtn">Kennel Return</button>
                         <hr />
                         <div className="d-flex">
-                            <img src={this.state.dog.pic} alt="dog pic" class="img-thumbnail" />
+                            <img src={this.state.dog.pic} alt="dog pic" className="img-thumbnail" />
                             <div>
                                 <h3>
                                     <span name="dogName" className="labels">{this.state.dog.name}</span>

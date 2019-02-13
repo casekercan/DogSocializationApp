@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../styles/style.css";
 import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
 import API from "../../utils/API";
 import { Redirect } from 'react-router';
 
@@ -97,6 +98,11 @@ class DogForm extends Component {
 
     };
 
+    handleDeleteSocialization = index => {
+        // this.setState({
+        //     //socialization: this.state.socialization.splice(index,1)
+        // });
+    }
 
     handleAddSocialization = () => {
         this.setState({
@@ -170,43 +176,58 @@ class DogForm extends Component {
                 </div>
                 <div>
                     <h4>Socialization Plan</h4>
-                    <table>
+                    <Table responsive>
                         <thead>
                             <tr>
-                                <th scope="col" >Type</th>
-                                <th scope="col" >Time</th>
-                                <th scope="col" >When</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col" className="socTableCell">Type</th>
+                                <th scope="col" className="socTableCell">Time</th>
+                                <th scope="col" className="socTableCell">When - AM/PM</th>
+                                <th scope="col" className="socTableCell">Actions</th>
                             </tr>
                         </thead>
+                        <tbody>
                         {this.state.socialization.map((soc, idx) => (
+                            <tr>
                             <div className="socialization">
+                                <td>
                                 <input
                                     type="text"
                                     placeholder={`Socialization #${idx + 1} name`}
                                     value={soc.name}
+                                    className="socTableCell"
                                     onChange={this.handleSocializationNameChange(idx)}
-                                />
+                                /></td>
+                                <td>
                                 <input
                                     type="number"
                                     placeholder={`Socialization #${idx + 1} duration`}
                                     value={soc.duration}
+                                    className="socTableCell"
                                     onChange={this.handleSocializationDurationChange(idx)}
-                                />
+                                /></td>
+                                <td>
                                 <input
                                     type="text"
                                     placeholder={`Socialization #${idx + 1} AM or PM?`}
                                     value={soc.ampm}
+                                    className="socTableCell"
                                     onChange={this.handleSocializationAmpmChange(idx)}
-                                />
+                                /></td>
+                                <td>
+                                <button
+                                    type="button"
+                                    onClick={this.handleDeleteSocialization(idx)}
+                                    >Delete</button>
+                                </td>
                             </div>
+                            </tr>
                         ))}
-
-                    </table>
+                        </tbody>
+                    </Table>
                     <button
                         type="button"
                         onClick={this.handleAddSocialization}
-                        className="small" >Add Another Socialization</button>
+                        className="small" >Add Socialization</button>
                 </div>
                 <hr />
                 <div>
@@ -218,6 +239,7 @@ class DogForm extends Component {
                         onChange={this.handleCheckboxChange} />
                     ACTIVE
                 </div>
+                <hr/>
                 <Button className="btn btn-danger" onClick={() => this.deleteDog(this.state._id)}>Delete Dog</Button>
             </div>
 

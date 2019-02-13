@@ -24,6 +24,10 @@ class StaffListWidget extends Component {
         this.setState({ modalShow: true })
     }
 
+    handleShift = ()=> {
+        this.setState({active:true,available:true});
+    }
+
     render() {
         let modalClose = () => this.setState({ modalShow: false }, () => {
             window.location.reload();
@@ -32,12 +36,18 @@ class StaffListWidget extends Component {
 
             <div className="container" >
                 <div className="row">
-                    <div class="col infoContainer">
-                        <button className="btn btn-lg signoutBtn">Start Shift</button>
-                        <button className="btn btn-lg returnBtn">End Shift</button>
+                    <div className="col infoContainer">
+                        <Button
+                            variant="primary"
+                            className="btn btn-lg allStaffBtn"
+                            onClick={() => this.handleShift()}>Start Shift</Button>
+                        <Button
+                            variant="primary"
+                            className="btn btn-lg allStaffBtn"
+                            onClick={() => this.handleShift()}>End Shift</Button>
                         <hr />
                         <div className="d-flex">
-                            <img src={this.state.staff.pic} alt="staff pic" class="img-thumbnail" />
+                            <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" />
                             <div>
                                 <h3>
                                     <span name="staffName" className="labels">{this.state.staff.name}</span>
