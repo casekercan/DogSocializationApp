@@ -67,19 +67,11 @@ class DogListWidget extends Component {
     }
 
     checkprogress = (soc) => {
-        let notdone = [];
-        for (let i = 0; i < soc.length; i++) {
-            if (soc[i].done === false) {
-                notdone.push(soc[i]);
-            }
-        }
-
-        if (notdone.length > 0) {
-            return <span className="badge badge-danger">X</span>
+        if (soc.done === true) {
+            return "btn btn-sm btn-success"
         } else {
-            return <span className="badge badge-success">✓</span>
+            return "btn btn-sm btn-danger"
         }
-
     }
 
     render() {
@@ -99,6 +91,7 @@ class DogListWidget extends Component {
             button = <Button className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
         }
 
+
         return (
             <div className="container">
                 <div className="buttonSpace">
@@ -108,14 +101,12 @@ class DogListWidget extends Component {
                     {button}
 
                 </div>
-
                 <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col" className="headings">Dog Name</th>
                             <th scope="col" className="headings">Kennel #</th>
                             <th scope="col" className="headings">Socialization Program</th>
-                            <th scope="col" className="headings">Socialization Completed?</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -127,15 +118,13 @@ class DogListWidget extends Component {
                                 <th>
                                     {dog.socialization.map((soc, i) => (
                                         <Button
-                                            variant="primary"
                                             onClick={() => this.loadModal(dog)}
-                                            className="socEvent badge badge-primary text-wrap"
+                                            className={this.checkprogress(soc)}
                                             name={i}
                                         >{soc.name}/{soc.duration}/{soc.ampm}</Button>
                                     ))}
                                     <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                                 </th>
-                                <th>{this.checkprogress(dog.socialization)}</th>
                                 <th>  <Link to={"/dog/" + dog._id} >More</Link> </th>
                             </tr>
                         ))}
