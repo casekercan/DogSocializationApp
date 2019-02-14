@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../styles/style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import API from "../../utils/API";
 
 
 class CheckoutDog extends Component {
@@ -13,13 +14,36 @@ class CheckoutDog extends Component {
     }
 
     checkprogress = (done) => {
-
-        if (done === false) {
+        if (!done) {
             return <span className="badge badge-danger">X</span>
         } else {
             return <span className="badge badge-success">✓</span>
         }
 
+    }
+
+    handleCheckout = () => {
+        if (this.state.dog.location !== "kennel"){
+            alert ("Dog is checked out - return dog to kennel first")
+        } else {
+            const now=new Date();
+            this.setState({location:$(locationInput).selected});
+            this.setState({socialization:{}});
+            this.setState({checkout:now});
+            let newSocPlan = {...this.state.socialization[{}]};
+            newSocPlan.inprogress=true;
+            this.setState(newSocPlan);
+        }
+        
+
+    }
+
+    handleReturn = () => {
+        if (this.state.dog.location === "kennel"){
+            alert ("Dog is not signed out")
+        } else {
+
+        }
     }
 
     render() {
@@ -50,12 +74,12 @@ class CheckoutDog extends Component {
                                     <th scope="col" className="cell">Finished?</th>
                                 </tr>
                             </thead>
-                            {dog.socialization.map(soc =>
+                            {dog.socialization.map((soc,idx) =>
                                 <tbody>
                                     <tr key={dog._id} className="table-active">
                                         <td className="cell">
                                             <div className="form-check">
-                                                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
+                                                <input className="form-check-input" type="radio" name={idx} id="exampleRadios1" value={idx} />
                                             </div>
                                         </td>
                                         <td className="cell">{soc.name}</td>
@@ -71,7 +95,7 @@ class CheckoutDog extends Component {
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">Locations</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
+                                <select class="custom-select" name="locationInput">
                                     <option selected>Choose...</option>
                                     <option value="1">Off-Campus</option>
                                     <option value="2">The Track</option>
@@ -89,8 +113,8 @@ class CheckoutDog extends Component {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.onHide}>Kennel Return</Button>
-                    <Button onClick={this.props.onHide}>Signout</Button>
+                    <Button onClick={this.handleReturn}>Kennel Return</Button>
+                    <Button onClick={this.handleCheckout}>Signout</Button>
                 </Modal.Footer>
             </Modal>
         );
