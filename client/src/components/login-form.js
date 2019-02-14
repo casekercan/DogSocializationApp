@@ -28,7 +28,7 @@ class LoginForm extends Component {
             console.log(res)
             if (res.status === 200) {
                 // update App.js state
-                this.props.updateUser({
+                this.props.updateStaff({
                     loggedIn: true,
                     email: res.data.email
                 })
@@ -84,7 +84,7 @@ class LoginForm extends Component {
                             <div className="col-7"></div>
                             <button
                                 className="btn btn-primary col-1 col-mr-auto"
-                               
+
                                 onClick={this.handleSubmit}
                                 type="submit">Login</button>
                         </div>

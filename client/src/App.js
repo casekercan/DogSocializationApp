@@ -58,7 +58,6 @@ class App extends Component {
 
       <Router>
         <div>
-          <Signup />
           <Jumbotron />
           <Nav />
           <Switch>
