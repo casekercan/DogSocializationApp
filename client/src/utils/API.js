@@ -61,6 +61,10 @@ export default {
 
   signup: function(email, password) {
     return axios.post("/api/" + email, password)
+  },
+
+  logout: function() {
+    return axios.post("/api/logout")
   }
 
 };

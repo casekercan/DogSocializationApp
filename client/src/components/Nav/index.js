@@ -1,5 +1,8 @@
 import React, { Component }  from "react";
-import { Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
+import API from "../../utils/API"
+
+
 
 
 
@@ -12,7 +15,7 @@ class Nav extends Component {
     logout(event) {
         event.preventDefault()
         console.log('logging out')
-        axios.post('/user/logout').then(response => {
+        API.logout().then(response => {
           console.log(response.data)
           if (response.status === 200) {
             this.props.updateUser({
@@ -29,7 +32,7 @@ class Nav extends Component {
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
-        let navbuttons;
+        let newbuttons;
 
         if (loggedIn) {
             newbuttons = 
@@ -60,7 +63,7 @@ class Nav extends Component {
                         <a className="nav-link" href="/stafflist">All Staff</a>
                     </li>
                        
-                    {navbuttons}      
+                    {newbuttons}      
                         
     
                 </ul>

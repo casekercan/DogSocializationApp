@@ -25,12 +25,12 @@ class LoginForm extends Component {
         console.log('handleSubmit');
         API.login(this.state.email, this.state.password).then(res => {
             console.log('login response: ')
-            console.log(response)
-            if (response.status === 200) {
+            console.log(res)
+            if (res.status === 200) {
                 // update App.js state
                 this.props.updateUser({
                     loggedIn: true,
-                    email: response.data.email
+                    email: res.data.email
                 })
                 // update the state to redirect to home
                 this.setState({
