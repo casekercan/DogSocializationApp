@@ -91,6 +91,7 @@ class DogListWidget extends Component {
             button = <Button className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
         }
 
+
         return (
             <div className="container">
                 <div className="buttonSpace">
@@ -100,7 +101,6 @@ class DogListWidget extends Component {
                     {button}
 
                 </div>
-
                 <table className="table table-striped">
                     <thead>
                         <tr>
