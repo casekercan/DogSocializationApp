@@ -8,7 +8,6 @@ import Doglist from "./pages/Doglist";
 import Nomatch from "./pages/Nomatch";
 import Staff from "./pages/Staff";
 import StaffList from "./pages/StaffList";
-import Login from "./pages/Login";
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import API from "./utils/API";
@@ -70,7 +69,6 @@ class App extends Component {
             <Route exact path="/doglist" component={Doglist} />
             <Route exact path="/stafflist" component={StaffList} />
             <Route exact path="/staff/:id" component={Staff} />
-            <Route exact path="/login" component={Login} />
             <Route component={Nomatch} />
           </Switch>
         </div>
