@@ -6,6 +6,21 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const session = require("express-session");
+//sessions
+app.use(
+	session({
+		secret: 'carolinekamrandavid', //pick a random string to make the hash that is generated secure
+		resave: false, //required
+		saveUninitialized: false //required
+	})
+)
+// passport
+const passport= require("./passport");
+app.use(passport.initialize());
+app.use(passport.session()); // calls the deserializeUser
+
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));

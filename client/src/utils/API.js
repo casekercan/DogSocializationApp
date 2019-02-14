@@ -55,4 +55,12 @@ export default {
     return axios.delete("/api/staffdelete/" + id);
   },
 
+  login: function(email, password){
+    return axios.post("/api/login" + email, password);
+  },
+
+  signup: function(email, password) {
+    return axios.post("/api/" + email, password)
+  }
+
 };

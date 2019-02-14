@@ -9,14 +9,19 @@ import Nomatch from "./pages/Nomatch";
 import Staff from "./pages/Staff";
 import StaffList from "./pages/StaffList";
 import Login from "./pages/Login";
+import Signup from './components/sign-up'
+import LoginForm from './components/login-form'
 
 function App() {
   return (
     <Router>
       <div>
+        <Signup/>
         <Jumbotron />
         <Nav />
         <Switch>
+        <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+        <Route path="/signup" render={() => <Signup signup={this.signup} />} />
           <Route exact path="/" component={Home} />
           <Route exact path="/dog/:id" component={Dog} />
           <Route exact path="/doglist" component={Doglist} />
