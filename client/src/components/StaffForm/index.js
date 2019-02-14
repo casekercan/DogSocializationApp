@@ -57,14 +57,6 @@ class StaffForm extends Component {
 
     }
 
-    // checkfordata = (data) => {
-    //     if (data.length <= 0) {
-    //         return false
-    //     } else {
-    //         return true
-    //     }
-    // }
-
     render() {
 
         if (this.state.redirect) {
@@ -95,7 +87,7 @@ class StaffForm extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-sm">Password</span>
                     </div>
-                    <input name="mobile" value={this.state.password} onChange={this.handleInputChange} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                    <input name="password" value={this.state.password} onChange={this.handleInputChange} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
                 </div>
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">
