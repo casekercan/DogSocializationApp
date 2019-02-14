@@ -37,17 +37,16 @@ class Nav extends Component {
         if (loggedIn) {
             newbuttons =
                 <li className="nav-item" >
-                    <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                        <a className="nav-link">logout</a></Link>
+                    <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>Logout</Link>
                 </li>
         } else {
             newbuttons =
                 <ul>
                     <li className="nav-item" >
-                        <Link to="/login" className="btn btn-link text-secondary"><a className="nav-link">login</a></Link>
+                        <a className="nav-link" href="/login">login</a>
                     </li>
                     <li className="nav-item" >
-                        <Link to="/signup" className="btn btn-link"><a className="nav-link">sign up</a></Link>
+                        <a className="nav-link" href="/signup">sign up</a>
                     </li>
                 </ul>
         }
