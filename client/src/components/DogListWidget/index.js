@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 import CheckoutDog from "../CheckoutDog";
 import AddEditDog from "../AddEditDog";
 import "../../styles/style.css"
-
 
 
 class DogListWidget extends Component {
@@ -67,10 +67,12 @@ class DogListWidget extends Component {
     }
 
     checkprogress = (soc) => {
-        if (soc.done === true) {
-            return "btn btn-sm btn-success"
+        if (soc.done&&!soc.inprogress) {
+            return "btn-sm btn-success"
+        } else if (!soc.done&&!soc.inprogress){
+            return "btn-sm btn-danger"
         } else {
-            return "btn btn-sm btn-danger"
+            return "btn-sm btn-warning"
         }
     }
 
@@ -121,7 +123,7 @@ class DogListWidget extends Component {
                                             onClick={() => this.loadModal(dog)}
                                             className={this.checkprogress(soc)}
                                             name={i}
-                                        >{soc.name}/{soc.duration}/{soc.ampm}</Button>
+                                        ><Badge>{soc.name}/{soc.duration}/{soc.ampm}</Badge></Button>
                                     ))}
                                     <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                                 </th>
