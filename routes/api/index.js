@@ -1,5 +1,7 @@
+const express = require('express')
 const router = require("express").Router();
 const appController = require("../../controllers/appController");
+const passport = require('../../passport');
 
 
 // Matches with "/api"
@@ -47,7 +49,74 @@ router.route("/staffinactive")
 router.route("/staffdelete/:id")
   .delete(appController.deleteStaff);
 
-// router.route("/staff/find/:email")
-//   .get(appController.findOneStaff);
+
+//PASSPORT NO APPCONTROLLER.JS//
+//////////////////////////////
+/////////////////////////////
+/////////////////////////////
+
+//SIGN UP
+router.post('/signup', (req, res) => {
+  console.log('staff signup made to router...' + req.body);
+
+  const { email, password } = req.body
+  // ADD VALIDATION
+  Staff.findOne({ email: email }, (err, staff) => {
+    if (err) {
+      console.log('Staff.js post error: ', err)
+    } else if (staff) {
+      res.json({
+        error: `Sorry, already a staff with the email: ${email}`
+      })
+    }
+    else {
+      const newStaff = new Staff({
+        email: email,
+        password: password
+      })
+      newStaff.save((err, savedStaff) => {
+        if (err) return res.json(err)
+        res.json(savedStaff)
+      })
+    }
+  })
+});
+
+//LOGIN 
+router.post(
+  '/login',
+  function (req, res, next) {
+    console.log('routes/staff.js, login, req.body: ');
+    console.log(req.body)
+    next()
+  },
+  passport.authenticate('local'),
+  (req, res) => {
+    console.log('logged in', req.user);
+    var userInfo = {
+      email: req.user.email
+    };
+    res.send(userInfo);
+  }
+)
+
+router.get('/', (req, res, next) => {
+  console.log('===== user!!======')
+  console.log(req.staff)
+  if (req.staff) {
+    res.json({ staff: req.staff })
+  } else {
+    res.json({ staff: null })
+  }
+})
+
+router.post('/logout', (req, res) => {
+  if (req.staff) {
+    res.send({ msg: 'logging out' })
+  } else {
+    res.send({ msg: 'no staff to log out' })
+  }
+})
+
 
 module.exports = router;
