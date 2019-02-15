@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import API from "../../utils/API"
-
+import API from "../../utils/API";
 
 
 
@@ -34,7 +33,7 @@ class Nav extends Component {
         console.log(this.props);
         let newbuttons;
 
-        if (loggedIn) {
+        if (loggedIn === true) {
             newbuttons =
                 <li className="nav-item" >
                     <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>Logout</Link>

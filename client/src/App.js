@@ -33,24 +33,27 @@ class App extends Component {
     this.setState(staffObject)
   }
 
-  getStaff() {
-    API.getstaff().then(res => {
-      console.log("Get Staff Response: ")
-      console.log(res.data)
-      if (res.data.staff) {
-        console.log("Get Staff: there is a staff saved in the server session")
-        this.setState({
-          loggedIn: true,
-          email: res.data.staff.email
-        })
-      } else {
-        console.log("Get staff: no staff");
-        this.setState({
-          loggedIn: false,
-          email: null
-        })
-      }
-    })
+  getStaff = () => {
+    API.checkstaff()
+      .then(res => {
+        console.log("Get Staff Response: ")
+        console.log(res.data)
+        if (res.data.staff) {
+          console.log("Get Staff: there is a staff saved in the server session")
+          this.setState({
+            loggedIn: true,
+            email: res.data.staff.email
+          })
+        } else {
+          console.log("Get staff: no staff");
+          this.setState({
+            loggedIn: false,
+            email: null
+          })
+        }
+
+      })
+
   }
 
   render() {
@@ -59,7 +62,7 @@ class App extends Component {
       <Router>
         <div>
           <Jumbotron />
-          <Nav />
+          <Nav updatedStaff={this.updateStaff} loggedIn={this.state.loggedIn} />
           <Switch>
             <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
             <Route path="/signup" render={() => <Signup signup={this.signup} />} />

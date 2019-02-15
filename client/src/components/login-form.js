@@ -23,8 +23,9 @@ class LoginForm extends Component {
     handleSubmit(event) {
         event.preventDefault()
         console.log('handleSubmit');
+
         API.login(this.state.email, this.state.password).then(res => {
-            console.log('login response: ')
+            console.log("login response: ")
             console.log(res)
             if (res.status === 200) {
                 // update App.js state
@@ -42,6 +43,8 @@ class LoginForm extends Component {
             console.log(error);
         })
     }
+
+
 
     render() {
         if (this.state.redirectTo) {

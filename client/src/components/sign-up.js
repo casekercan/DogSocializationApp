@@ -1,44 +1,51 @@
 import React, { Component } from 'react'
-import API from "../utils/API"
+import API from "../utils/API";
+
 
 
 class SignupForm extends Component {
 	constructor() {
 		super()
 		this.state = {
-			username: '',
+			email: '',
 			password: '',
-			confirm: '',
+			confirmPassword: '',
 
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
-    }
-    
+	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
-    }
-    
+	}
+
 	handleSubmit(event) {
 		event.preventDefault()
 		console.log('sign-up-form, email: ');
 		console.log(this.state.email);
 		//request to server here
-        API.signup(this.state.email, this.state.password).then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('successful signup')
-					this.setState({
-						redirectTo: '/login'
-					})
-				} else {
-					console.log('email already taken')
-				}
-			})
 
+		API.signup(this.state.email, this.state.password).then(res => {
+			console.log(res)
+			if (!res.data.errmsg) {
+				console.log('successful signup')
+				this.setState({ //redirect to login page
+					redirectTo: '/login'
+				})
+			} else {
+				console.log('email already taken')
+			}
+		}).catch(error => {
+			console.log('signup error: ')
+			console.log(error)
+
+		})
 	}
+
+
 	render() {
 
 		return (
@@ -78,9 +85,9 @@ class SignupForm extends Component {
 
 					<div className="form-group ">
 						<div className="col-7"></div>
-						
-							<button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit}>Sign up</button>
-						
+
+						<button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit}>Sign up</button>
+
 
 					</div>
 				</form>

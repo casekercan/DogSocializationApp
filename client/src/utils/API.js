@@ -60,15 +60,15 @@ export default {
   },
 
   signup: function (email, password) {
-    return axios.post("/api/" + email, password)
+    return axios.post("/api/signup" + email, password);
   },
 
   logout: function () {
     return axios.post("/api/logout")
   },
 
-  getstaff: function () {
-    return axios.get("/api/")
+  checkstaff: function () {
+    return axios.get("/api/staff")
   }
 
 };
