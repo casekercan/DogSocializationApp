@@ -87,7 +87,7 @@ const dogSeed = [
         name: "BRBreak",
         duration: 10,
         ampm: "am",
-        done: false,
+        done: true,
         inprogress: false
 
       },
@@ -96,7 +96,7 @@ const dogSeed = [
         duration: 40,
         ampm: "pm",
         done: false,
-        inprogress: false
+        inprogress: true
 
       }
     ],
@@ -158,7 +158,7 @@ const dogSeed = [
         duration: 10,
         ampm: "am",
         done: false,
-        inprogress: false
+        inprogress: true
 
       },
       {

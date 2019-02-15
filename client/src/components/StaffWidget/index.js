@@ -24,8 +24,22 @@ class StaffListWidget extends Component {
         this.setState({ modalShow: true })
     }
 
-    handleShift = ()=> {
-        this.setState({active:true,available:true});
+    handleOnShift = (curState)=> {
+        let activatedState = {...curState};
+        activatedState.active=true;
+        activatedState.available=true;
+        this.setState({activatedState});
+        API.updateStaff(this.state.staff)
+           .catch(err => console.log(err));
+    }
+
+    handleOffShift = (curState)=> {
+        let deActiveState = {...curState};
+        deActiveState.active=false;
+        deActiveState.available=false;
+        this.setState({deActiveState});
+        API.updateStaff(this.state.staff)
+           .catch(err => console.log(err));
     }
 
     render() {
@@ -40,11 +54,11 @@ class StaffListWidget extends Component {
                         <Button
                             variant="primary"
                             className="btn btn-lg allStaffBtn"
-                            onClick={() => this.handleShift()}>Start Shift</Button>
+                            onClick={() => this.handleOnShift(this.state.staff)}>Start Shift</Button>
                         <Button
                             variant="primary"
                             className="btn btn-lg allStaffBtn"
-                            onClick={() => this.handleShift()}>End Shift</Button>
+                            onClick={() => this.handleOffShift(this.state.staff)}>End Shift</Button>
                         <hr />
                         <div className="d-flex">
                             <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" />
