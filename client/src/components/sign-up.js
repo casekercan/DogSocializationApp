@@ -28,7 +28,12 @@ class SignupForm extends Component {
 		console.log(this.state.email);
 		//request to server here
 
-		API.signup(this.state.email, this.state.password).then(res => {
+		let signupstaff = {
+			email: this.state.email,
+			password: this.state.password
+		}
+
+		API.signup(signupstaff).then(res => {
 			console.log(res)
 			if (!res.data.errmsg) {
 				console.log('successful signup')

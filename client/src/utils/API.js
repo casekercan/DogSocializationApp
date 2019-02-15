@@ -55,20 +55,20 @@ export default {
     return axios.delete("/api/staffdelete/" + id);
   },
 
-  login: function (email, password) {
-    return axios.post("/api/login" + email, password);
+  login: function (loginstaff) {
+    return axios.post("/api/login", loginstaff);
   },
 
-  signup: function (email, password) {
-    return axios.post("/api/signup" + email, password);
+  signup: function (signupstaff) {
+    return axios.post("/api/signup", signupstaff);
   },
 
   logout: function () {
     return axios.post("/api/logout")
   },
 
-  checkstaff: function () {
-    return axios.get("/api/staff")
+  checkStaff: function () {
+    return axios.get("/api/")
   }
 
 };

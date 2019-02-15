@@ -57,7 +57,7 @@ router.route("/staffdelete/:id")
 
 //SIGN UP
 router.post('/signup', (req, res) => {
-  console.log('staff signup made to router...');
+  console.log('staff signup made to router...' + req.body);
 
   const { email, password } = req.body
   // ADD VALIDATION
@@ -100,7 +100,7 @@ router.post(
   }
 )
 
-router.get('/staff', (req, res, next) => {
+router.get('/', (req, res, next) => {
   console.log('===== user!!======')
   console.log(req.staff)
   if (req.staff) {

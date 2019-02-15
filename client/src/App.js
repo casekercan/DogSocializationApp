@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   getStaff = () => {
-    API.checkstaff()
+    API.checkStaff()
       .then(res => {
         console.log("Get Staff Response: ")
         console.log(res.data)

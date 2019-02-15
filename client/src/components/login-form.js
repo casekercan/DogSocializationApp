@@ -24,7 +24,11 @@ class LoginForm extends Component {
         event.preventDefault()
         console.log('handleSubmit');
 
-        API.login(this.state.email, this.state.password).then(res => {
+        let loginstaff = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        API.login(loginstaff).then(res => {
             console.log("login response: ")
             console.log(res)
             if (res.status === 200) {
