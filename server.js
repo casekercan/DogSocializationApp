@@ -1,13 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 const mongoose = require("mongoose");
-mongoose.Promise = global.Promise
-const routes = require("./routes");
+const passport = require("./passport");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const passport = require("./passport");
-const session = require("express-session");
 
+
+//route requires
+const routes = require("./routes");
+
+//Middleware here
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.json());
 
 //sessions
 app.use(
@@ -17,23 +24,19 @@ app.use(
 		saveUninitialized: false //required
 	})
 )
+
 // passport
 app.use(passport.initialize());
-app.use(passport.session()); // calls the deserializeUser
+app.use(passport.session());
 
+//ROUTES
+app.use(routes);
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
 
 // Connect to the Mongo DB
 var CONNECTION_URI = process.env.MONGODB_URI || "mongodb://localhost/dogSocialization";

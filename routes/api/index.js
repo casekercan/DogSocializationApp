@@ -2,6 +2,8 @@ const express = require('express')
 const router = require("express").Router();
 const appController = require("../../controllers/appController");
 const passport = require('../../passport');
+const Staff = require("../../models/staff")
+
 
 
 // Matches with "/api"
