@@ -38,7 +38,7 @@ const dogSeed = [
 
       }
     ],
-    checkout: "",
+    checkout: new Date('2019/02/16 10:30'),
     location: "Kennel"
   },
   {
@@ -69,8 +69,8 @@ const dogSeed = [
 
       }
     ],
-    checkout: "",
-    location: "The Dirt"
+    checkout: new Date('2019/02/16 10:30'),
+    location: "Kennel"
   },
   {
     name: "Raisinet",
@@ -100,8 +100,8 @@ const dogSeed = [
 
       }
     ],
-    checkout: "",
-    location: "Kennel"
+    checkout: new Date('2019/02/16 10:30'),
+    location: "North Group Area"
   },
   {
     name: "Benson",
@@ -130,7 +130,7 @@ const dogSeed = [
 
       }
     ],
-    checkout: "",
+    checkout: new Date('2019/02/16 10:30'),
     location: "Kennel"
   },
   {
@@ -170,8 +170,8 @@ const dogSeed = [
 
       }
     ],
-    checkout: "",
-    location: "North Group Area"
+    checkout: new Date('2019/02/16 14:20'),
+    location: "The Track"
   },
 ];
 
