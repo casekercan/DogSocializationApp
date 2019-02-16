@@ -123,9 +123,9 @@ class DogWidget extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class="col socContainer">
+                    <div className="col socContainer">
                         <h3 name="socLabel" className="labels">Socialization Plan</h3>
-                        <p>
+                        <table>
                             <thead>
                                 <tr>
                                     <th scope="col" className="cell">Type</th>
@@ -134,9 +134,9 @@ class DogWidget extends Component {
                                     <th scope="col" className="cell">Finished?</th>
                                 </tr>
                             </thead>
-                            {this.state.dog.socialization.map(soc =>
-                                <tbody>
-                                    <tr key={this.state.dog._id} className="table-active">
+                            {this.state.dog.socialization.map((soc, i) =>
+                                <tbody key={i}>
+                                    <tr className="table-active">
                                         <td className="cell">{soc.name}</td>
                                         <td className="cell">{soc.duration}</td>
                                         <td className="cell">{soc.ampm}</td>
@@ -144,7 +144,7 @@ class DogWidget extends Component {
                                     </tr>
                                 </tbody>
                             )}
-                        </p>
+                        </table>
                     </div>
                 </div>
             </div>
