@@ -3,15 +3,24 @@ import { Link } from 'react-router-dom';
 import API from "../../utils/API";
 
 
-
-
 class Nav extends Component {
     constructor() {
         super()
-        this.logout = this.logout.bind(this)
+        this.state = {
+            modal1Show: false,
+            modal2Show:false
+            }
+    };
+
+    loadModal1 = () => {
+        this.setState({ modal1Show: true })
+    };
+
+    loadModal2 = () => {
+        this.setState({ modal2Show: true })
     }
 
-    logout(event) {
+    logout= (event) => {
         event.preventDefault()
         console.log('logging out')
         API.logout().then(res => {
@@ -31,8 +40,17 @@ class Nav extends Component {
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
-        let newbuttons;
 
+        let modal1Close = () => this.setState({ modal1Show: false }, () => {
+            window.location.reload();
+        });
+
+        let modal2Close = () => this.setState({ modal2Show: false }, () => {
+            window.location.reload();
+        });
+
+
+        let newbuttons;
         if (loggedIn === true) {
             newbuttons =
                 <li className="nav-item" >
@@ -42,10 +60,18 @@ class Nav extends Component {
             newbuttons =
                 <ul>
                     <li className="nav-item" >
-                        <a className="nav-link" href="/login">login</a>
+                    <Link
+                        to="/login"
+                        className="nav-link"
+                        variant="primary"
+                        onClick={() => this.loadModal2()}>Login</Link>
                     </li>
                     <li className="nav-item" >
-                        <a className="nav-link" href="/signup">sign up</a>
+                    <Link
+                        to="/signup"
+                        variant="primary"
+                        className="nav-link"
+                        onClick={() => this.loadModal1()}>Signup</Link>
                     </li>
                 </ul>
         }
