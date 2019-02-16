@@ -4,8 +4,6 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 
 
-
-
 class Locations extends Component {
     state = {
         dogs: [],
@@ -81,23 +79,21 @@ class Locations extends Component {
                 <div className="row">
                     <div className="col-lg-3 col-sm-6 " >
                         {/* active staff */}
-                        <div className="box-location">
-                            <h3>CURRENT STAFF LIST</h3>
+                        <div className="box-location staffBox">
+                            <h3><strong>CURRENT STAFF LIST</strong></h3>
                             {this.checkfordata(activeStaff) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Staff Name</th>
+                                            <th className="table-header">Staff</th>
                                             <th className="table-header">Available?</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {activeStaff.map(staff => (
                                             <tr key={staff._id}>
-                                                <th>{staff.name}</th>
+                                                <th><Link to={"/staff/" + staff._id}>{staff.name}</Link></th>
                                                 <th>{this.checkstatus(staff.available)}</th>
-                                                <th><Link to={"/staff/" + staff._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -106,20 +102,19 @@ class Locations extends Component {
                         </div>
                         {/* North Concrete */}
                         <div className="box-location">
-                            <h3>North Concrete</h3>
+                            <h3><strong>North Concrete</strong></h3>
                             {this.checkfordata(northConcrete) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {northConcrete.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>                    <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
@@ -129,22 +124,20 @@ class Locations extends Component {
                         </div>
                         {/* The Track */}
                         <div className="box-location">
-                            <h3>The Track</h3>
+                            <h3><strong>The Track</strong></h3>
                             {this.checkfordata(theTrack) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {theTrack.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -153,22 +146,20 @@ class Locations extends Component {
                         </div>
                         {/* Off-Campus */}
                         <div className="box-location">
-                            <h3>Off Campus</h3>
+                            <h3><strong>Off Campus</strong></h3>
                             {this.checkfordata(offCampus) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {offCampus.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -179,22 +170,20 @@ class Locations extends Component {
                     <div className="col-lg-3 col-sm-6">
                         {/* Kennel */}
                         <div className="box-location kennel">
-                            <h3>Kennel</h3>
+                            <h3><strong>KENNEL</strong></h3>
                             {this.checkfordata(kennel) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {kennel.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -205,22 +194,20 @@ class Locations extends Component {
                     <div className="col-lg-3 col-sm-6">
                         {/* East Group Area */}
                         <div className="box-location">
-                            <h3>East Group Area</h3>
+                            <h3><strong>East Group Area</strong></h3>
                             {this.checkfordata(eastGroup) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {eastGroup.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -229,22 +216,20 @@ class Locations extends Component {
                         </div>
                         {/* The Dirt */}
                         <div className="box-location">
-                            <h3>The Dirt</h3>
+                            <h3><strong>The Dirt</strong></h3>
                             {this.checkfordata(dirt) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {dirt.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -253,22 +238,20 @@ class Locations extends Component {
                         </div>
                         {/* North Group Area */}
                         <div className="box-location">
-                            <h3>North Group Area</h3>
+                            <h3><strong>North Group Area</strong></h3>
                             {this.checkfordata(northGroup) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {northGroup.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -279,22 +262,20 @@ class Locations extends Component {
                     <div className="col-lg-3 col-sm-6">
                         {/* Grassy 1 */}
                         <div className="box-location">
-                            <h3>Grassy 1</h3>
+                            <h3><strong>Grassy 1</strong></h3>
                             {this.checkfordata(grassy1) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {grassy1.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -303,22 +284,20 @@ class Locations extends Component {
                         </div>
                         {/* Grassy 2 */}
                         <div className="box-location">
-                            <h3>Grassy 2</h3>
+                            <h3><strong>Grassy 2</strong></h3>
                             {this.checkfordata(grassy2) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {grassy2.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -327,22 +306,20 @@ class Locations extends Component {
                         </div>
                         {/* Grassy 3 */}
                         <div className="box-location">
-                            <h3>Grassy 3</h3>
+                            <h3><strong>Grassy 3</strong></h3>
                             {this.checkfordata(grassy3) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {grassy3.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -351,22 +328,20 @@ class Locations extends Component {
                         </div>
                         {/* South Concrete Area */}
                         <div className="box-location">
-                            <h3>South Concrete Area</h3>
+                            <h3><strong>South Concrete Area</strong></h3>
                             {this.checkfordata(southConcrete) ?
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th className="table-header">Dog Name</th>
+                                            <th className="table-header">Dog</th>
                                             <th className="table-header">Progress</th>
-                                            <th className="table-header"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {southConcrete.map(dog => (
                                             <tr key={dog._id}>
-                                                <th>{dog.name}</th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization)}</th>
-                                                <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>

@@ -224,6 +224,18 @@ const staffSeed = [
     active: false,
     admin: false
   },
+  {
+    name: "SuperUser",
+    pic: "",
+    email: "su@gmail.com",
+    notes: "",
+    mobile: "209-555-1212",
+    available: false,
+    location: "",
+    password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
+    active: true,
+    admin: true
+  },
 ];
 
 db.Dog
