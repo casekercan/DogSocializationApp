@@ -19,9 +19,9 @@ app.use(express.json());
 //sessions
 app.use(
 	session({
-		secret: 'carolinekamran', //pick a random string to make the hash that is generated secure
-		resave: false, //required
-		saveUninitialized: false //required
+		secret: 'carolinekamrandavid', //pick a random string to make the hash that is generated securer
+		resave: true,
+		saveUninitialized: false
 	})
 )
 

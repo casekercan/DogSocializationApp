@@ -5,7 +5,7 @@ const strategy = new LocalStrategy(
 	{
 		emailField: 'email' // not necessary, DEFAULT
 	},
-	function(email, password, done) {
+	function (email, password, done) {
 		Staff.findOne({ email: email }, (err, staff) => {
 			if (err) {
 				return done(err)

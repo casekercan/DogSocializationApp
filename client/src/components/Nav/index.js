@@ -19,11 +19,11 @@ class Nav extends Component {
             if (res.status === 200) {
                 this.props.updateStaff({
                     loggedIn: false,
-                    email: null
+                    username: null
                 })
             }
         }).catch(error => {
-            console.log('Logout error')
+            console.log('Logout error...' + error)
         })
     }
 

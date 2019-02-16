@@ -113,7 +113,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
-  if (req.staff) {
+  if (req.user) {
     res.send({ msg: 'logging out' })
   } else {
     res.send({ msg: 'no staff to log out' })

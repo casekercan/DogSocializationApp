@@ -17,7 +17,7 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      email: null
+      username: null
     }
 
     this.getStaff = this.getStaff.bind(this)
@@ -42,18 +42,17 @@ class App extends Component {
           console.log("Get Staff: there is a staff saved in the server session")
           this.setState({
             loggedIn: true,
-            email: res.data.staff.email
+            username: res.data.staff.email
           })
         } else {
           console.log("Get staff: no staff");
           this.setState({
             loggedIn: false,
-            email: null
+            username: null
           })
         }
 
       })
-
   }
 
   render() {
@@ -62,7 +61,7 @@ class App extends Component {
       <Router>
         <div>
           <Jumbotron />
-          <Nav updatedStaff={this.updateStaff} loggedIn={this.state.loggedIn} />
+          <Nav updateStaff={this.updateStaff} loggedIn={this.state.loggedIn} />
           <Switch>
             <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
             <Route path="/signup" render={() => <Signup signup={this.signup} />} />
