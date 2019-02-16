@@ -9,6 +9,12 @@ class StaffForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            name: "",
+            pic: "",
+            email: "",
+            password: "",
+            mobile: "",
+            notes: "",
             redirect: false,
             isChecked: false
         };

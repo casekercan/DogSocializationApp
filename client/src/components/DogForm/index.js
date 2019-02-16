@@ -202,39 +202,37 @@ class DogForm extends Component {
                         </thead>
                         <tbody>
                             {this.state.socialization.map((soc, idx) => (
-                                <tr>
-                                    <div className="socialization">
-                                        <td>
-                                            <input
-                                                type="text"
-                                                placeholder={`Socialization #${idx + 1} name`}
-                                                value={soc.name}
-                                                className="socTableCell"
-                                                onChange={this.handleSocializationNameChange(idx)}
-                                            /></td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                placeholder={`Socialization #${idx + 1} duration`}
-                                                value={soc.duration}
-                                                className="socTableCell"
-                                                onChange={this.handleSocializationDurationChange(idx)}
-                                            /></td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                placeholder={`Socialization #${idx + 1} AM or PM?`}
-                                                value={soc.ampm}
-                                                className="socTableCell"
-                                                onChange={this.handleSocializationAmpmChange(idx)}
-                                            /></td>
-                                        <td>
-                                            <button
-                                                type="button"
-                                                onClick={() => this.handleDeleteSocialization(idx)}
-                                            >Delete</button>
-                                        </td>
-                                    </div>
+                                <tr key={idx}>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            placeholder={`Socialization #${idx + 1} name`}
+                                            value={soc.name}
+                                            className="socTableCell"
+                                            onChange={this.handleSocializationNameChange(idx)}
+                                        /></td>
+                                    <td>
+                                        <input
+                                            type="number"
+                                            placeholder={`Socialization #${idx + 1} duration`}
+                                            value={soc.duration}
+                                            className="socTableCell"
+                                            onChange={this.handleSocializationDurationChange(idx)}
+                                        /></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            placeholder={`Socialization #${idx + 1} AM or PM?`}
+                                            value={soc.ampm}
+                                            className="socTableCell"
+                                            onChange={this.handleSocializationAmpmChange(idx)}
+                                        /></td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            onClick={() => this.handleDeleteSocialization(idx)}
+                                        >Delete</button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
