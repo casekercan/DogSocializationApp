@@ -11,6 +11,14 @@ class DogForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            name: "",
+            pic: "",
+            kennel: 0,
+            shelterID: "",
+            intakeDate: "",
+            description: "",
+            playStyle: "",
+            notes: "",
             socialization: [],
             isChecked: true,
             redirect: false
@@ -131,6 +139,7 @@ class DogForm extends Component {
 
 
         return (
+
             <div>
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">

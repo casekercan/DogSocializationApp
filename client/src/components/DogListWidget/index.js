@@ -112,6 +112,7 @@ class DogListWidget extends Component {
                                 <th>
                                     {dog.socialization.map((soc, i) => (
                                         <Button
+                                            key={i}
                                             onClick={() => this.loadModal(dog)}
                                             className={this.checkprogress(soc)}
                                             name={i}
