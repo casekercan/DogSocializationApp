@@ -8,14 +8,14 @@ module.exports = {
   findAllDogs: function (req, res) {
     db.Dog
       .find({ active: true })
-      .sort({ kennel:1})
+      .sort({ kennel: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInactiveDogs: function (req, res) {
     db.Dog
       .find({ active: false })
-      .sort({ kennel:1})
+      .sort({ kennel: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -47,14 +47,14 @@ module.exports = {
   findAllStaff: function (req, res) {
     db.Staff
       .find({ active: true })
-      .sort({name:1})
+      .sort({ name: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInactiveStaff: function (req, res) {
     db.Staff
       .find({ active: false })
-      .sort({name:1})
+      .sort({ name: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -74,6 +74,12 @@ module.exports = {
         upsert: true, setDefaultsOnInsert: true
       })
       .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  updateStaffLogin: function (req, res) {
+    var query = { _id: req.params.id };
+    db.Staff.findOneAndUpdate(query, { $set: { active: true, available: true } }).
+      then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   deleteStaff: function (req, res) {

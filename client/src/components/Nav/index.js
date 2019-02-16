@@ -28,7 +28,8 @@ class Nav extends Component {
             if (res.status === 200) {
                 this.props.updateStaff({
                     loggedIn: false,
-                    username: null
+                    username: null,
+                    id: null
                 })
             }
         }).catch(error => {

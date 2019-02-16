@@ -47,9 +47,12 @@ router.route("/staffinactive")
   .get(appController.findInactiveStaff);
 
 // delete one staff by ID
-
 router.route("/staffdelete/:id")
   .delete(appController.deleteStaff);
+
+//once login marks as active
+router.route("/staff/login/:id")
+  .post(appController.updateStaffLogin)
 
 
 //PASSPORT NO APPCONTROLLER.JS//
@@ -59,8 +62,6 @@ router.route("/staffdelete/:id")
 
 //SIGN UP
 router.post('/signup', (req, res) => {
-  console.log('staff signup made to router...' + req.body);
-
   const { email, password } = req.body
   // ADD VALIDATION
   Staff.findOne({ email: email }, (err, staff) => {
@@ -88,7 +89,6 @@ router.post('/signup', (req, res) => {
 router.post(
   '/login',
   function (req, res, next) {
-    console.log('routes/staff.js, login, req.body: ');
     console.log(req.body)
     next()
   },
@@ -96,11 +96,15 @@ router.post(
   (req, res) => {
     console.log('logged in', req.user);
     var userInfo = {
-      email: req.user.email
-    };
+      email: req.user.email,
+      id: req.user._id
+    }
     res.send(userInfo);
   }
 )
+
+
+
 
 router.get('/', (req, res, next) => {
   console.log('===== user!!======')

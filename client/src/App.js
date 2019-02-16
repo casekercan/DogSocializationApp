@@ -17,7 +17,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      id: null
     }
 
     this.getStaff = this.getStaff.bind(this)
@@ -39,16 +40,17 @@ class App extends Component {
         console.log("Get Staff Response: ")
         console.log(res.data)
         if (res.data.staff) {
-          console.log("Get Staff: there is a staff saved in the server session")
           this.setState({
             loggedIn: true,
-            username: res.data.staff.email
+            username: res.data.staff.email,
+            id: res.data.staff.id
           })
         } else {
           console.log("Get staff: no staff");
           this.setState({
             loggedIn: false,
-            username: null
+            username: null,
+            id: null
           })
         }
 
