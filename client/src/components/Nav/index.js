@@ -28,7 +28,8 @@ class Nav extends Component {
             if (res.status === 200) {
                 this.props.updateStaff({
                     loggedIn: false,
-                    username: null
+                    username: null,
+                    id: null
                 })
             }
         }).catch(error => {
@@ -78,7 +79,7 @@ class Nav extends Component {
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a className="navbar-brand" href="/"> HOME</a>
+                <Link className="navbar-brand" to="/"> HOME</Link>
 
                 <ul className="navbar-nav mt-2 mt-lg-0">
                     <li className="nav-item">

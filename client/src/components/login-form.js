@@ -22,8 +22,6 @@ class LoginForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log('handleSubmit');
-
         let loginstaff = {
             username: this.state.email,
             password: this.state.password
@@ -32,15 +30,20 @@ class LoginForm extends Component {
             console.log("login response: ")
             console.log(res)
             if (res.status === 200) {
+                //call function to mark staff as active/available
+                this.updateUserActive(res.data.id)
                 // update App.js state
                 this.props.updateStaff({
                     loggedIn: true,
-                    username: res.data.email
+                    username: res.data.email,
+                    id: res.data.id
+                }, () => {
+                    // update the state to redirect to home
+                    this.setState({
+                        redirectTo: "/"
+                    })
                 })
-                // update the state to redirect to home
-                this.setState({
-                    redirectTo: '/'
-                })
+
             }
         }).catch(error => {
             console.log('login error: ')
@@ -48,6 +51,10 @@ class LoginForm extends Component {
         })
     }
 
+
+    updateUserActive = (id) => {
+        API.updateStaffLogin(id).then().catch(err => console.log(err));
+    }
 
 
     render() {
