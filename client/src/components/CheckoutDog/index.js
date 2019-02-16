@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../styles/style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import API from "../../utils/API";
+//import API from "../../utils/API";
 
 
 class CheckoutDog extends Component {
@@ -23,24 +23,22 @@ class CheckoutDog extends Component {
     }
 
     handleCheckout = () => {
-        if (this.state.dog.location !== "kennel"){
-            alert ("Dog is checked out - return dog to kennel first")
-        } else {
-            const now=new Date();
-            this.setState({location:$(locationInput).selected});
-            this.setState({socialization:{}});
-            this.setState({checkout:now});
-            let newSocPlan = {...this.state.socialization[{}]};
-            newSocPlan.inprogress=true;
-            this.setState(newSocPlan);
-        }
-        
-
+        // if (this.state.dog.location !== "kennel"){
+        //     alert ("Dog is checked out - return dog to kennel first")
+        // } else {
+        //     const now=new Date();
+        //     this.setState({location:$(locationInput).selected});
+        //     this.setState({socialization:{}});
+        //     this.setState({checkout:now});
+        //     let newSocPlan = {...this.state.socialization[{}]};
+        //     newSocPlan.inprogress=true;
+        //     this.setState(newSocPlan);
+        // }
     }
 
     handleReturn = () => {
-        if (this.state.dog.location === "kennel"){
-            alert ("Dog is not signed out")
+        if (this.state.dog.location === "kennel") {
+            alert("Dog is not signed out")
         } else {
 
         }
@@ -74,7 +72,7 @@ class CheckoutDog extends Component {
                                     <th scope="col" className="cell">Finished?</th>
                                 </tr>
                             </thead>
-                            {dog.socialization.map((soc,idx) =>
+                            {dog.socialization.map((soc, idx) =>
                                 <tbody>
                                     <tr key={dog._id} className="table-active">
                                         <td className="cell">
