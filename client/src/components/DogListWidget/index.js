@@ -23,15 +23,7 @@ class DogListWidget extends Component {
     }
 
     componentDidMount() {
-        API.getDogs()
-            .then(res => this.setState({
-                dogs: res.data
-            }, () => {
-                this.setState({
-                    inactive: false
-                })
-            }))
-            .catch(err => console.log(err));
+        this.findalldogs();
     };
     findalldogs = () => {
         API.getDogs()
@@ -67,9 +59,9 @@ class DogListWidget extends Component {
     }
 
     checkprogress = (soc) => {
-        if (soc.done&&!soc.inprogress) {
+        if (soc.done && !soc.inprogress) {
             return "btn-sm btn-success"
-        } else if (!soc.done&&!soc.inprogress){
+        } else if (!soc.done && !soc.inprogress) {
             return "btn-sm btn-danger"
         } else {
             return "btn-sm btn-warning"
@@ -80,7 +72,7 @@ class DogListWidget extends Component {
         let modalClose = () => this.setState({ modalShow: false });
         let modalClose2 = () => {
             this.setState({ modalShow2: false }, () => {
-                window.location.reload();
+                this.findalldogs();
             });
         };
         const isInactive = this.state.inactive;

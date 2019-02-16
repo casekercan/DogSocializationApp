@@ -26,6 +26,10 @@ class DogWidget extends Component {
     }
 
     componentDidMount() {
+        this.getDog()
+    }
+
+    getDog = () => {
         API.getDog(this.props.props)
             .then(res => this.setState({
                 dog: res.data
@@ -56,12 +60,12 @@ class DogWidget extends Component {
     render() {
         let modalClose = () => {
             this.setState({ modalShow: false }, () => {
-                window.location.reload();
+                this.getDog();
             });
         };
 
         let modal2Close = () => this.setState({ modal2Show: false }, () => {
-            window.location.reload();
+            this.getDog();
         });
 
 

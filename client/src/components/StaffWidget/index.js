@@ -14,6 +14,10 @@ class StaffListWidget extends Component {
     };
 
     componentDidMount() {
+        this.findStaff()
+    }
+
+    findStaff = () => {
         API.getStaff(this.props.props)
             .then(res => this.setState({ staff: res.data }))
             .catch(err => console.log(err));
@@ -24,27 +28,27 @@ class StaffListWidget extends Component {
         this.setState({ modalShow: true })
     }
 
-    handleOnShift = (curState)=> {
-        let activatedState = {...curState};
-        activatedState.active=true;
-        activatedState.available=true;
-        this.setState({activatedState});
+    handleOnShift = (curState) => {
+        let activatedState = { ...curState };
+        activatedState.active = true;
+        activatedState.available = true;
+        this.setState({ activatedState });
         API.updateStaff(this.state.staff)
-           .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
-    handleOffShift = (curState)=> {
-        let deActiveState = {...curState};
-        deActiveState.active=false;
-        deActiveState.available=false;
-        this.setState({deActiveState});
+    handleOffShift = (curState) => {
+        let deActiveState = { ...curState };
+        deActiveState.active = false;
+        deActiveState.available = false;
+        this.setState({ deActiveState });
         API.updateStaff(this.state.staff)
-           .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     render() {
         let modalClose = () => this.setState({ modalShow: false }, () => {
-            window.location.reload();
+            this.findStaff();
         });
         return (
 

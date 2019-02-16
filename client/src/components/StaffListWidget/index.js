@@ -16,14 +16,7 @@ class VolunteerList extends Component {
 
 
     componentDidMount() {
-        API.getAllStaff()
-            .then(res => this.setState({
-                voteers: res.data
-            }, () => {
-                this.setState({
-                    inactive: false
-                })
-            })).catch(err => console.log(err));
+        this.findAllStaff()
     };
 
 
@@ -64,7 +57,7 @@ class VolunteerList extends Component {
 
     render() {
         let modalClose = () => this.setState({ modalShow: false }, () => {
-            window.location.reload();
+            this.findAllStaff();
         });
 
         const isInactive = this.state.inactive;
