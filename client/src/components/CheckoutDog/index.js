@@ -61,8 +61,8 @@ class CheckoutDog extends Component {
                 <Modal.Body>
                     <h6 className="instructions">Check plan and location dog is moved to</h6>
                     <hr />
-                    <div d-flex>
-                        <p>
+                    <div>
+                        <table>
                             <thead>
                                 <tr>
                                     <th scope="col" className="cell">Select</th>
@@ -73,7 +73,7 @@ class CheckoutDog extends Component {
                                 </tr>
                             </thead>
                             {dog.socialization.map((soc, idx) =>
-                                <tbody>
+                                <tbody key={idx}>
                                     <tr key={dog._id} className="table-active">
                                         <td className="cell">
                                             <div className="form-check">
@@ -87,27 +87,26 @@ class CheckoutDog extends Component {
                                     </tr>
                                 </tbody>
                             )}
-                        </p>
-                        <p>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Locations</label>
-                                </div>
-                                <select class="custom-select" name="locationInput">
-                                    <option selected>Choose...</option>
-                                    <option value="1">Off-Campus</option>
-                                    <option value="2">The Track</option>
-                                    <option value="3">East Group Area</option>
-                                    <option value="4">North Group Area</option>
-                                    <option value="5">North Concrete Area</option>
-                                    <option value="6">The Dirt</option>
-                                    <option value="7">Grassy 1</option>
-                                    <option value="8">Grassy 2</option>
-                                    <option value="9">Grassy 3</option>
-                                    <option value="10">South Concrete Area</option>
-                                </select>
+                        </table>
+                        <hr />
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <label className="input-group-text" >Locations</label>
                             </div>
-                        </p>
+                            <select className="custom-select" name="locationInput">
+                                <option >Choose...</option>
+                                <option value="1">Off-Campus</option>
+                                <option value="2">The Track</option>
+                                <option value="3">East Group Area</option>
+                                <option value="4">North Group Area</option>
+                                <option value="5">North Concrete Area</option>
+                                <option value="6">The Dirt</option>
+                                <option value="7">Grassy 1</option>
+                                <option value="8">Grassy 2</option>
+                                <option value="9">Grassy 3</option>
+                                <option value="10">South Concrete Area</option>
+                            </select>
+                        </div>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>

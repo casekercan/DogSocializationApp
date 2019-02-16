@@ -11,6 +11,14 @@ class DogForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            name: "",
+            pic: "",
+            kennel: 0,
+            shelterID: "",
+            intakeDate: "",
+            description: "",
+            playStyle: "",
+            notes: "",
             socialization: [],
             isChecked: true,
             redirect: false
@@ -131,6 +139,7 @@ class DogForm extends Component {
 
 
         return (
+
             <div>
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">
@@ -193,39 +202,37 @@ class DogForm extends Component {
                         </thead>
                         <tbody>
                             {this.state.socialization.map((soc, idx) => (
-                                <tr>
-                                    <div className="socialization">
-                                        <td>
-                                            <input
-                                                type="text"
-                                                placeholder={`Socialization #${idx + 1} name`}
-                                                value={soc.name}
-                                                className="socTableCell"
-                                                onChange={this.handleSocializationNameChange(idx)}
-                                            /></td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                placeholder={`Socialization #${idx + 1} duration`}
-                                                value={soc.duration}
-                                                className="socTableCell"
-                                                onChange={this.handleSocializationDurationChange(idx)}
-                                            /></td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                placeholder={`Socialization #${idx + 1} AM or PM?`}
-                                                value={soc.ampm}
-                                                className="socTableCell"
-                                                onChange={this.handleSocializationAmpmChange(idx)}
-                                            /></td>
-                                        <td>
-                                            <button
-                                                type="button"
-                                                onClick={() => this.handleDeleteSocialization(idx)}
-                                            >Delete</button>
-                                        </td>
-                                    </div>
+                                <tr key={idx}>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            placeholder={`Socialization #${idx + 1} name`}
+                                            value={soc.name}
+                                            className="socTableCell"
+                                            onChange={this.handleSocializationNameChange(idx)}
+                                        /></td>
+                                    <td>
+                                        <input
+                                            type="number"
+                                            placeholder={`Socialization #${idx + 1} duration`}
+                                            value={soc.duration}
+                                            className="socTableCell"
+                                            onChange={this.handleSocializationDurationChange(idx)}
+                                        /></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            placeholder={`Socialization #${idx + 1} AM or PM?`}
+                                            value={soc.ampm}
+                                            className="socTableCell"
+                                            onChange={this.handleSocializationAmpmChange(idx)}
+                                        /></td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            onClick={() => this.handleDeleteSocialization(idx)}
+                                        >Delete</button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

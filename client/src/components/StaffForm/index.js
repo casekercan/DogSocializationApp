@@ -9,6 +9,12 @@ class StaffForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            name: "",
+            pic: "",
+            email: "",
+            password: "",
+            mobile: "",
+            notes: "",
             redirect: false,
             isChecked: false
         };
@@ -19,7 +25,7 @@ class StaffForm extends Component {
     }
 
     loadState = data => {
-        this.setState({ ...data },()=>{
+        this.setState({ ...data }, () => {
             this.state.admin ? this.setState({ isChecked: true }) : this.setState({ isChecked: false })
         })
     }
@@ -64,6 +70,7 @@ class StaffForm extends Component {
         }
 
         return (
+
             <div>
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">
@@ -110,9 +117,10 @@ class StaffForm extends Component {
                         onChange={this.handleCheckbox} />
                     ADMINISTRATOR
                 </div>
-                <hr/>
+                <hr />
                 <Button className="btn btn-danger" onClick={() => this.deleteStaff(this.state._id)}>Delete Staff</Button>
             </div>
+
         );
     }
 }
