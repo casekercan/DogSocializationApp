@@ -25,7 +25,7 @@ class LoginForm extends Component {
         console.log('handleSubmit');
 
         let loginstaff = {
-            email: this.state.email,
+            username: this.state.email,
             password: this.state.password
         }
         API.login(loginstaff).then(res => {
