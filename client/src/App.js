@@ -59,11 +59,10 @@ class App extends Component {
 
   render() {
     return (
-
       <Router>
         <div>
           <Jumbotron />
-          <Nav updateStaff={this.updateStaff} loggedIn={this.state.loggedIn} />
+          <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
           <Switch>
             <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
             <Route path="/signup" render={() => <Signup signup={this.signup} />} />

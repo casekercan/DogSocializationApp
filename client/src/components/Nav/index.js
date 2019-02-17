@@ -8,7 +8,8 @@ class Nav extends Component {
         super()
         this.state = {
             modal1Show: false,
-            modal2Show: false
+            modal2Show: false,
+
         }
     };
 
@@ -23,19 +24,28 @@ class Nav extends Component {
     logout = (event) => {
         event.preventDefault()
         console.log('logging out')
+
         API.logout().then(res => {
             console.log(res.data)
             if (res.status === 200) {
+                this.updateUserLogout(this.props.id)
                 this.props.updateStaff({
                     loggedIn: false,
                     username: null,
                     id: null
                 })
             }
+
         }).catch(error => {
             console.log('Logout error...' + error)
         })
     }
+
+    updateUserLogout = (id) => {
+        API.updateStaffLogout(id).then().catch(err => console.log(err));
+    }
+
+
 
     render() {
         const loggedIn = this.props.loggedIn;
@@ -49,7 +59,6 @@ class Nav extends Component {
         // let modal2Close = () => this.setState({ modal2Show: false }, () => {
         //     window.location.reload();
         // });
-
 
         let newbuttons;
         if (loggedIn === true) {
@@ -95,8 +104,6 @@ class Nav extends Component {
                 </ul>
             </nav>
         );
-
-
 
 
     }

@@ -37,11 +37,9 @@ class LoginForm extends Component {
                     loggedIn: true,
                     username: res.data.email,
                     id: res.data.id
-                }, () => {
-                    // update the state to redirect to home
-                    this.setState({
-                        redirectTo: "/"
-                    })
+                })
+                this.setState({
+                    redirectTo: "/"
                 })
 
             }
