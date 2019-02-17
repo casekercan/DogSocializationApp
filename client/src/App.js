@@ -17,7 +17,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      id: null
     }
 
     this.getStaff = this.getStaff.bind(this)
@@ -39,16 +40,17 @@ class App extends Component {
         console.log("Get Staff Response: ")
         console.log(res.data)
         if (res.data.staff) {
-          console.log("Get Staff: there is a staff saved in the server session")
           this.setState({
             loggedIn: true,
-            username: res.data.staff.email
+            username: res.data.staff.email,
+            id: res.data.staff.id
           })
         } else {
           console.log("Get staff: no staff");
           this.setState({
             loggedIn: false,
-            username: null
+            username: null,
+            id: null
           })
         }
 
@@ -56,25 +58,45 @@ class App extends Component {
   }
 
   render() {
-    return (
-
-      <Router>
-        <div>
-          <Jumbotron />
-          <Nav updateStaff={this.updateStaff} loggedIn={this.state.loggedIn} />
-          <Switch>
-            <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-            <Route path="/signup" render={() => <Signup signup={this.signup} />} />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/dog/:id" component={Dog} />
-            <Route exact path="/doglist" component={Doglist} />
-            <Route exact path="/stafflist" component={StaffList} />
-            <Route exact path="/staff/:id" component={Staff} />
-            <Route component={Nomatch} />
-          </Switch>
-        </div>
-      </Router>
-    )
+    if (this.state.loggedIn !== true) {
+      return (
+        <Router>
+          <div>
+            <Jumbotron />
+            <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
+            <Switch>
+              <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route path="/signup" render={() => <Signup signup={this.signup} updateStaff={this.updateStaff} />} />
+              <Route exact path="/" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/dog/:id" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/doglist" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/stafflist" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/staff/:id" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route component={Nomatch} />
+            </Switch>
+          </div>
+        </Router>
+      )
+    } else {
+      return (
+        <Router>
+          <div>
+            <Jumbotron />
+            <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
+            <Switch>
+              <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route path="/signup" render={() => <Signup signup={this.signup} />} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/dog/:id" component={Dog} />
+              <Route exact path="/doglist" component={Doglist} />
+              <Route exact path="/stafflist" component={StaffList} />
+              <Route exact path="/staff/:id" component={Staff} />
+              <Route component={Nomatch} />
+            </Switch>
+          </div>
+        </Router>
+      )
+    }
   }
 }
 

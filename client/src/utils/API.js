@@ -50,6 +50,12 @@ export default {
     return axios.post("/api/staff", vteer);
   },
 
+  updateStaffLogin: function (id) {
+    return axios.post("/api/staff/login/" + id)
+  },
+  updateStaffLogout: function (id) {
+    return axios.post("/api/staff/logout/" + id)
+  },
   //delete Staff
   deleteStaff: function (id) {
     return axios.delete("/api/staffdelete/" + id);

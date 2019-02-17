@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import API from "../utils/API"
 
 class LoginForm extends Component {
@@ -22,8 +22,6 @@ class LoginForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log('handleSubmit');
-
         let loginstaff = {
             username: this.state.email,
             password: this.state.password
@@ -32,15 +30,18 @@ class LoginForm extends Component {
             console.log("login response: ")
             console.log(res)
             if (res.status === 200) {
+                //call function to mark staff as active/available
+                this.updateUserActive(res.data.id)
                 // update App.js state
                 this.props.updateStaff({
                     loggedIn: true,
-                    username: res.data.email
+                    username: res.data.email,
+                    id: res.data.id
                 })
-                // update the state to redirect to home
                 this.setState({
-                    redirectTo: '/'
+                    redirectTo: "/"
                 })
+
             }
         }).catch(error => {
             console.log('login error: ')
@@ -49,13 +50,23 @@ class LoginForm extends Component {
     }
 
 
+    updateUserActive = (id) => {
+        API.updateStaffLogin(id).then().catch(err => console.log(err));
+    }
+
+    signupButton = () => {
+        this.setState({
+            redirectTo: "/signup"
+        })
+    }
+
 
     render() {
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div>
+                <div className="container">
                     <h4>Login</h4>
                     <form className="form-horizontal">
                         <div className="form-group">
@@ -91,12 +102,13 @@ class LoginForm extends Component {
                             <div className="col-7"></div>
                             <button
                                 className="btn btn-primary col-1 col-mr-auto"
-
                                 onClick={this.handleSubmit}
                                 type="submit">Login</button>
+                            <Link to="/signup"> Sign up</Link>
                         </div>
                     </form>
                 </div>
+
             )
         }
     }

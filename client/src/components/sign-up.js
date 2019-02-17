@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import API from "../utils/API";
 
 
@@ -38,7 +39,8 @@ class SignupForm extends Component {
 			console.log(res)
 			if (!res.data.errmsg) {
 				console.log('successful signup')
-				this.setState({ //redirect to login page
+				this.setState({
+					//redirect to login page
 					redirectTo: '/login'
 				})
 			} else {
@@ -54,52 +56,52 @@ class SignupForm extends Component {
 
 	render() {
 
-		return (
-			<div className="SignupForm">
-
-				<form className="form-horizontal">
-					<div className="form-group">
-						<div className="col-1 col-ml-auto">
-							<label className="form-label" htmlFor="email">E-mail</label>
+		if (this.state.redirectTo) {
+			return <Redirect to={{ pathname: this.state.redirectTo }} />
+		} else {
+			return (
+				<div className="container">
+					<h4>Sign Up</h4>
+					<form className="form-horizontal">
+						<div className="form-group">
+							<div className="col-1 col-ml-auto">
+								<label className="form-label" htmlFor="email">E-mail</label>
+							</div>
+							<div className="col-3 col-mr-auto">
+								<input className="form-input"
+									type="text"
+									id="email"
+									name="email"
+									placeholder="E-mail"
+									value={this.state.email}
+									onChange={this.handleChange}
+								/>
+							</div>
 						</div>
-						<div className="col-3 col-mr-auto">
-							<input className="form-input"
-								type="text"
-								id="email"
-								name="email"
-								placeholder="E-mail"
-								value={this.state.email}
-								onChange={this.handleChange}
-							/>
-						</div>
-					</div>
-					<div className="form-group">
-						<div className="col-1 col-ml-auto">
-							<label className="form-label" htmlFor="password">Password: </label>
-						</div>
-						<div className="col-3 col-mr-auto">
-							<input className="form-input"
-								placeholder="password"
-								type="password"
-								name="password"
-								value={this.state.password}
-								onChange={this.handleChange}
-							/>
+						<div className="form-group">
+							<div className="col-1 col-ml-auto">
+								<label className="form-label" htmlFor="password">Password: </label>
+							</div>
+							<div className="col-3 col-mr-auto">
+								<input className="form-input"
+									placeholder="password"
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleChange}
+								/>
+							</div>
+
 						</div>
 
-					</div>
-
-					<div className="form-group ">
-						<div className="col-7"></div>
-
-						<button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit}>Sign up</button>
-
-
-					</div>
-				</form>
-			</div>
-
-		)
+						<div className="form-group ">
+							<div className="col-7"></div>
+							<button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit}>Sign up</button>
+						</div>
+					</form>
+				</div>
+			)
+		}
 	}
 }
 
