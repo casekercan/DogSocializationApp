@@ -50,10 +50,13 @@ router.route("/staffinactive")
 router.route("/staffdelete/:id")
   .delete(appController.deleteStaff);
 
-//once login marks as active
+//once login marks as active/available
 router.route("/staff/login/:id")
   .post(appController.updateStaffLogin)
 
+//once logout marks as inactive/notavailable
+router.route("/staff/logout/:id")
+  .post(appController.updateStaffLogout)
 
 //PASSPORT NO APPCONTROLLER.JS//
 //////////////////////////////

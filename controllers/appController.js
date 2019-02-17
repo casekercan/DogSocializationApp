@@ -82,6 +82,12 @@ module.exports = {
       then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  updateStaffLogout: function (req, res) {
+    var query = { _id: req.params.id };
+    db.Staff.findOneAndUpdate(query, { $set: { active: false, available: false } }).
+      then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   deleteStaff: function (req, res) {
     db.Staff
       .findById({ _id: req.params.id })
