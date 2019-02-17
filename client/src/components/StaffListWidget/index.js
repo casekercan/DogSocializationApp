@@ -14,17 +14,13 @@ class VolunteerList extends Component {
         inactive: false
     };
 
-
     componentDidMount() {
         this.findAllStaff()
     };
 
-
     findAllStaff = () => {
         API.getAllStaff()
-            .then(res => this.setState({
-                voteers: res.data
-            }, () => {
+            .then(res => this.setState({voteers: res.data}, () => {
                 this.setState({
                     inactive: false
                 })
@@ -95,8 +91,7 @@ class VolunteerList extends Component {
                                 <th>{voteer.email}</th>
                                 <th>{voteer.mobile}</th>
                                 <th>{this.checkstatus(voteer.available)}</th>
-                                <th>  <Link to={"/staff/" + voteer._id} >More</Link> </th>
-
+                                <th> <Link to={"/staff/" + voteer._id} >More</Link> </th>
                             </tr>
                         ))}
                     </tbody>

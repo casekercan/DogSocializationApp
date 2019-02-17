@@ -8,14 +8,14 @@ module.exports = {
   findAllDogs: function (req, res) {
     db.Dog
       .find({ active: true })
-      .sort({ kennel: 1 })
+      .sort({ name: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInactiveDogs: function (req, res) {
     db.Dog
       .find({ active: false })
-      .sort({ kennel: 1 })
+      .sort({ name: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

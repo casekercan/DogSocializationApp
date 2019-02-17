@@ -184,7 +184,7 @@ const staffSeed = [
     mobile: "916-555-1212",
     available: true,
     location: "",
-    password: "12345",
+    password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: true,
     admin: true
   },
@@ -196,7 +196,7 @@ const staffSeed = [
     mobile: "530-555-1212",
     available: false,
     location: "",
-    password: "12345",
+    password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: true,
     admin: true
   },
@@ -208,7 +208,7 @@ const staffSeed = [
     mobile: "415-555-1212",
     available: false,
     location: "",
-    password: "12345",
+    password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: true,
     admin: true
   },
@@ -220,7 +220,7 @@ const staffSeed = [
     mobile: "209-555-1212",
     available: false,
     location: "",
-    password: "12345",
+    password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: false,
     admin: false
   },

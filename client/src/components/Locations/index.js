@@ -10,12 +10,13 @@ class Locations extends Component {
         staff: []
     }
 
+    // Reset socializations to done=false every day at midnight
     resetSocDone = () => {
         for (let i=0;i<this.state.dogs.socialization.length;i++){
             let now=new Date();
             let lastSoc = new Date(this.state.dogs.checkout);
-            if (now.getDay()!==lastSoc.getDay()){
-                this.state.dogs.socialization[i].done=false;
+            if (now.getDay() !== lastSoc.getDay()){
+                this.setState.dogs.socialization[i].done=false;
             }
         }
     }
@@ -81,15 +82,12 @@ class Locations extends Component {
     overallProgress = (soc)=> {
         let notdone = [];
         for (let i = 0; i < soc.length; i++) {
-            if (!soc[i].done) {
-                notdone.push(soc[i]);
-            }
+            if (!soc[i].done) {notdone.push(soc[i])}
         }
-
         if (notdone) {
             return <span className="badge badge-danger">x</span>
         } else {
-            return <span className="badge badge-success">OK</span>
+            return <span className="badge badge-success">&#10003;</span>
         }
     }
 
@@ -149,7 +147,7 @@ class Locations extends Component {
                                         {northConcrete.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization, dog)}</th>                    <th><Link to={"/dog/" + dog._id}>More</Link></th>
+                                                <th>{this.checkprogress(dog.socialization)}</th>      <th><Link to={"/dog/" + dog._id}>More</Link></th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -217,7 +215,7 @@ class Locations extends Component {
                                         {kennel.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.overallProgress(dog.socialization,dog)}</th>
+                                                <th>{this.overallProgress(dog.socialization)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
