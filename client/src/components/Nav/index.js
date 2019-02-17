@@ -23,8 +23,6 @@ class Nav extends Component {
 
     logout = (event) => {
         event.preventDefault()
-        console.log('logging out')
-
         API.logout().then(res => {
             console.log(res.data)
             if (res.status === 200) {
@@ -35,7 +33,6 @@ class Nav extends Component {
                     id: null
                 })
             }
-
         }).catch(error => {
             console.log('Logout error...' + error)
         })
@@ -52,60 +49,38 @@ class Nav extends Component {
         console.log('navbar render, props: ')
         console.log(this.props);
 
-        // let modal1Close = () => this.setState({ modal1Show: false }, () => {
-        //     window.location.reload();
-        // });
-
-        // let modal2Close = () => this.setState({ modal2Show: false }, () => {
-        //     window.location.reload();
-        // });
-
-        let newbuttons;
         if (loggedIn === true) {
-            newbuttons =
-                <li className="nav-item" >
-                    <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>Logout</Link>
-                </li>
+            return (
+                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <Link className="navbar-brand" to="/"> HOME</Link>
+
+                    <ul className="navbar-nav mt-2 mt-lg-0">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/doglist">All Dogs</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/stafflist">All Staff</Link>
+                        </li>
+                        <li className="nav-item" >
+                            <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>Logout</Link>
+                        </li>
+                    </ul>
+                </nav>
+            )
         } else {
-            newbuttons =
-                <ul>
-                    <li className="nav-item" >
-                        <Link
-                            to="/login"
-                            className="nav-link"
-                            variant="primary"
-                            onClick={() => this.loadModal2()}>Login</Link>
-                    </li>
-                    <li className="nav-item" >
-                        <Link
-                            to="/signup"
-                            variant="primary"
-                            className="nav-link"
-                            onClick={() => this.loadModal1()}>Signup</Link>
-                    </li>
-                </ul>
+            return (
+                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <ul className="navbar-nav mt-2 mt-lg-0">
+                        <li className="nav-item" >
+                            <Link to="/login" className="nav-link" variant="primary" >Login</Link>
+                        </li>
+                        <li className="nav-item" >
+                            <Link to="/signup" variant="primary" className="nav-link" >Signup</Link>
+                        </li>
+                    </ul>
+                </nav>
+            );
         }
-
-        return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link className="navbar-brand" to="/"> HOME</Link>
-
-                <ul className="navbar-nav mt-2 mt-lg-0">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/doglist">All Dogs</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/stafflist">All Staff</Link>
-                    </li>
-
-                    {newbuttons}
-
-
-                </ul>
-            </nav>
-        );
-
-
     }
 }
 

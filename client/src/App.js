@@ -58,24 +58,45 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Router>
-        <div>
-          <Jumbotron />
-          <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
-          <Switch>
-            <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-            <Route path="/signup" render={() => <Signup signup={this.signup} />} />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/dog/:id" component={Dog} />
-            <Route exact path="/doglist" component={Doglist} />
-            <Route exact path="/stafflist" component={StaffList} />
-            <Route exact path="/staff/:id" component={Staff} />
-            <Route component={Nomatch} />
-          </Switch>
-        </div>
-      </Router>
-    )
+    if (this.state.loggedIn !== true) {
+      return (
+        <Router>
+          <div>
+            <Jumbotron />
+            <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
+            <Switch>
+              <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route path="/signup" render={() => <Signup signup={this.signup} updateStaff={this.updateStaff} />} />
+              <Route exact path="/" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/dog/:id" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/doglist" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/stafflist" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route exact path="/staff/:id" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route component={Nomatch} />
+            </Switch>
+          </div>
+        </Router>
+      )
+    } else {
+      return (
+        <Router>
+          <div>
+            <Jumbotron />
+            <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
+            <Switch>
+              <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+              <Route path="/signup" render={() => <Signup signup={this.signup} />} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/dog/:id" component={Dog} />
+              <Route exact path="/doglist" component={Doglist} />
+              <Route exact path="/stafflist" component={StaffList} />
+              <Route exact path="/staff/:id" component={Staff} />
+              <Route component={Nomatch} />
+            </Switch>
+          </div>
+        </Router>
+      )
+    }
   }
 }
 
