@@ -52,6 +52,8 @@ class VolunteerList extends Component {
     }
 
     render() {
+        let adminStaff = this.state.voteers.filter(staff => staff.admin === true);
+
         let modalClose = () => this.setState({ modalShow: false }, () => {
             this.findAllStaff();
         });

@@ -15,6 +15,7 @@ class Locations extends Component {
         for (let i=0;i<this.state.dogs.socialization.length;i++){
             let now=new Date();
             let lastSoc = new Date(this.state.dogs.checkout);
+            console.log(now,lastSoc);
             if (now.getDay() !== lastSoc.getDay()){
                 this.setState.dogs.socialization[i].done=false;
             }
@@ -28,7 +29,6 @@ class Locations extends Component {
     pullcurrentLocation = () => {
         API.getDogs()
             .then(res =>this.setState({ dogs: res.data }))
-            .then(res =>this.resetSocDone())
             .catch(err => console.log(err));
         API.getAllStaff()
             .then(res =>
@@ -203,6 +203,7 @@ class Locations extends Component {
                         {/* Kennel */}
                         <div className="box-location kennel">
                             <h3><strong>KENNEL</strong></h3>
+                            {/* {this.resetSocDone(this.state.dogs.socialization)}; */}
                             {this.checkfordata(kennel) ?
                                 <table className="table table-striped">
                                     <thead>
@@ -213,6 +214,7 @@ class Locations extends Component {
                                     </thead>
                                     <tbody>
                                         {kennel.map(dog => (
+                                            
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.overallProgress(dog.socialization)}</th>
