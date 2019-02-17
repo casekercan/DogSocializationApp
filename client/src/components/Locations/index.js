@@ -10,15 +10,25 @@ class Locations extends Component {
         staff: []
     }
 
+    resetSocDone = () => {
+        for (let i=0;i<this.state.dogs.socialization.length;i++){
+            let now=new Date();
+            let lastSoc = new Date(this.state.dogs.checkout);
+            if (now.getDay()!==lastSoc.getDay()){
+                this.state.dogs.socialization[i].done=false;
+            }
+        }
+    }
+
     componentDidMount() {
         this.pullcurrentLocation();
     };
 
     pullcurrentLocation = () => {
         API.getDogs()
-            .then(res =>
-                this.setState({ dogs: res.data })
-            ).catch(err => console.log(err));
+            .then(res =>this.setState({ dogs: res.data }))
+            .then(res =>this.resetSocDone())
+            .catch(err => console.log(err));
         API.getAllStaff()
             .then(res =>
                 this.setState({ staff: res.data })
