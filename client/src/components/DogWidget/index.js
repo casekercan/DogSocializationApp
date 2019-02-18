@@ -125,6 +125,19 @@ class DogWidget extends Component {
             signoutButton = <Button varient="primary" className="btn btn-lg returnBtn" onClick={() => this.findprogress(this.state.dog.socialization, this.state.dog)}>Kennel Return</Button>
         };
 
+        let editDogBtn;
+        let isAdmin = sessionStorage.admin;
+        if (isAdmin==="true"){
+            editDogBtn = (
+            <div className="buttonSpace">
+            <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>Edit Dog</Button>
+            <AddEditDog show={this.state.modal2Show} onHide={modal2Close}/>
+            </div>)
+        } else {
+            editDogBtn = (<div className="buttonSpace">
+            </div>)
+        }
+
         return (
             <div className="container" >
                 <div className="row">
