@@ -5,13 +5,19 @@ import "../styles/style.css";
 
 
 class DogList extends Component {
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            staffid: this.props.staffid
+        }
+    };
 
     render() {
 
         return (
+
             <div className="container">
-                <DogListWidget />
+                <DogListWidget staffid={this.state.staffid} />
             </div>
         )
     }

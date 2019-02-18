@@ -9,9 +9,13 @@ class CheckoutDog extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            dog: {}
+            checkoutActivity: "",
+            checkoutLocation: "",
+            staffid: this.props.staffid
         };
     }
+
+
 
     checkprogress = (done) => {
         if (!done) {
@@ -37,11 +41,11 @@ class CheckoutDog extends Component {
     }
 
     handleReturn = () => {
-        if (this.state.dog.location === "kennel") {
-            alert("Dog is not signed out")
-        } else {
-
-        }
+        // if (this.state.dog.location === "kennel") {
+        //     alert("Dog is not signed out")
+        // } else {
+        //     ////handle return of dog...
+        // }
     }
 
     render() {

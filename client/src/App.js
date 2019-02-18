@@ -88,7 +88,7 @@ class App extends Component {
               <Route path="/signup" render={() => <Signup signup={this.signup} />} />
               <Route exact path="/" component={Home} />
               <Route exact path="/dog/:id" component={Dog} />
-              <Route exact path="/doglist" component={Doglist} />
+              <Route exact path="/doglist" render={() => <Doglist staffid={this.state.id} />} />
               <Route exact path="/stafflist" component={StaffList} />
               <Route exact path="/staff/:id" component={Staff} />
               <Route component={Nomatch} />

@@ -9,8 +9,8 @@ import "../../styles/style.css"
 
 
 class DogListWidget extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             dogs: [],
             modalShow: false,
@@ -18,12 +18,15 @@ class DogListWidget extends Component {
             modalInfo: {
                 socialization: []
             },
-            inactive: false
+            inactive: false,
+            staffid: this.props.staffid
+
         };
     }
 
     componentDidMount() {
         this.findalldogs();
+        console.log(this.props.staffid)
     };
     findalldogs = () => {
         API.getDogs()
@@ -118,9 +121,9 @@ class DogListWidget extends Component {
                                             name={i}
                                         ><Badge>{soc.name}/{soc.duration}/{soc.ampm}</Badge></Button>
                                     ))}
-                                    <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
+                                    <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} staffid={this.state.staffid} />
                                 </th>
-                                <th>  <Link to={"/dog/" + dog._id} >More</Link> </th>
+                                <th> <Link to={"/dog/" + dog._id} >More</Link> </th>
                             </tr>
                         ))}
                     </tbody>
