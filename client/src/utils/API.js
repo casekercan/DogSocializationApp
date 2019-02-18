@@ -75,6 +75,28 @@ export default {
 
   checkStaff: function () {
     return axios.get("/api/")
-  }
+  },
 
+  checkoutDog: function (dog) {
+    return axios.post("/api/checkoutDog", dog)
+  },
+
+  socInprogress: function (dog) {
+    return axios.post("/api/socInprogress", dog)
+  },
+  checkoutStaff: function (staff) {
+    return axios.post("/api/checkoutStaff", staff);
+  },
+  returnDog: function (dog) {
+    return axios.post("/api/returnDog", dog)
+  },
+  returnStaff: function (staff) {
+    return axios.post("/api/returnStaff", staff)
+  },
+  socDone: function (dog) {
+    return axios.post("/api/socDone", dog)
+  },
+  socDone2: function (dog) {
+    return axios.post("/api/socDone2", dog)
+  }
 };

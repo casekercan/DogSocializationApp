@@ -46,12 +46,14 @@ class DogWidget extends Component {
         this.setState({ modal2Show: true })
     }
 
-    checkprogress = (done) => {
+    checkprogress = (soc) => {
 
-        if (done === false) {
-            return <span className="badge badge-danger">X</span>
+        if (soc.inprogress === true) {
+            return <span className="badge badge-warning">IN PROGRESS</span>
+        } else if (!soc.done) {
+            return <span className="badge badge-danger">NO</span>
         } else {
-            return <span className="badge badge-success">✓</span>
+            return <span className="badge badge-success">YES</span>
         }
 
     }
@@ -138,7 +140,7 @@ class DogWidget extends Component {
                                         <td className="cell">{soc.name}</td>
                                         <td className="cell">{soc.duration}</td>
                                         <td className="cell">{soc.ampm}</td>
-                                        <td className="cell">{this.checkprogress(soc.done)}</td>
+                                        <td className="cell">{this.checkprogress(soc)}</td>
                                     </tr>
                                 </tbody>
                             )}
