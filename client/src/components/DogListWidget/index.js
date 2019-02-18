@@ -18,7 +18,7 @@ class DogListWidget extends Component {
             modalInfo: {
                 socialization: []
             },
-            inactive: false
+            inactive: false,
         };
     }
 

@@ -17,6 +17,7 @@ class CheckoutDog extends Component {
     }
 
 
+
     checkprogress = (soc) => {
         if (soc.inprogress === true) {
             return <span className="badge badge-warning">IN PROGRESS</span>
@@ -31,7 +32,6 @@ class CheckoutDog extends Component {
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
-
         this.setState({
             [name]: value
         });
@@ -81,10 +81,19 @@ class CheckoutDog extends Component {
         }
     }
 
+    setActivityState = (soc) => {
+        for (let i = 0; i < soc.length; i++) {
+            if (soc[i].inprogress === true) {
+                this.setState({
+                    checkoutActivity: i
+                })
+            }
+        }
+    }
+
 
     render() {
         let dog = this.props.props;
-
 
         return (
             <Modal
