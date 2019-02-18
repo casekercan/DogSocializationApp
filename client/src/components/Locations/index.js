@@ -10,15 +10,26 @@ class Locations extends Component {
         staff: []
     }
 
+    // Reset socializations to done=false every day at midnight
+    resetSocDone = () => {
+        for (let i=0;i<this.state.dogs.socialization.length;i++){
+            let now=new Date();
+            let lastSoc = new Date(this.state.dogs.checkout);
+            console.log(now,lastSoc);
+            if (now.getDay() !== lastSoc.getDay()){
+                this.setState.dogs.socialization[i].done=false;
+            }
+        }
+    }
+
     componentDidMount() {
         this.pullcurrentLocation();
     };
 
     pullcurrentLocation = () => {
         API.getDogs()
-            .then(res =>
-                this.setState({ dogs: res.data })
-            ).catch(err => console.log(err));
+            .then(res =>this.setState({ dogs: res.data }))
+            .catch(err => console.log(err));
         API.getAllStaff()
             .then(res =>
                 this.setState({ staff: res.data })
@@ -71,6 +82,7 @@ class Locations extends Component {
     overallProgress = (soc) => {
         let notdone = [];
         for (let i = 0; i < soc.length; i++) {
+
             if (soc[i].done !== true) {
                 notdone.push(soc[i]);
             }
@@ -138,8 +150,10 @@ class Locations extends Component {
                                     <tbody>
                                         {northConcrete.map(dog => (
                                             <tr key={dog._id}>
+
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
                                                 <th>{this.checkprogress(dog.socialization, dog)}</th>
+
                                             </tr>
                                         ))}
                                     </tbody>
@@ -195,6 +209,7 @@ class Locations extends Component {
                         {/* Kennel */}
                         <div className="box-location kennel">
                             <h3><strong>KENNEL</strong></h3>
+                            {/* {this.resetSocDone(this.state.dogs.socialization)}; */}
                             {this.checkfordata(kennel) ?
                                 <table className="table table-striped">
                                     <thead>
@@ -205,8 +220,10 @@ class Locations extends Component {
                                     </thead>
                                     <tbody>
                                         {kennel.map(dog => (
+                                            
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
+
                                                 <th>{this.overallProgress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}

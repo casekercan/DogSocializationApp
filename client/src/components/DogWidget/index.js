@@ -141,6 +141,9 @@ class DogWidget extends Component {
                                 <h5>
                                     <span name="IDLabel" className="labels">ID: </span><span name="ID"> {this.state.dog.shelterID}</span>
                                 </h5>
+                                <h5>
+                                    <span name="locLabel" className="labels">Current Location: </span><span name="ID"> {this.state.dog.location}</span>
+                                </h5>
                             </div>
                         </div>
                         <div className="d-flex flex-column">
