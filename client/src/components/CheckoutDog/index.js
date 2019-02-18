@@ -60,26 +60,26 @@ class CheckoutDog extends Component {
         }
     }
 
-    handleReturn = (dog) => {
-        let returnDog = {
-            index: this.state.checkoutActivity,
-            id: dog._id,
-        }
-        let returnStaff = {
-            id: this.state.staffid
-        }
+    // handleReturn = (dog) => {
+    //     let returnDog = {
+    //         index: this.state.checkoutActivity,
+    //         id: dog._id,
+    //     }
+    //     let returnStaff = {
+    //         id: this.state.staffid
+    //     }
 
-        if (dog.location === "Kennel") {
-            console.log("Please check out dog first. ")
-        } else {
+    //     if (dog.location === "Kennel") {
+    //         console.log("Please check out dog first. ")
+    //     } else {
 
-            API.returnDog(returnDog).then().catch();
-            API.socDone(returnDog).then().catch();
-            API.socDone2(returnDog).then().catch();
-            API.returnStaff(returnStaff).then().catch();
-            this.props.onHide()
-        }
-    }
+    //         API.returnDog(returnDog).then().catch();
+    //         API.socDone(returnDog).then().catch();
+    //         API.socDone2(returnDog).then().catch();
+    //         API.returnStaff(returnStaff).then().catch();
+    //         this.props.onHide()
+    //     }
+    // }
 
     setActivityState = (soc) => {
         for (let i = 0; i < soc.length; i++) {
@@ -164,7 +164,7 @@ class CheckoutDog extends Component {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => this.handleReturn(dog)}>Kennel Return</Button>
+                    {/* <Button onClick={() => this.handleReturn(dog)}>Kennel Return</Button> */}
                     <Button onClick={() => this.handleCheckout(dog)}>Signout</Button>
                 </Modal.Footer>
             </Modal>
