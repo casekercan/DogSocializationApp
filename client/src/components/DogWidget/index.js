@@ -48,14 +48,13 @@ class DogWidget extends Component {
 
     checkprogress = (done) => {
 
-        if (done === false) {
+        if (!done) {
             return <span className="badge badge-danger">X</span>
         } else {
             return <span className="badge badge-success">✓</span>
         }
 
     }
-
 
     render() {
         let modalClose = () => {
@@ -67,6 +66,23 @@ class DogWidget extends Component {
         let modal2Close = () => this.setState({ modal2Show: false }, () => {
             this.getDog();
         });
+
+        let editDogBtn;
+        let isAdmin=sessionStorage.admin;
+        if (isAdmin==="true"){
+            editDogBtn=(
+                <div>
+                    <Button
+                        variant="primary"
+                        onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
+                    <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
+                </div>
+            )
+        } else {
+            editDogBtn=(
+                <div></div>
+            )
+        }
 
         return (
             <div className="container" >
@@ -115,13 +131,7 @@ class DogWidget extends Component {
                             <div>
                                 <h5 name="notes" className="notes">{this.state.dog.notes}</h5>
                             </div>
-
-                            <div>
-                                <Button className="btn btn-lg editBtn"
-                                    variant="primary"
-                                    onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
-                                <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
-                            </div>
+                            {editDogBtn}
                         </div>
                     </div>
                     <div className="col socContainer">
