@@ -21,7 +21,9 @@ class DogWidget extends Component {
             modal2Show: false,
             modal2Info: {
                 socialization: []
-            }
+            },
+            checkoutActivity: "",
+            staffid: sessionStorage.id
         };
     }
 
@@ -33,7 +35,10 @@ class DogWidget extends Component {
         API.getDog(this.props.props)
             .then(res => this.setState({
                 dog: res.data
+            }, () => {
+                this.setActivityState(this.state.dog.socialization);
             })).catch(err => console.log(err));
+
     }
 
     loadModal = (dog) => {
@@ -46,17 +51,61 @@ class DogWidget extends Component {
         this.setState({ modal2Show: true })
     }
 
-    checkprogress = (done) => {
 
-        if (!done) {
-            return <span className="badge badge-danger">X</span>
+
+    checkprogress = (soc) => {
+        if (soc.inprogress === true) {
+            return <span className="badge badge-warning">IN PROGRESS</span>
+        } else if (!soc.done) {
+            return <span className="badge badge-danger">NO</span>
         } else {
-            return <span className="badge badge-success">✓</span>
+            return <span className="badge badge-success">YES</span>
         }
+    }
+
+    setActivityState = (soc) => {
+        for (let i = 0; i < soc.length; i++) {
+            if (soc[i].inprogress === true) {
+                this.setState({
+                    checkoutActivity: i
+                })
+            }
+        }
+    }
+
+
+    findprogress = (soc, dog) => {
+        for (let i = 0; i < soc.length; i++) {
+            if (soc[i].inprogress === true) {
+                this.setState({
+                    checkoutActivity: i
+                }, () => {
+                    this.kennelReturn(dog)
+                })
+            }
+        }
+
+
+    }
+
+    kennelReturn = (dog) => {
+        let returnDog = {
+            index: this.state.checkoutActivity,
+            id: dog._id,
+        }
+        let returnStaff = {
+            id: this.state.staffid
+        }
+        API.returnDog(returnDog).then().catch();
+        API.socDone(returnDog).then().catch();
+        API.socDone2(returnDog).then().catch();
+        API.returnStaff(returnStaff).then().catch();
+        this.getDog()
 
     }
 
     render() {
+
         let modalClose = () => {
             this.setState({ modalShow: false }, () => {
                 this.getDog();
@@ -67,33 +116,21 @@ class DogWidget extends Component {
             this.getDog();
         });
 
-        let editDogBtn;
-        let isAdmin=sessionStorage.admin;
-        if (isAdmin==="true"){
-            editDogBtn=(
-                <div>
-                    <Button
-                        variant="primary"
-                        onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
-                    <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
-                </div>
-            )
+
+        let signoutButton;
+
+        if (this.state.dog.location === "Kennel") {
+            signoutButton = <Button variant="primary" className="btn btn-lg signoutBtn" onClick={() => this.loadModal(this.state.dog)}>Signout Dog</Button>
         } else {
-            editDogBtn=(
-                <div></div>
-            )
-        }
+            signoutButton = <Button varient="primary" className="btn btn-lg returnBtn" onClick={() => this.findprogress(this.state.dog.socialization, this.state.dog)}>Kennel Return</Button>
+        };
 
         return (
             <div className="container" >
                 <div className="row">
                     <div className="col infoContainer">
-                        <Button
-                            variant="primary"
-                            className="btn btn-lg signoutBtn"
-                            onClick={() => this.loadModal(this.state.dog)}>Signout Dog</Button>
+                        {signoutButton}
                         <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
-                        <button className="btn btn-lg returnBtn">Kennel Return</button>
                         <hr />
                         <div className="d-flex">
                             <img src={this.state.dog.pic} alt="dog pic" className="img-thumbnail" />
@@ -151,7 +188,7 @@ class DogWidget extends Component {
                                         <td className="cell">{soc.name}</td>
                                         <td className="cell">{soc.duration}</td>
                                         <td className="cell">{soc.ampm}</td>
-                                        <td className="cell">{this.checkprogress(soc.done)}</td>
+                                        <td className="cell">{this.checkprogress(soc, i)}</td>
                                     </tr>
                                 </tbody>
                             )}
@@ -164,6 +201,7 @@ class DogWidget extends Component {
     }
 
 };
+
 
 export default DogWidget;
 

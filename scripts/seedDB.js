@@ -25,7 +25,7 @@ const dogSeed = [
         name: "Walk",
         duration: 40,
         ampm: "am",
-        done: true,
+        done: false,
         inprogress: false
 
       },
@@ -33,7 +33,7 @@ const dogSeed = [
         name: "BRBreak",
         duration: 15,
         ampm: "pm",
-        done: true,
+        done: false,
         inprogress: false
 
       }
@@ -87,7 +87,7 @@ const dogSeed = [
         name: "BRBreak",
         duration: 10,
         ampm: "am",
-        done: true,
+        done: false,
         inprogress: false
 
       },
@@ -96,12 +96,12 @@ const dogSeed = [
         duration: 40,
         ampm: "pm",
         done: false,
-        inprogress: true
+        inprogress: false
 
       }
     ],
     checkout: new Date('2019/02/16 10:30'),
-    location: "North Group Area"
+    location: "Kennel"
   },
   {
     name: "Benson",
@@ -158,7 +158,7 @@ const dogSeed = [
         duration: 10,
         ampm: "am",
         done: false,
-        inprogress: true
+        inprogress: false
 
       },
       {
@@ -171,7 +171,7 @@ const dogSeed = [
       }
     ],
     checkout: new Date('2019/02/16 14:20'),
-    location: "The Track"
+    location: "Kennel"
   },
 ];
 

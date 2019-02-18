@@ -12,12 +12,12 @@ class Locations extends Component {
 
     // Reset socializations to done=false every day at midnight
     resetSocDone = () => {
-        for (let i=0;i<this.state.dogs.socialization.length;i++){
-            let now=new Date();
+        for (let i = 0; i < this.state.dogs.socialization.length; i++) {
+            let now = new Date();
             let lastSoc = new Date(this.state.dogs.checkout);
-            console.log(now,lastSoc);
-            if (now.getDay() !== lastSoc.getDay()){
-                this.setState.dogs.socialization[i].done=false;
+            console.log(now, lastSoc);
+            if (now.getDay() !== lastSoc.getDay()) {
+                this.setState.dogs.socialization[i].done = false;
             }
         }
     }
@@ -28,7 +28,7 @@ class Locations extends Component {
 
     pullcurrentLocation = () => {
         API.getDogs()
-            .then(res =>this.setState({ dogs: res.data }))
+            .then(res => this.setState({ dogs: res.data }))
             .catch(err => console.log(err));
         API.getAllStaff()
             .then(res =>
@@ -44,11 +44,11 @@ class Locations extends Component {
         }
     };
 
-    checkstatus = (avail) => {
-        if (avail) {
-            return <span className="available-badge badge badge-success">  </span>
+    checkstatus = (staff) => {
+        if (staff.available) {
+            return <span className="available-badge badge badge-success"> YES </span>
         } else {
-            return <span className="available-badge badge badge-danger">  </span>
+            return <span className="available-badge badge badge-danger"> {staff.location ? staff.location : "Location Unknown"} </span>
         }
     };
 
@@ -56,45 +56,49 @@ class Locations extends Component {
         return dog.checkout;
     };
 
-    checkprogress = (soc,dog) => {
-        let socPlanTime,checkoutTime,checkedOut;
+    checkprogress = (soc, dog) => {
+        let socPlanTime, checkoutTime, checkedOut;
         for (let i = 0; i < soc.length; i++) {
             if (soc[i].inprogress) {
-                socPlanTime=parseInt(soc[i].duration); //returns an integer(works)
+                socPlanTime = parseInt(soc[i].duration); //returns an integer(works)
                 checkoutTime = true;
             }
             if (checkoutTime) {
                 checkedOut = new Date(this.getCheckout(dog));
             }
         }
-        
-        var diff = Math.floor(Math.abs(new Date() - new Date(checkedOut))/60000);
+
+        var diff = Math.floor(Math.abs(new Date() - new Date(checkedOut)) / 60000);
         var minutes = socPlanTime - diff;
 
-        if (minutes>0) {
+        if (minutes > 0) {
             return <span className="badge badge-warning">{Math.abs(minutes)}</span>
         } else {
             return <span className="badge badge-success">{Math.abs(minutes)}</span>
         }
-       
+
     }
 
-    overallProgress = (soc)=> {
+    overallProgress = (soc) => {
         let notdone = [];
         for (let i = 0; i < soc.length; i++) {
-            if (!soc[i].done) {notdone.push(soc[i])}
+
+            if (soc[i].done !== true) {
+                notdone.push(soc[i]);
+            }
         }
-        if (notdone) {
-            return <span className="badge badge-danger">x</span>
+
+        if (notdone.length <= 0) {
+            return <span className="badge badge-success">✓</span>
         } else {
-            return <span className="badge badge-success">&#10003;</span>
+            return <span className="badge badge-danger">X</span>
         }
     }
 
     render() {
         //create variables to filter by location
         let kennel = this.state.dogs.filter(dog => dog.location === "Kennel");
-        let offCampus = this.state.dogs.filter(dog => dog.location === "Off Campus");
+        let offCampus = this.state.dogs.filter(dog => dog.location === "Off-Campus");
         let theTrack = this.state.dogs.filter(dog => dog.location === "The Track");
         let eastGroup = this.state.dogs.filter(dog => dog.location === "East Group Area");
         let northGroup = this.state.dogs.filter(dog => dog.location === "North Group Area");
@@ -125,7 +129,7 @@ class Locations extends Component {
                                         {activeStaff.map(staff => (
                                             <tr key={staff._id}>
                                                 <th><Link to={"/staff/" + staff._id}>{staff.name}</Link></th>
-                                                <th>{this.checkstatus(staff.available)}</th>
+                                                <th>{this.checkstatus(staff)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -146,8 +150,10 @@ class Locations extends Component {
                                     <tbody>
                                         {northConcrete.map(dog => (
                                             <tr key={dog._id}>
-                                                <th><Link to={"/dog/" + dog._id}>{dog.name}}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization)}</th>      <th><Link to={"/dog/" + dog._id}>More</Link></th>
+
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
+
                                             </tr>
                                         ))}
                                     </tbody>
@@ -169,7 +175,7 @@ class Locations extends Component {
                                         {theTrack.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -191,7 +197,7 @@ class Locations extends Component {
                                         {offCampus.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -214,10 +220,11 @@ class Locations extends Component {
                                     </thead>
                                     <tbody>
                                         {kennel.map(dog => (
-                                            
+
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.overallProgress(dog.socialization)}</th>
+
+                                                <th>{this.overallProgress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -241,7 +248,7 @@ class Locations extends Component {
                                         {eastGroup.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -263,7 +270,7 @@ class Locations extends Component {
                                         {dirt.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -285,7 +292,7 @@ class Locations extends Component {
                                         {northGroup.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -309,7 +316,7 @@ class Locations extends Component {
                                         {grassy1.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -331,7 +338,7 @@ class Locations extends Component {
                                         {grassy2.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -353,7 +360,7 @@ class Locations extends Component {
                                         {grassy3.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -375,7 +382,7 @@ class Locations extends Component {
                                         {southConcrete.map(dog => (
                                             <tr key={dog._id}>
                                                 <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization,dog)}</th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>

@@ -18,7 +18,7 @@ class DogListWidget extends Component {
             modalInfo: {
                 socialization: []
             },
-            inactive: false
+            inactive: false,
         };
     }
 
@@ -60,16 +60,20 @@ class DogListWidget extends Component {
 
     checkprogress = (soc) => {
         if (soc.done && !soc.inprogress) {
-            return "btn-sm btn-success"
+            return "success"
         } else if (!soc.done && !soc.inprogress) {
-            return "btn-sm btn-danger"
+            return "danger"
         } else {
-            return "btn-sm btn-warning"
+            return "warning"
         }
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
+        let modalClose = () => {
+            this.setState({ modalShow: false }, () => {
+                this.findalldogs();
+            });
+        };
         let modalClose2 = () => {
             this.setState({ modalShow2: false }, () => {
                 this.findalldogs();
@@ -118,12 +122,7 @@ class DogListWidget extends Component {
                                 <th>{dog.kennel}</th>
                                 <th>
                                     {dog.socialization.map((soc, i) => (
-                                        <Button
-                                            key={i}
-                                            onClick={() => this.loadModal(dog)}
-                                            className={this.checkprogress(soc)}
-                                            name={i}
-                                        ><Badge>{soc.name}/{soc.duration}/{soc.ampm}</Badge></Button>
+                                        <Badge variant={this.checkprogress(soc)}> {soc.name}/{soc.duration}/{soc.ampm} </Badge>
                                     ))}
                                     <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                                 </th>
