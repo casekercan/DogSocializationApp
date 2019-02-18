@@ -11,7 +11,7 @@ class CheckoutDog extends Component {
         this.state = {
             checkoutActivity: "",
             checkoutLocation: "",
-            staffid: this.props.staffid
+            staffid: sessionStorage.id
         };
     }
 

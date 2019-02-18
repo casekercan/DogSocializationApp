@@ -27,6 +27,7 @@ class Nav extends Component {
             console.log(res.data)
             if (res.status === 200) {
                 this.updateUserLogout(this.props.id)
+                sessionStorage.clear();
                 this.props.updateStaff({
                     loggedIn: false,
                     username: null,

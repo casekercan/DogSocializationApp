@@ -100,7 +100,8 @@ router.post(
     console.log('logged in', req.user);
     var userInfo = {
       email: req.user.email,
-      id: req.user._id
+      id: req.user._id,
+      admin: req.user.admin
     }
     res.send(userInfo);
   }

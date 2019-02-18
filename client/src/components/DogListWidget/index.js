@@ -18,15 +18,12 @@ class DogListWidget extends Component {
             modalInfo: {
                 socialization: []
             },
-            inactive: false,
-            staffid: this.props.staffid
-
+            inactive: false
         };
     }
 
     componentDidMount() {
         this.findalldogs();
-        console.log(this.props.staffid)
     };
     findalldogs = () => {
         API.getDogs()
@@ -121,7 +118,7 @@ class DogListWidget extends Component {
                                             name={i}
                                         ><Badge>{soc.name}/{soc.duration}/{soc.ampm}</Badge></Button>
                                     ))}
-                                    <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} staffid={this.state.staffid} />
+                                    <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                                 </th>
                                 <th> <Link to={"/dog/" + dog._id} >More</Link> </th>
                             </tr>
