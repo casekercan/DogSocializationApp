@@ -20,7 +20,7 @@ class VolunteerList extends Component {
 
     findAllStaff = () => {
         API.getAllStaff()
-            .then(res => this.setState({voteers: res.data}, () => {
+            .then(res => this.setState({ voteers: res.data }, () => {
                 this.setState({
                     inactive: false
                 })
@@ -44,15 +44,15 @@ class VolunteerList extends Component {
 
     checkstatus = (avail) => {
         if (avail) {
-            return <span className="available-badge badge badge-success">  </span>
+            return <span className="available-badge badge badge-success"> YES </span>
 
         } else {
-            return <span className="available-badge badge badge-danger">  </span>
+            return <span className="available-badge badge badge-danger"> NO </span>
         }
     }
 
     render() {
-        let adminStaff = this.state.voteers.filter(staff => staff.admin === true);
+        //let adminStaff = this.state.voteers.filter(staff => staff.admin === true);
 
         let modalClose = () => this.setState({ modalShow: false }, () => {
             this.findAllStaff();
