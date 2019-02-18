@@ -39,6 +39,10 @@ if (process.env.NODE_ENV === "production") {
 
 }
 
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 // Connect to the Mongo DB
 var CONNECTION_URI = process.env.MONGODB_URI || "mongodb://localhost/dogSocialization";
 
