@@ -52,6 +52,7 @@ class DogWidget extends Component {
     }
 
 
+
     checkprogress = (soc) => {
         if (soc.inprogress === true) {
             return <span className="badge badge-warning">IN PROGRESS</span>
@@ -71,6 +72,7 @@ class DogWidget extends Component {
             }
         }
     }
+
 
     findprogress = (soc, dog) => {
         for (let i = 0; i < soc.length; i++) {
@@ -113,6 +115,7 @@ class DogWidget extends Component {
         let modal2Close = () => this.setState({ modal2Show: false }, () => {
             this.getDog();
         });
+
 
         let signoutButton;
 
@@ -165,13 +168,7 @@ class DogWidget extends Component {
                             <div>
                                 <h5 name="notes" className="notes">{this.state.dog.notes}</h5>
                             </div>
-
-                            <div>
-                                <Button className="btn btn-lg editBtn"
-                                    variant="primary"
-                                    onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
-                                <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
-                            </div>
+                            {editDogBtn}
                         </div>
                     </div>
                     <div className="col socContainer">

@@ -44,6 +44,7 @@ class VolunteerList extends Component {
 
     checkstatus = (avail) => {
         if (avail) {
+
             return <span className="available-badge badge badge-success"> YES </span>
 
         } else {
@@ -52,6 +53,7 @@ class VolunteerList extends Component {
     }
 
     render() {
+
         //let adminStaff = this.state.voteers.filter(staff => staff.admin === true);
 
         let modalClose = () => this.setState({ modalShow: false }, () => {
@@ -60,23 +62,30 @@ class VolunteerList extends Component {
 
         const isInactive = this.state.inactive;
         let button;
-
         if (isInactive) {
             button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findAllStaff()}>Staff Currently Logged-In </Button>;
         } else {
             button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>Staff Not Logged-In</Button>;
+        };
+
+        let newSButtons;
+        let isAdmin = sessionStorage.admin;
+        if (isAdmin==="true"){
+            newSButtons = (
+            <div className="buttonSpace">
+            <Button className="btn btn-lg newStaffBtn" variant="primary" onClick={() => this.loadModal()}>New Staff</Button>
+            <AddEditStaff show={this.state.modalShow} onHide={modalClose}/>
+            {button}
+            </div>)
+        } else {
+            newSButtons = (<div className="buttonSpace">
+               {button}
+            </div>)
         }
 
         return (
             <div className="container">
-                <div className="buttonSpace">
-                    <Button
-                        variant="primary"
-                        className="btn btn-lg newStaffBtn"
-                        onClick={() => this.loadModal()}>New Staff</Button>
-                    <AddEditStaff show={this.state.modalShow} onHide={modalClose} />
-                    {button}
-                </div>
+                {newSButtons}
                 <table className="table table-striped">
                     <thead>
                         <tr>

@@ -50,6 +50,25 @@ class StaffListWidget extends Component {
         let modalClose = () => this.setState({ modalShow: false }, () => {
             this.findStaff();
         });
+
+        let editStaffBtn;
+        let isAdmin=sessionStorage.admin;
+        if (isAdmin==="true"){
+            editStaffBtn=(
+                <div>
+                    <Button
+                        variant="primary"
+                        className="btn btn-lg editBtn"
+                        onClick={() => this.loadModal(this.state.staff)}>Edit Staff</Button>
+                    <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
+                </div>
+            )
+        } else {
+            editStaffBtn=(
+                <div></div>
+            )
+        }
+
         return (
 
             <div className="container" >
@@ -85,13 +104,7 @@ class StaffListWidget extends Component {
                             <div>
                                 <h5 name="notes" className="notes">{this.state.staff.notes}</h5>
                             </div>
-                            <div>
-                                <Button
-                                    variant="primary"
-                                    className="btn btn-lg editBtn"
-                                    onClick={() => this.loadModal(this.state.staff)}>Edit Staff</Button>
-                                <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
-                            </div>
+                            {editStaffBtn}
                         </div>
                     </div>
                     {/* <div class="col socContainer">

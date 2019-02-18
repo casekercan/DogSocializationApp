@@ -79,26 +79,33 @@ class DogListWidget extends Component {
                 this.findalldogs();
             });
         };
+
         const isInactive = this.state.inactive;
         let button;
-
-
         if (isInactive) {
             button = <Button className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
         } else {
             button = <Button className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
         }
 
+        let newButtons;
+        let isAdmin = sessionStorage.admin;
+        if (isAdmin==="true"){
+            newButtons = (
+            <div className="buttonSpace">
+            <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
+            <AddEditDog show={this.state.modalShow2} onHide={modalClose2}/>
+            {button}
+            </div>)
+        } else {
+            newButtons = (<div className="buttonSpace">
+               {button}
+            </div>)
+        }
 
         return (
             <div className="container">
-                <div className="buttonSpace">
-                    <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
-                    <AddEditDog show={this.state.modalShow2} onHide={modalClose2} />
-
-                    {button}
-
-                </div>
+                {newButtons}
                 <table className="table table-striped">
                     <thead>
                         <tr>
