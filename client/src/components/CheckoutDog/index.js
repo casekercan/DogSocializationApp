@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "../../styles/style.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-//import API from "../../utils/API";
+import Form from "react-bootstrap/Form";
+import API from "../../utils/API";
 
 
 class CheckoutDog extends Component {
@@ -15,35 +16,75 @@ class CheckoutDog extends Component {
         };
     }
 
-    checkprogress = (done) => {
-        if (!done) {
-            return <span className="badge badge-danger">X</span>
-        } else {
-            return <span className="badge badge-success">✓</span>
-        }
 
+    checkprogress = (soc) => {
+        if (soc.inprogress === true) {
+            return <span className="badge badge-warning">IN PROGRESS</span>
+        } else if (!soc.done) {
+            return <span className="badge badge-danger">NO</span>
+        } else {
+            return <span className="badge badge-success">YES</span>
+        }
     }
 
-    handleCheckout = (location) => {
-        if (location === "Kennel") {
-            console.log("GREAT! dog now checked out...")
-        } else {
-            console.log("Dog isn't in Kennel. Dog is located in: " + location)
-        }
 
+    handleInputChange = event => {
+        const value = event.target.value;
+        const name = event.target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
-    handleReturn = (location) => {
-        if (location === "Kennel") {
+    handleCheckout = (dog) => {
+        let checkoutDog = {
+            index: this.state.checkoutActivity,
+            id: dog._id,
+            location: this.state.checkoutLocation
+        }
+        let checkoutStaff = {
+            id: this.state.staffid,
+            location: this.state.checkoutLocation
+        }
+
+        if (dog.location === "Kennel") {
+            API.checkoutDog(checkoutDog).then().catch();
+            API.socInprogress(checkoutDog).then().catch();
+            API.checkoutStaff(checkoutStaff).then().catch();
+            this.props.onHide()
+
+        } else {
+
+            console.log("Dog isn't in Kennel. Dog is located in: " + dog.location)
+        }
+    }
+
+    handleReturn = (dog) => {
+        let returnDog = {
+            index: this.state.checkoutActivity,
+            id: dog._id,
+        }
+        let returnStaff = {
+            id: this.state.staffid
+        }
+
+        if (dog.location === "Kennel") {
             console.log("Please check out dog first. ")
         } else {
-            console.log("GREAT! Thanks for returning dog")
+
+            API.returnDog(returnDog).then().catch();
+            API.socDone(returnDog).then().catch();
+            API.socDone2(returnDog).then().catch();
+            API.returnStaff(returnStaff).then().catch();
+            this.props.onHide()
         }
     }
 
 
     render() {
         let dog = this.props.props;
+
 
         return (
             <Modal
@@ -58,7 +99,8 @@ class CheckoutDog extends Component {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h6 className="instructions">Check plan and location dog is moved to</h6>
+                    <h6 className="instructions">To SIGN OUT a dog select what socialization you are going to complete, and what location you and the dog wil be at, then click "Signout" </h6>
+                    <h6 className="instructions">To RETURN a dog select what socialization you are completing, then click "Kennel Return"</h6>
                     <hr />
                     <div>
                         <table>
@@ -75,14 +117,18 @@ class CheckoutDog extends Component {
                                 <tbody key={idx}>
                                     <tr key={dog._id} className="table-active">
                                         <td className="cell">
-                                            <div className="form-check">
-                                                <input className="form-check-input" type="radio" name={idx} id="exampleRadios1" value={idx} />
+                                            <div >
+                                                <input
+                                                    type="radio"
+                                                    name="checkoutActivity"
+                                                    value={idx}
+                                                    onChange={this.handleInputChange} />
                                             </div>
                                         </td>
                                         <td className="cell">{soc.name}</td>
                                         <td className="cell">{soc.duration}</td>
                                         <td className="cell">{soc.ampm}</td>
-                                        <td className="cell">{this.checkprogress(soc.done)}</td>
+                                        <td className="cell">{this.checkprogress(soc)}</td>
                                     </tr>
                                 </tbody>
                             )}
@@ -92,25 +138,25 @@ class CheckoutDog extends Component {
                             <div className="input-group-prepend">
                                 <label className="input-group-text" >Locations</label>
                             </div>
-                            <select className="custom-select" name="locationInput">
+                            <Form.Control as="select" name="checkoutLocation" onChange={this.handleInputChange}>
                                 <option >Choose...</option>
-                                <option value="1">Off-Campus</option>
-                                <option value="2">The Track</option>
-                                <option value="3">East Group Area</option>
-                                <option value="4">North Group Area</option>
-                                <option value="5">North Concrete Area</option>
-                                <option value="6">The Dirt</option>
-                                <option value="7">Grassy 1</option>
-                                <option value="8">Grassy 2</option>
-                                <option value="9">Grassy 3</option>
-                                <option value="10">South Concrete Area</option>
-                            </select>
+                                <option value="Off-Campus" >Off-Campus</option>
+                                <option value="The Track" >The Track</option>
+                                <option value="East Group Area" >East Group Area</option>
+                                <option value="North Group Area" >North Group Area</option>
+                                <option value="North Concrete Area" >North Concrete Area</option>
+                                <option value="The Dirt" >The Dirt</option>
+                                <option value="Grassy 1" >Grassy 1</option>
+                                <option value="Grassy 2" >Grassy 2</option>
+                                <option value="Grassy 3" >Grassy 3</option>
+                                <option value="South Concrete Area">South Concrete Area</option>
+                            </Form.Control>
                         </div>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => this.handleReturn(dog.location)}>Kennel Return</Button>
-                    <Button onClick={() => this.handleCheckout(dog.location)}>Signout</Button>
+                    <Button onClick={() => this.handleReturn(dog)}>Kennel Return</Button>
+                    <Button onClick={() => this.handleCheckout(dog)}>Signout</Button>
                 </Modal.Footer>
             </Modal>
         );

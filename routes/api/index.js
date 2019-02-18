@@ -58,6 +58,30 @@ router.route("/staff/login/:id")
 router.route("/staff/logout/:id")
   .post(appController.updateStaffLogout)
 
+//checkoutDog  soc marked inprogress.. dog location changed
+router.route("/checkoutDog")
+  .post(appController.checkoutDog)
+
+router.route("/socInprogress")
+  .post(appController.socInprogress)
+
+//checkout Staff  - update not available/Location=doglocation
+router.route("/checkoutStaff")
+  .post(appController.checkoutStaff)
+//returnDog soc marked done...dog in kennel
+router.route("/returnDog")
+  .post(appController.returnDog)
+
+router.route("/socDone")
+  .post(appController.socDone)
+
+router.route("/socDone2")
+  .post(appController.socDone2)
+
+//return Staff - update is available / location is cleared
+router.route("/returnStaff")
+  .post(appController.returnStaff)
+
 //PASSPORT NO APPCONTROLLER.JS//
 //////////////////////////////
 /////////////////////////////

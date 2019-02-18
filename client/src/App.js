@@ -70,10 +70,6 @@ class App extends Component {
               <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
               <Route path="/signup" render={() => <Signup signup={this.signup} updateStaff={this.updateStaff} />} />
               <Route exact path="/" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-              <Route exact path="/dog/:id" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-              <Route exact path="/doglist" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-              <Route exact path="/stafflist" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-              <Route exact path="/staff/:id" render={() => <LoginForm updateStaff={this.updateStaff} />} />
               <Route component={Nomatch} />
             </Switch>
           </div>
