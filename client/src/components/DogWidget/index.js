@@ -68,8 +68,6 @@ class DogWidget extends Component {
             this.getDog();
         });
 
-
-
         return (
             <div className="container" >
                 <div className="row">

@@ -11,11 +11,9 @@ class CheckoutDog extends Component {
         this.state = {
             checkoutActivity: "",
             checkoutLocation: "",
-            staffid: sessionStorage.id
+            staffid: sessionStorage.id,
         };
     }
-
-
 
     checkprogress = (done) => {
         if (!done) {
@@ -26,30 +24,27 @@ class CheckoutDog extends Component {
 
     }
 
-    handleCheckout = () => {
-        // if (this.state.dog.location !== "kennel"){
-        //     alert ("Dog is checked out - return dog to kennel first")
-        // } else {
-        //     const now=new Date();
-        //     this.setState({location:$(locationInput).selected});
-        //     this.setState({socialization:{}});
-        //     this.setState({checkout:now});
-        //     let newSocPlan = {...this.state.socialization[{}]};
-        //     newSocPlan.inprogress=true;
-        //     this.setState(newSocPlan);
-        // }
+    handleCheckout = (location) => {
+        if (location === "Kennel") {
+            console.log("GREAT! dog now checked out...")
+        } else {
+            console.log("Dog isn't in Kennel. Dog is located in: " + location)
+        }
+
     }
 
-    handleReturn = () => {
-        // if (this.state.dog.location === "kennel") {
-        //     alert("Dog is not signed out")
-        // } else {
-        //     ////handle return of dog...
-        // }
+    handleReturn = (location) => {
+        if (location === "Kennel") {
+            console.log("Please check out dog first. ")
+        } else {
+            console.log("GREAT! Thanks for returning dog")
+        }
     }
+
 
     render() {
         let dog = this.props.props;
+
         return (
             <Modal
                 {...this.props}
@@ -114,8 +109,8 @@ class CheckoutDog extends Component {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.handleReturn}>Kennel Return</Button>
-                    <Button onClick={this.handleCheckout}>Signout</Button>
+                    <Button onClick={() => this.handleReturn(dog.location)}>Kennel Return</Button>
+                    <Button onClick={() => this.handleCheckout(dog.location)}>Signout</Button>
                 </Modal.Footer>
             </Modal>
         );
