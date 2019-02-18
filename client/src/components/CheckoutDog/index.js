@@ -149,7 +149,7 @@ class CheckoutDog extends Component {
                             </div>
                             <Form.Control as="select" name="checkoutLocation" onChange={this.handleInputChange}>
                                 <option >Choose...</option>
-                                <option value="Off-Campus" >Off-Campus</option>
+                                <option value="Off Campus" >Off Campus</option>
                                 <option value="The Track" >The Track</option>
                                 <option value="East Group Area" >East Group Area</option>
                                 <option value="North Group Area" >North Group Area</option>
