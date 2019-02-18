@@ -9,8 +9,8 @@ import "../../styles/style.css"
 
 
 class DogListWidget extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             dogs: [],
             modalShow: false,
@@ -120,7 +120,7 @@ class DogListWidget extends Component {
                                     ))}
                                     <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                                 </th>
-                                <th>  <Link to={"/dog/" + dog._id} >More</Link> </th>
+                                <th> <Link to={"/dog/" + dog._id} >More</Link> </th>
                             </tr>
                         ))}
                     </tbody>

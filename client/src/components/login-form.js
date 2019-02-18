@@ -32,6 +32,8 @@ class LoginForm extends Component {
             if (res.status === 200) {
                 //call function to mark staff as active/available
                 this.updateUserActive(res.data.id)
+                sessionStorage.setItem("admin", res.data.admin);
+                sessionStorage.setItem("id", res.data.id)
                 // update App.js state
                 this.props.updateStaff({
                     loggedIn: true,

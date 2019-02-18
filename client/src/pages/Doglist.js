@@ -8,7 +8,6 @@ class DogList extends Component {
 
 
     render() {
-
         return (
             <div className="container">
                 <DogListWidget />

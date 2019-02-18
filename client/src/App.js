@@ -47,11 +47,13 @@ class App extends Component {
           })
         } else {
           console.log("Get staff: no staff");
+          sessionStorage.clear();
           this.setState({
             loggedIn: false,
             username: null,
             id: null
           })
+
         }
 
       })
