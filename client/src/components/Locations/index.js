@@ -33,8 +33,8 @@ class Locations extends Component {
         }
     };
 
-    checkstatus = (avail) => {
-        if (avail) {
+    checkstatus = (staff) => {
+        if (staff.available) {
             return <span className="available-badge badge badge-success">  </span>
         } else {
             return <span className="available-badge badge badge-danger">  </span>
@@ -71,15 +71,15 @@ class Locations extends Component {
     overallProgress = (soc) => {
         let notdone = [];
         for (let i = 0; i < soc.length; i++) {
-            if (!soc[i].done) {
+            if (soc[i].done !== true) {
                 notdone.push(soc[i]);
             }
         }
 
-        if (notdone) {
-            return <span className="badge badge-danger">x</span>
+        if (notdone.length <= 0) {
+            return <span className="badge badge-success">✓</span>
         } else {
-            return <span className="badge badge-success">OK</span>
+            return <span className="badge badge-danger">X</span>
         }
     }
 
@@ -117,7 +117,7 @@ class Locations extends Component {
                                         {activeStaff.map(staff => (
                                             <tr key={staff._id}>
                                                 <th><Link to={"/staff/" + staff._id}>{staff.name}</Link></th>
-                                                <th>{this.checkstatus(staff.available)}</th>
+                                                <th>{this.checkstatus(staff)}</th>
                                             </tr>
                                         ))}
                                     </tbody>

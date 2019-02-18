@@ -35,6 +35,8 @@ class DogWidget extends Component {
         API.getDog(this.props.props)
             .then(res => this.setState({
                 dog: res.data
+            }, () => {
+                this.setActivityState(this.state.dog.socialization);
             })).catch(err => console.log(err));
 
     }
@@ -50,13 +52,23 @@ class DogWidget extends Component {
     }
 
 
-    checkprogress = (soc, i) => {
+    checkprogress = (soc) => {
         if (soc.inprogress === true) {
             return <span className="badge badge-warning">IN PROGRESS</span>
         } else if (!soc.done) {
             return <span className="badge badge-danger">NO</span>
         } else {
             return <span className="badge badge-success">YES</span>
+        }
+    }
+
+    setActivityState = (soc) => {
+        for (let i = 0; i < soc.length; i++) {
+            if (soc[i].inprogress === true) {
+                this.setState({
+                    checkoutActivity: i
+                })
+            }
         }
     }
 
