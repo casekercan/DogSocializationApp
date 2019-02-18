@@ -138,8 +138,8 @@ class Locations extends Component {
                                     <tbody>
                                         {northConcrete.map(dog => (
                                             <tr key={dog._id}>
-                                                <th><Link to={"/dog/" + dog._id}>{dog.name}}</Link></th>
-                                                <th>{this.checkprogress(dog.socialization, dog)}</th>                    <th><Link to={"/dog/" + dog._id}>More</Link></th>
+                                                <th><Link to={"/dog/" + dog._id}>{dog.name}</Link></th>
+                                                <th>{this.checkprogress(dog.socialization, dog)}</th>
                                             </tr>
                                         ))}
                                     </tbody>

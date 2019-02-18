@@ -87,7 +87,6 @@ class DogWidget extends Component {
     }
 
     kennelReturn = (dog) => {
-
         let returnDog = {
             index: this.state.checkoutActivity,
             id: dog._id,
@@ -99,6 +98,8 @@ class DogWidget extends Component {
         API.socDone(returnDog).then().catch();
         API.socDone2(returnDog).then().catch();
         API.returnStaff(returnStaff).then().catch();
+        this.getDog()
+
     }
 
     render() {
