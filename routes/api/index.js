@@ -89,7 +89,7 @@ router.route("/returnStaff")
 
 //SIGN UP
 router.post('/signup', (req, res) => {
-  const { email, password } = req.body
+  const { email, password, name } = req.body
   // ADD VALIDATION
   Staff.findOne({ email: email }, (err, staff) => {
     if (err) {
@@ -102,7 +102,8 @@ router.post('/signup', (req, res) => {
     else {
       const newStaff = new Staff({
         email: email,
-        password: password
+        password: password,
+        name: name
       })
       newStaff.save((err, savedStaff) => {
         if (err) return res.json(err)
