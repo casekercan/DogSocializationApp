@@ -91,7 +91,7 @@ class NavB extends Component {
                             <Link to="/signup" variant="primary" className="nav-link" >Signup</Link>
                         </li>
                     </ul> */}
-                <span style={{textColor:'red'}}>Please <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to use the SSPA-Socialization App</span>
+                <span className="introLogin">Please <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to use the SSPA-Socialization App</span>
                 </Navbar>
             );
         }

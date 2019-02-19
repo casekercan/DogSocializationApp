@@ -54,7 +54,7 @@ class SignupForm extends Component {
 				<div className="container">
 					<br/>
                     <Card bg="dark" className="text-white">
-                            <Card.Title>Sign-Up</Card.Title>
+                            <Card.Title style={{fontSize:'24px',textAlign:'center'}}>Sign-Up</Card.Title>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                     <div className="col-1 col-ml-auto">
@@ -103,7 +103,7 @@ class SignupForm extends Component {
                                 <div className="form-group">
                                     <Button
                                         className="btn col-2 col-mr-auto"
-                                        style={{backgroundColor:'rgb(14,166,197)'}}
+                                        style={{backgroundColor:'rgb(14,166,197)',margin:'20px', textAlign:'center'}}
                                         onClick={this.handleSubmit}
                                         type="submit">Sign-Up</Button>
                                     <Link to="/login">Login</Link>

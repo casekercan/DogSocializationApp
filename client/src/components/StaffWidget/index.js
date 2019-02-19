@@ -59,7 +59,6 @@ class StaffListWidget extends Component {
             <div className="container" >
                 <div className="row">
                     <div className="col infoContainer">
-
                         <hr />
                         <div className="d-flex">
                             <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" />

@@ -3,7 +3,7 @@ import "../../styles/style.css";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import AddEditStaff from "../AddEditStaff";
+// import AddEditStaff from "../AddEditStaff";
 
 
 class VolunteerList extends Component {
@@ -56,43 +56,46 @@ class VolunteerList extends Component {
 
         //let adminStaff = this.state.voteers.filter(staff => staff.admin === true);
 
-        let modalClose = () => this.setState({ modalShow: false }, () => {
-            this.findAllStaff();
-        });
+        // let modalClose = () => this.setState({ modalShow: false }, () => {
+        //     this.findAllStaff();
+        // });
 
         const isInactive = this.state.inactive;
         let button;
         if (isInactive) {
-            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg" variant="primary" onClick={() => this.findAllStaff()}>Staff Currently Logged-In </Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg" variant="primary" onClick={() => this.findAllStaff()}>Staff Currently Logged-In </Button>;
         } else {
-            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>Staff Not Logged-In</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>Staff Not Logged-In</Button>;
         };
 
-        let newSButtons;
-        let isAdmin = sessionStorage.admin;
-        if (isAdmin==="true"){
-            newSButtons = (
-            <div className="buttonSpace">
-            <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newStaffBtn" variant="primary" onClick={() => this.loadModal()}>New Staff</Button>
-            <AddEditStaff show={this.state.modalShow} onHide={modalClose}/>
-            {button}
-            </div>)
-        } else {
-            newSButtons = (<div className="buttonSpace">
-               {button}
-            </div>)
-        }
+        // let newSButtons;
+        // let isAdmin = sessionStorage.admin;
+        // if (isAdmin==="true"){
+        //     newSButtons = (
+        //     <div className="buttonSpace">
+        //     <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newStaffBtn" variant="primary" onClick={() => this.loadModal()}>New Staff</Button>
+        //     <AddEditStaff show={this.state.modalShow} onHide={modalClose}/>
+        //     {button}
+        //     </div>)
+        // } else {
+        //     newSButtons = (<div className="buttonSpace">
+        //        {button}
+        //     </div>)
+        // }
 
         return (
             <div className="container">
-                {newSButtons}
+                <div className="buttonSpace">
+                    {button}
+                </div>
                 <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col" className="headings">Volunteer</th>
                             <th scope="col" className="headings">E-mail</th>
                             <th scope="col" className="headings">Mobile</th>
-                            <th scope="col" className="headings">Available?</th>
+                            <th scope="col" className="headings">Avail?</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
