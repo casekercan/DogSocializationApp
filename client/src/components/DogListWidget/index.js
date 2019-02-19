@@ -83,9 +83,9 @@ class DogListWidget extends Component {
         const isInactive = this.state.inactive;
         let button;
         if (isInactive) {
-            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
         } else {
-            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
         }
 
         let newButtons;
@@ -93,7 +93,7 @@ class DogListWidget extends Component {
         if (isAdmin==="true"){
             newButtons = (
             <div className="buttonSpace">
-            <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
+            <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
             <AddEditDog show={this.state.modalShow2} onHide={modalClose2}/>
             {button}
             </div>)
@@ -109,8 +109,8 @@ class DogListWidget extends Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col" className="headings">Dog Name</th>
-                            <th scope="col" className="headings">Kennel #</th>
+                            <th scope="col" className="headings">Dog</th>
+                            <th scope="col" className="headings">Kennel</th>
                             <th scope="col" className="headings">Socialization Program</th>
                             <th scope="col"></th>
                         </tr>
@@ -122,7 +122,7 @@ class DogListWidget extends Component {
                                 <th>{dog.kennel}</th>
                                 <th>
                                     {dog.socialization.map((soc, i) => (
-                                        <Badge variant={this.checkprogress(soc)}> {soc.name}/{soc.duration}/{soc.ampm} </Badge>
+                                        <Badge style={{marginRight:'5px'}}variant={this.checkprogress(soc)}> {soc.name}/{soc.duration}/{soc.ampm} </Badge>
                                     ))}
                                     <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                                 </th>

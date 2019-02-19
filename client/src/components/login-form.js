@@ -70,7 +70,7 @@ class LoginForm extends Component {
                 <div className="container">
                     <br/>
                     <Card bg="dark" className="text-white">
-                            <Card.Title>Login</Card.Title>
+                            <Card.Title style={{fontSize:'24px',textAlign:'center'}}>Login</Card.Title>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                     <div className="col-1 col-ml-auto">
@@ -119,7 +119,7 @@ class LoginForm extends Component {
                                 <div className="form-group">
                                     <Button
                                         className="btn col-2 col-mr-auto"
-                                        style={{backgroundColor:'rgb(14,166,197)'}}
+                                        style={{backgroundColor:'rgb(14,166,197)',margin:'20px', textAlign:'center'}}
                                         onClick={this.handleSubmit}
                                         type="submit">Login</Button>
                                     <Link to="/signup"> Sign up</Link>

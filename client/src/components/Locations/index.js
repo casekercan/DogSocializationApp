@@ -146,7 +146,7 @@ class Locations extends Component {
                                     <thead>
                                         <tr>
                                             <th className="table-header">Staff</th>
-                                            <th className="table-header">Available?</th>
+                                            <th className="table-header">Avail?</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -162,7 +162,7 @@ class Locations extends Component {
                         </div>
                         
                         {/* Refresh button */}
-                        <Button style={{backgroundColor:'rgb(14,166,197)'}} size="lg" className="btn" bg="dark" variant="warning" onClick={() => this.resetSocDone(this.state.dogs)} block> Refresh Data
+                        <Button style={{backgroundColor:'rgb(14,166,197)',padding:'5px'}} size="lg" className="btn" bg="dark" variant="warning" onClick={() => this.resetSocDone(this.state.dogs)} block> Refresh Data
                         </Button>
 
                         {/* North Concrete */}
