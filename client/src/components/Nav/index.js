@@ -1,26 +1,17 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
-import{Navbar,Nav, NavItem} from "react-bootstrap";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
 
 
 class NavB extends Component {
     constructor() {
         super()
         this.state = {
-            modal1Show: false,
-            modal2Show: false,
+
 
         }
     };
-
-    loadModal1 = () => {
-        this.setState({ modal1Show: true })
-    };
-
-    loadModal2 = () => {
-        this.setState({ modal2Show: true })
-    }
 
     logout = (event) => {
         event.preventDefault()
@@ -53,18 +44,18 @@ class NavB extends Component {
 
         if (loggedIn === true) {
             return (
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark"> 
-                    <Navbar.Brand><Link to="/" style={{Color:'rgb(14,166,197)',marginRight:'5px'}}>sspa Socialization</Link></Navbar.Brand>
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                    <Navbar.Brand><Link to="/" style={{ Color: 'rgb(14,166,197)', marginRight: '5px' }}>sspa Socialization</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto" >
-                        <NavItem style={{marginRight:'10px'}}><Link to="/doglist">All Dogs</Link></NavItem>
-                        <NavItem style={{marginRight:'10px'}}><Link to="/stafflist">All Staff</Link></NavItem>
-                        <NavItem style={{marginRight:'10px'}}><Link onClick={this.logout} to="#">Logout</Link></NavItem>
+                            <NavItem style={{ marginRight: '10px' }}><Link to="/doglist">All Dogs</Link></NavItem>
+                            <NavItem style={{ marginRight: '10px' }}><Link to="/stafflist">All Staff</Link></NavItem>
+                            <NavItem style={{ marginRight: '10px' }}><Link onClick={this.logout} to="#">Logout</Link></NavItem>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                
+
             )
         } else {
             return (
