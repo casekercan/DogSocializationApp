@@ -12,9 +12,9 @@ const routes = require("./routes");
 
 //Middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.urlencoded({ extended: true }));
+//app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.json());
+//app.use(express.json());
 
 //sessions
 app.use(
