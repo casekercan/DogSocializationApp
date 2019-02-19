@@ -64,34 +64,12 @@ class NavB extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                // <nav className="navbar navbar-expand-lg navbar-dark bg-info">
-                //     <Link className="navbar-brand" to="/"> HOME</Link>
-                //     <ul className="navbar-nav mt-2 mt-lg-0">
-                //         <li className="nav-item">
-                //             <Link className="nav-link" to="/doglist">All Dogs</Link>
-                //         </li>
-                //         <li className="nav-item">
-                //             <Link className="nav-link" to="/stafflist">All Staff</Link>
-                //         </li>
-                //         <li className="nav-item" >
-                //             <Link to="#" className="btn btn-link text-light" onClick={this.logout}>Logout</Link>
-                //         </li>
-                //     </ul>
-                // </nav>
+                
             )
         } else {
             return (
                 <Navbar bg="dark" variant="dark">
-                    {/* previously in navbar className="navbar navbar-expand-lg navbar-dark bg-primary" */}
-                    {/* <ul className="navbar-nav mt-2 mt-lg-0">
-                        <li className="nav-item" >
-                            <Link to="/login" className="nav-link" variant="primary" >Login</Link>
-                        </li>
-                        <li className="nav-item" >
-                            <Link to="/signup" variant="primary" className="nav-link" >Signup</Link>
-                        </li>
-                    </ul> */}
-                <span className="introLogin">Please <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to use the SSPA-Socialization App</span>
+                    <span className="introLogin">Please <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to use the SSPA-Socialization App</span>
                 </Navbar>
             );
         }
