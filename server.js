@@ -29,19 +29,22 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+app.use(express.static("client/build"))
+// Serve up static assets (usually on heroku)
+// if (process.env.NODE_ENV === "production") {
+// 	app.use(express.static("client/build"));
+// }
+
 //ROUTES
 app.use(routes);
 
-
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static("client/build"));
-}
-
-
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/dogSocialization";
 // Connect to the Mongo DB
-mongoose.connect(MONGODB_URI || "mongodb://localhost/yourLocalDatabaseURL");
+mongoose.connect(MONGODB_URI, { useMongoClient: true }).then(() => {
+	console.log('Connected to MongoDB.');
+}).catch(err => console.log(err));
 
 // Start the API server
 app.listen(PORT, function () {
