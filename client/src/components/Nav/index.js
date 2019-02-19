@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
-import{Navbar,Nav, NavItem,Button} from "react-bootstrap";
+import{Navbar,Nav, NavItem} from "react-bootstrap";
 
 
 class NavB extends Component {
@@ -53,14 +53,14 @@ class NavB extends Component {
 
         if (loggedIn === true) {
             return (
-                <Navbar collapseOnSelect expand="sm" bg="primary" variant="dark">
-                    <Navbar.Brand><Link to="/">sspa Socialization</Link></Navbar.Brand>
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark"> 
+                    <Navbar.Brand><Link to="/" style={{Color:'rgb(14,166,197)',marginRight:'5px'}}>sspa Socialization</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto">
-                        <NavItem><Link to="/doglist">All Dogs</Link></NavItem>
-                        <NavItem><Link to="/stafflist">All Staff</Link></NavItem>
-                        <NavItem><Link onClick={this.logout} to="#">Logout</Link></NavItem>
+                        <Nav className="mr-auto" >
+                        <NavItem style={{marginRight:'10px'}}><Link to="/doglist">All Dogs</Link></NavItem>
+                        <NavItem style={{marginRight:'10px'}}><Link to="/stafflist">All Staff</Link></NavItem>
+                        <NavItem style={{marginRight:'10px'}}><Link onClick={this.logout} to="#">Logout</Link></NavItem>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
@@ -81,7 +81,7 @@ class NavB extends Component {
             )
         } else {
             return (
-                <Navbar bg="primary">
+                <Navbar bg="dark" variant="dark">
                     {/* previously in navbar className="navbar navbar-expand-lg navbar-dark bg-primary" */}
                     {/* <ul className="navbar-nav mt-2 mt-lg-0">
                         <li className="nav-item" >
@@ -91,7 +91,7 @@ class NavB extends Component {
                             <Link to="/signup" variant="primary" className="nav-link" >Signup</Link>
                         </li>
                     </ul> */}
-                    Please Login or Sign up to use the SSPA-Socialization App
+                <span style={{textColor:'red'}}>Please <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to use the SSPA-Socialization App</span>
                 </Navbar>
             );
         }

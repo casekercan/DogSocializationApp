@@ -36,8 +36,8 @@ class AddEditStaff extends Component {
                     <StaffForm staff={this.props.props} update={this.updateState} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.onHide}>Close</Button>
-                    <Button onClick={() => this.updateStaff(this.state)}>Save</Button>
+                    <Button style={{backgroundColor:'rgb(14,166,197)'}} onClick={this.props.onHide}>Close</Button>
+                    <Button style={{backgroundColor:'rgb(14,166,197)'}} onClick={() => this.updateStaff(this.state)}>Save</Button>
                 </Modal.Footer>
             </Modal>
         );

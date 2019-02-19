@@ -119,6 +119,7 @@ class LoginForm extends Component {
                                 <div className="form-group">
                                     <Button
                                         className="btn col-2 col-mr-auto"
+                                        style={{backgroundColor:'rgb(14,166,197)'}}
                                         onClick={this.handleSubmit}
                                         type="submit">Login</Button>
                                     <Link to="/signup"> Sign up</Link>

@@ -120,9 +120,9 @@ class DogWidget extends Component {
         let signoutButton;
 
         if (this.state.dog.location === "Kennel") {
-            signoutButton = <Button variant="primary" className="btn btn-lg signoutBtn" onClick={() => this.loadModal(this.state.dog)}>Signout Dog</Button>
+            signoutButton = <Button style={{backgroundColor:'rgb(14,166,197)'}} variant="primary" className="btn btn-lg signoutBtn" onClick={() => this.loadModal(this.state.dog)}>Signout Dog</Button>
         } else {
-            signoutButton = <Button varient="primary" className="btn btn-lg returnBtn" onClick={() => this.findprogress(this.state.dog.socialization, this.state.dog)}>Kennel Return</Button>
+            signoutButton = <Button style={{backgroundColor:'rgb(14,166,197)'}} varient="primary" className="btn btn-lg returnBtn" onClick={() => this.findprogress(this.state.dog.socialization, this.state.dog)}>Kennel Return</Button>
         };
 
         let editDogBtn;
@@ -130,14 +130,13 @@ class DogWidget extends Component {
         if (isAdmin === "true") {
             editDogBtn = (
                 <div className="buttonSpace">
-                    <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
+                    <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
                     <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
                 </div>)
         } else {
             editDogBtn = (<div className="buttonSpace">
             </div>)
         }
-        let iDate=new Date(this.state.dog.intakeDate);
 
         return (
             

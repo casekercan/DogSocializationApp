@@ -11,7 +11,6 @@ class Locations extends Component {
     }
 
 
-
     componentDidMount() {
         this.pullcurrentLocation();
     };
@@ -163,7 +162,7 @@ class Locations extends Component {
                         </div>
                         
                         {/* Refresh button */}
-                        <Button size="lg" className="btn" bg="dark" variant="warning" onClick={() => this.resetSocDone(this.state.dogs)} block> Refresh Data
+                        <Button style={{backgroundColor:'rgb(14,166,197)'}} size="lg" className="btn" bg="dark" variant="warning" onClick={() => this.resetSocDone(this.state.dogs)} block> Refresh Data
                         </Button>
 
                         {/* North Concrete */}
