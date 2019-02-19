@@ -12,9 +12,8 @@ const routes = require("./routes");
 
 //Middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-//app.use(express.json());
+
 
 //sessions
 app.use(
@@ -29,22 +28,17 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-app.use(express.static("client/build"))
-// Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-// 	app.use(express.static("client/build"));
-// }
+//Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("client/build"));
+}
 
 //ROUTES
 app.use(routes);
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/dogSocialization";
 // Connect to the Mongo DB
-mongoose.connect(MONGODB_URI, { useMongoClient: true }).then(() => {
-	console.log('Connected to MongoDB.');
-}).catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dogSocialization");
+
 
 // Start the API server
 app.listen(PORT, function () {
