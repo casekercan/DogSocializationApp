@@ -11,7 +11,6 @@ class Locations extends Component {
     }
 
 
-
     componentDidMount() {
         this.pullcurrentLocation();
     };
@@ -71,7 +70,7 @@ class Locations extends Component {
         if (staff.available) {
             return <span className="available-badge badge badge-success"> YES </span>
         } else {
-            return <span className="available-badge badge badge-danger"> {staff.location ? staff.location : "Location Unknown"} </span>
+            return <span className="available-badge badge badge-danger"> {staff.location ? staff.location : "?"} </span>
         }
     };
 
@@ -97,7 +96,7 @@ class Locations extends Component {
         if (minutes > 0) {
             return <span className="badge badge-warning">{Math.abs(minutes)}</span>
         } else {
-            return <span className="badge badge-success">{Math.abs(minutes)}</span>
+            return <span className="badge badge-success">✓</span>
         }
 
     }
@@ -139,9 +138,6 @@ class Locations extends Component {
                 <div className="row">
                     <div className="col-lg-3 col-sm-6 " >
 
-                        <Button className="btn btn-lg" variant="primary" onClick={() => this.resetSocDone(this.state.dogs)}> REFRESH
-                        </Button>
-
                         {/* active staff */}
                         <div className="box-location staffBox">
                             <h3><strong>CURRENT STAFF LIST</strong></h3>
@@ -164,6 +160,11 @@ class Locations extends Component {
                                 </table>
                                 : "NO CURRENT STAFF"}
                         </div>
+                        
+                        {/* Refresh button */}
+                        <Button style={{backgroundColor:'rgb(14,166,197)'}} size="lg" className="btn" bg="dark" variant="warning" onClick={() => this.resetSocDone(this.state.dogs)} block> Refresh Data
+                        </Button>
+
                         {/* North Concrete */}
                         <div className="box-location">
                             <h3><strong>North Concrete</strong></h3>

@@ -83,9 +83,9 @@ class DogListWidget extends Component {
         const isInactive = this.state.inactive;
         let button;
         if (isInactive) {
-            button = <Button className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
         } else {
-            button = <Button className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
         }
 
         let newButtons;
@@ -93,7 +93,7 @@ class DogListWidget extends Component {
         if (isAdmin==="true"){
             newButtons = (
             <div className="buttonSpace">
-            <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
+            <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
             <AddEditDog show={this.state.modalShow2} onHide={modalClose2}/>
             {button}
             </div>)

@@ -37,8 +37,8 @@ class AddEditDog extends Component {
                     <DogForm dog={this.props.props} update={this.updateState} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.onHide}>Close</Button>
-                    <Button onClick={() => this.updateDog(this.state)}>Save</Button>
+                    <Button style={{backgroundColor:'rgb(14,166,197)'}} onClick={this.props.onHide}>Close</Button>
+                    <Button style={{backgroundColor:'rgb(14,166,197)'}} onClick={() => this.updateDog(this.state)}>Save</Button>
                 </Modal.Footer>
             </Modal>
         );

@@ -149,7 +149,7 @@ class CheckoutDog extends Component {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => this.handleCheckout(dog)} >Signout</Button>
+                    <Button style={{backgroundColor:'rgb(14,166,197)'}} onClick={() => this.handleCheckout(dog)} >Signout</Button>
                 </Modal.Footer>
             </Modal>
         );

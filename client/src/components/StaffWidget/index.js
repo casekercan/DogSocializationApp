@@ -42,6 +42,7 @@ class StaffListWidget extends Component {
                 <div>
                     <Button
                         variant="primary"
+                        style={{backgroundColor:'rgb(14,166,197)'}}
                         className="btn btn-lg editBtn"
                         onClick={() => this.loadModal(this.state.staff)}>Edit Staff</Button>
                     <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />

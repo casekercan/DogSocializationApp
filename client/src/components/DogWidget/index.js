@@ -4,8 +4,8 @@ import API from "../../utils/API";
 import Button from "react-bootstrap/Button";
 import CheckoutDog from "../CheckoutDog";
 import AddEditDog from "../AddEditDog";
+import Image from "react-bootstrap/Image";
 import moment from "moment";
-
 
 class DogWidget extends Component {
     constructor(props) {
@@ -120,9 +120,9 @@ class DogWidget extends Component {
         let signoutButton;
 
         if (this.state.dog.location === "Kennel") {
-            signoutButton = <Button variant="primary" className="btn btn-lg signoutBtn" onClick={() => this.loadModal(this.state.dog)}>Signout Dog</Button>
+            signoutButton = <Button style={{backgroundColor:'rgb(14,166,197)'}} variant="primary" className="btn btn-lg signoutBtn" onClick={() => this.loadModal(this.state.dog)}>Signout Dog</Button>
         } else {
-            signoutButton = <Button varient="primary" className="btn btn-lg returnBtn" onClick={() => this.findprogress(this.state.dog.socialization, this.state.dog)}>Kennel Return</Button>
+            signoutButton = <Button style={{backgroundColor:'rgb(14,166,197)'}} varient="primary" className="btn btn-lg returnBtn" onClick={() => this.findprogress(this.state.dog.socialization, this.state.dog)}>Kennel Return</Button>
         };
 
         let editDogBtn;
@@ -130,7 +130,7 @@ class DogWidget extends Component {
         if (isAdmin === "true") {
             editDogBtn = (
                 <div className="buttonSpace">
-                    <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
+                    <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
                     <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
                 </div>)
         } else {
@@ -139,6 +139,7 @@ class DogWidget extends Component {
         }
 
         return (
+            
             <div className="container" >
                 <div className="row">
                     <div className="col infoContainer">
@@ -146,7 +147,7 @@ class DogWidget extends Component {
                         <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                         <hr />
                         <div className="d-flex">
-                            <img src={this.state.dog.pic} alt="dog pic" className="img-thumbnail" />
+                            <Image src={this.state.dog.pic} alt="dog pic" className="img-thumbnail" rounded/>
                             <div>
                                 <h3>
                                     <span name="dogName" className="labels">{this.state.dog.name}</span>

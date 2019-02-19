@@ -2,7 +2,10 @@ import React from "react";
 
 function Jumbotron() {
     return (
-        <h1> Jumbotron</h1>
+        <div className="tron">
+            <img className="jumbo" src="/sspaLogo.jpg" alt="sspa Logo"></img>
+            <span className="headerTxt">Sacramento Shelter Pets Alive Socialization</span>
+        </div>
     );
 }
 

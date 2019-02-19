@@ -63,9 +63,9 @@ class VolunteerList extends Component {
         const isInactive = this.state.inactive;
         let button;
         if (isInactive) {
-            button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findAllStaff()}>Staff Currently Logged-In </Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg" variant="primary" onClick={() => this.findAllStaff()}>Staff Currently Logged-In </Button>;
         } else {
-            button = <Button className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>Staff Not Logged-In</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>Staff Not Logged-In</Button>;
         };
 
         let newSButtons;
@@ -73,7 +73,7 @@ class VolunteerList extends Component {
         if (isAdmin==="true"){
             newSButtons = (
             <div className="buttonSpace">
-            <Button className="btn btn-lg newStaffBtn" variant="primary" onClick={() => this.loadModal()}>New Staff</Button>
+            <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newStaffBtn" variant="primary" onClick={() => this.loadModal()}>New Staff</Button>
             <AddEditStaff show={this.state.modalShow} onHide={modalClose}/>
             {button}
             </div>)
