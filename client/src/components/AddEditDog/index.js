@@ -8,7 +8,6 @@ import API from "../../utils/API";
 
 class AddEditDog extends Component {
 
-
     updateState = (newState) => {
         this.setState({
             ...newState
