@@ -4,8 +4,8 @@ import API from "../../utils/API";
 import Button from "react-bootstrap/Button";
 import CheckoutDog from "../CheckoutDog";
 import AddEditDog from "../AddEditDog";
+import Image from "react-bootstrap/Image";
 import moment from "moment";
-
 
 class DogWidget extends Component {
     constructor(props) {
@@ -137,8 +137,10 @@ class DogWidget extends Component {
             editDogBtn = (<div className="buttonSpace">
             </div>)
         }
+        let iDate=new Date(this.state.dog.intakeDate);
 
         return (
+            
             <div className="container" >
                 <div className="row">
                     <div className="col infoContainer">
@@ -146,7 +148,7 @@ class DogWidget extends Component {
                         <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
                         <hr />
                         <div className="d-flex">
-                            <img src={this.state.dog.pic} alt="dog pic" className="img-thumbnail" />
+                            <Image src={this.state.dog.pic} alt="dog pic" className="img-thumbnail" rounded/>
                             <div>
                                 <h3>
                                     <span name="dogName" className="labels">{this.state.dog.name}</span>

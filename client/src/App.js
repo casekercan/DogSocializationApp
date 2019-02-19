@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from "./components/Nav";
+import NavB from "./components/Nav";
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import Dog from "./pages/Dog";
@@ -65,7 +65,7 @@ class App extends Component {
         <Router>
           <div>
             <Jumbotron />
-            <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
+            <NavB updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
             <Switch>
               <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
               <Route path="/signup" render={() => <Signup signup={this.signup} updateStaff={this.updateStaff} />} />
@@ -80,7 +80,7 @@ class App extends Component {
         <Router>
           <div>
             <Jumbotron />
-            <Nav updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
+            <NavB updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
             <Switch>
               <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
               <Route path="/signup" render={() => <Signup signup={this.signup} />} />
