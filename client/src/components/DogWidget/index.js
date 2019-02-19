@@ -127,12 +127,12 @@ class DogWidget extends Component {
 
         let editDogBtn;
         let isAdmin = sessionStorage.admin;
-        if (isAdmin==="true"){
+        if (isAdmin === "true") {
             editDogBtn = (
-            <div className="buttonSpace">
-            <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>Edit Dog</Button>
-            <AddEditDog show={this.state.modal2Show} onHide={modal2Close}/>
-            </div>)
+                <div className="buttonSpace">
+                    <Button className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2(this.state.dog)}>Edit Dog</Button>
+                    <AddEditDog show={this.state.modal2Show} onHide={modal2Close} props={this.state.modal2Info} />
+                </div>)
         } else {
             editDogBtn = (<div className="buttonSpace">
             </div>)
