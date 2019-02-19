@@ -38,48 +38,33 @@ class CheckoutDog extends Component {
     }
 
     handleCheckout = (dog) => {
-        let checkoutDog = {
-            index: this.state.checkoutActivity,
-            id: dog._id,
-            location: this.state.checkoutLocation
-        }
-        let checkoutStaff = {
-            id: this.state.staffid,
-            location: this.state.checkoutLocation
-        }
 
-        if (dog.location === "Kennel") {
-            API.checkoutDog(checkoutDog).then().catch();
-            API.socInprogress(checkoutDog).then().catch();
-            API.checkoutStaff(checkoutStaff).then().catch();
-            this.props.onHide()
+        if (this.state.checkoutActivity && this.state.checkoutLocation) {
+            let checkoutDog = {
+                index: this.state.checkoutActivity,
+                id: dog._id,
+                location: this.state.checkoutLocation
+            }
+            let checkoutStaff = {
+                id: this.state.staffid,
+                location: this.state.checkoutLocation
+            }
 
+            if (dog.location === "Kennel") {
+                API.checkoutDog(checkoutDog).then().catch();
+                API.socInprogress(checkoutDog).then().catch();
+                API.checkoutStaff(checkoutStaff).then().catch();
+                this.props.onHide()
+
+            } else {
+                alert("Dog isn't in Kennel. Dog is located in: " + dog.location)
+            }
         } else {
-
-            console.log("Dog isn't in Kennel. Dog is located in: " + dog.location)
+            document.getElementById("error").innerHTML = '<div class="alert alert-danger" role="alert">Please select a socialization plan AND a location.</div>'
         }
+
     }
 
-    // handleReturn = (dog) => {
-    //     let returnDog = {
-    //         index: this.state.checkoutActivity,
-    //         id: dog._id,
-    //     }
-    //     let returnStaff = {
-    //         id: this.state.staffid
-    //     }
-
-    //     if (dog.location === "Kennel") {
-    //         console.log("Please check out dog first. ")
-    //     } else {
-
-    //         API.returnDog(returnDog).then().catch();
-    //         API.socDone(returnDog).then().catch();
-    //         API.socDone2(returnDog).then().catch();
-    //         API.returnStaff(returnStaff).then().catch();
-    //         this.props.onHide()
-    //     }
-    // }
 
     setActivityState = (soc) => {
         for (let i = 0; i < soc.length; i++) {
@@ -109,7 +94,7 @@ class CheckoutDog extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <h6 className="instructions">To SIGN OUT a dog select what socialization you are going to complete, and what location you and the dog wil be at, then click "Signout" </h6>
-                    <h6 className="instructions">To RETURN a dog select what socialization you are completing, then click "Kennel Return"</h6>
+                    <div id="error"></div>
                     <hr />
                     <div>
                         <table>
@@ -148,7 +133,7 @@ class CheckoutDog extends Component {
                                 <label className="input-group-text" >Locations</label>
                             </div>
                             <Form.Control as="select" name="checkoutLocation" onChange={this.handleInputChange}>
-                                <option >Choose...</option>
+                                <option value="">Choose...</option>
                                 <option value="Off Campus" >Off Campus</option>
                                 <option value="The Track" >The Track</option>
                                 <option value="East Group Area" >East Group Area</option>
@@ -164,8 +149,7 @@ class CheckoutDog extends Component {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    {/* <Button onClick={() => this.handleReturn(dog)}>Kennel Return</Button> */}
-                    <Button onClick={() => this.handleCheckout(dog)}>Signout</Button>
+                    <Button onClick={() => this.handleCheckout(dog)} >Signout</Button>
                 </Modal.Footer>
             </Modal>
         );

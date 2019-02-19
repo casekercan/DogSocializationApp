@@ -28,23 +28,7 @@ class StaffListWidget extends Component {
         this.setState({ modalShow: true })
     }
 
-    handleOnShift = (curState) => {
-        let activatedState = { ...curState };
-        activatedState.active = true;
-        activatedState.available = true;
-        this.setState({ activatedState });
-        API.updateStaff(this.state.staff)
-            .catch(err => console.log(err));
-    }
 
-    handleOffShift = (curState) => {
-        let deActiveState = { ...curState };
-        deActiveState.active = false;
-        deActiveState.available = false;
-        this.setState({ deActiveState });
-        API.updateStaff(this.state.staff)
-            .catch(err => console.log(err));
-    }
 
     render() {
         let modalClose = () => this.setState({ modalShow: false }, () => {
@@ -52,9 +36,9 @@ class StaffListWidget extends Component {
         });
 
         let editStaffBtn;
-        let isAdmin=sessionStorage.admin;
-        if (isAdmin==="true"){
-            editStaffBtn=(
+        let isAdmin = sessionStorage.admin;
+        if (isAdmin === "true") {
+            editStaffBtn = (
                 <div>
                     <Button
                         variant="primary"
@@ -64,7 +48,7 @@ class StaffListWidget extends Component {
                 </div>
             )
         } else {
-            editStaffBtn=(
+            editStaffBtn = (
                 <div></div>
             )
         }
@@ -74,14 +58,7 @@ class StaffListWidget extends Component {
             <div className="container" >
                 <div className="row">
                     <div className="col infoContainer">
-                        <Button
-                            variant="primary"
-                            className="btn btn-lg allStaffBtn"
-                            onClick={() => this.handleOnShift(this.state.staff)}>Start Shift</Button>
-                        <Button
-                            variant="primary"
-                            className="btn btn-lg allStaffBtn"
-                            onClick={() => this.handleOffShift(this.state.staff)}>End Shift</Button>
+
                         <hr />
                         <div className="d-flex">
                             <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" />

@@ -9,8 +9,8 @@ export default {
   getDogs: function () {
     return axios.get("/api/dogs");
   },
-  //get all inactive dogs
 
+  //get all inactive dogs
   getInactiveDogs: function () {
     return axios.get("/api/dogsinactive");
   },

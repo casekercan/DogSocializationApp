@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../styles/locations.css";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-
+import Button from "react-bootstrap/Button";
 
 class Locations extends Component {
     state = {
@@ -10,17 +10,7 @@ class Locations extends Component {
         staff: []
     }
 
-    // Reset socializations to done=false every day at midnight
-    resetSocDone = () => {
-        for (let i = 0; i < this.state.dogs.socialization.length; i++) {
-            let now = new Date();
-            let lastSoc = new Date(this.state.dogs.checkout);
-            console.log(now, lastSoc);
-            if (now.getDay() !== lastSoc.getDay()) {
-                this.setState.dogs.socialization[i].done = false;
-            }
-        }
-    }
+
 
     componentDidMount() {
         this.pullcurrentLocation();
@@ -28,13 +18,46 @@ class Locations extends Component {
 
     pullcurrentLocation = () => {
         API.getDogs()
-            .then(res => this.setState({ dogs: res.data }))
+            .then(res => this.setState({
+                dogs: res.data
+            }))
             .catch(err => console.log(err));
         API.getAllStaff()
             .then(res =>
                 this.setState({ staff: res.data })
             ).catch(err => console.log(err));
     };
+
+    // Reset socializations to done=false every day at midnight
+    resetSocDone = (dogs) => {
+        for (let i = 0; i < dogs.length; i++) {
+            for (let s = 0; s < dogs[i].socialization.length; s++) {
+                let now = new Date();
+                let lastSoc = new Date(dogs[i].checkout);
+                if ((now.getDay() !== lastSoc.getDay()) && (dogs[i].socialization[s].done === true)) {
+                    this.handleSocializationUpdate(s, i)
+                }
+            }
+        }
+        this.pullcurrentLocation()
+    }
+
+    handleSocializationUpdate = (indexSoc, indexDog) => {
+        const newSocialization = this.state.dogs[indexDog].socialization.map((soc, sidx) => {
+            if (indexSoc !== sidx) return soc;
+            return { ...soc, done: false };
+        });
+        let newState = Object.assign({}, this.state);
+        newState.dogs[indexDog].socialization = newSocialization;
+        this.setState({ newState }, () => {
+            this.updateDog(this.state.dogs[indexDog])
+        });
+    }
+
+    updateDog = (dog) => {
+        API.updateDog(dog)
+            .then(this.pullcurrentLocation()).catch(err => console.log(err));
+    }
 
     checkfordata = (data) => {
         if (data.length <= 0) {
@@ -98,7 +121,7 @@ class Locations extends Component {
     render() {
         //create variables to filter by location
         let kennel = this.state.dogs.filter(dog => dog.location === "Kennel");
-        let offCampus = this.state.dogs.filter(dog => dog.location === "Off-Campus");
+        let offCampus = this.state.dogs.filter(dog => dog.location === "Off Campus");
         let theTrack = this.state.dogs.filter(dog => dog.location === "The Track");
         let eastGroup = this.state.dogs.filter(dog => dog.location === "East Group Area");
         let northGroup = this.state.dogs.filter(dog => dog.location === "North Group Area");
@@ -111,9 +134,14 @@ class Locations extends Component {
         let activeStaff = this.state.staff.filter(staff => staff.active === true);
 
         return (
+
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-3 col-sm-6 " >
+
+                        <Button className="btn btn-lg" variant="primary" onClick={() => this.resetSocDone(this.state.dogs)}> REFRESH
+                        </Button>
+
                         {/* active staff */}
                         <div className="box-location staffBox">
                             <h3><strong>CURRENT STAFF LIST</strong></h3>
