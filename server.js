@@ -5,8 +5,6 @@ const mongoose = require("mongoose");
 const passport = require("./passport");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const path = require("path");
-
 
 
 //route requires
@@ -37,8 +35,10 @@ app.use(routes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "client/build")));
+	app.use(express.static("client/build"));
+
 }
+
 
 // Connect to the Mongo DB
 var CONNECTION_URI = process.env.MONGODB_URI || "mongodb://localhost/dogSocialization";
