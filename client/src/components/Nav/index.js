@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Button } from "react-bootstrap";
 
 
 class NavB extends Component {
@@ -45,22 +45,30 @@ class NavB extends Component {
         if (loggedIn === true) {
             return (
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand><Link to="/" style={{ Color: 'rgb(14,166,197)', marginRight: '5px' }}>sspa Socialization</Link></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto" >
-                            <NavItem style={{ marginRight: '10px' }}><Link to="/doglist">All Dogs</Link></NavItem>
-                            <NavItem style={{ marginRight: '10px' }}><Link to="/stafflist">All Staff</Link></NavItem>
-                            <NavItem style={{ marginRight: '10px' }}><Link onClick={this.logout} to="#">Logout</Link></NavItem>
-                        </Nav>
-                    </Navbar.Collapse>
+                    <div className="container" style={{ paddingRight: "30px", paddingLeft: "30px" }}>
+                        <Navbar.Brand><Link to="/" style={{ fontSize: "20px", Color: 'rgb(14,166,197)', marginRight: '5px' }}> SSPA Socialization</Link></Navbar.Brand>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+                        <Navbar.Collapse id="responsive-navbar-nav">
+                            <Nav className="mr-auto" >
+                                <NavItem style={{ marginRight: '15px' }}><Link to="/doglist">All Dogs</Link></NavItem>
+                                <NavItem style={{ marginRight: '15px' }}><Link to="/stafflist">All Staff</Link></NavItem>
+                            </Nav>
+                            <Nav className="m1-auto" >
+
+                                <Button style={{ backgroundColor: 'rgb(14,166,197)', padding: '5px', width: "100px" }} className="btn" bg="dark" variant="warning" onClick={this.logout} block> Logout</Button>
+                                {/* <NavItem style={{ marginRight: '10px' }}><Link onClick={this.logout} to="#">Logout</Link></NavItem> */}
+                            </Nav>
+                        </Navbar.Collapse>
+
+                    </div>
                 </Navbar>
 
             )
         } else {
             return (
                 <Navbar bg="dark" variant="dark">
-                    <span className="introLogin">Please <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to use the SSPA-Socialization App</span>
+                    <span style={{ fontSize: "20px" }} className="introLogin">Please <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to use the SSPA-Socialization App</span>
                 </Navbar>
             );
         }
