@@ -121,7 +121,7 @@ class SignupForm extends Component {
                                             aria-describedby="inputGroup-sizing-lg"
                                             className="form-input"
                                             type="password"
-                                            id="email"
+                                            id="password"
                                             name="password"
                                             placeholder="password"
                                             value={this.state.password}

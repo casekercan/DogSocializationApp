@@ -42,7 +42,7 @@ class StaffListWidget extends Component {
                 <div>
                     <Button
                         variant="primary"
-                        style={{backgroundColor:'rgb(14,166,197)'}}
+                        style={{ backgroundColor: 'rgb(14,166,197)' }}
                         className="btn btn-lg editBtn"
                         onClick={() => this.loadModal(this.state.staff)}>Edit Staff</Button>
                     <AddEditStaff show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} />
@@ -67,7 +67,7 @@ class StaffListWidget extends Component {
                                     <span name="staffName" className="labels">{this.state.staff.name}</span>
                                 </h3>
                                 <h5>
-                                    <span name="emailLabel" className="labels">ID: </span><span name="ID">{this.state.staff.email}</span>
+                                    <span name="emailLabel" className="labels">Email: </span><span name="ID">{this.state.staff.email}</span>
                                 </h5>
                                 <h5>
                                     <span name="mobileLabel" className="labels">Mobile: </span><span name="ID">{this.state.staff.mobile}</span>
