@@ -1,37 +1,39 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const session = require("express-session");
 const mongoose = require("mongoose");
-const passport = require("./passport");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+//Authentication Packages
+const session = require("express-session");
+const passport = require("./passport");
 
 
 //route requires
 const routes = require("./routes");
 
 //Middleware here
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-
-//sessions
-app.use(
-	session({
-		secret: 'carolinekamrandavid', //pick a random string to make the hash that is generated securer
-		resave: true,
-		saveUninitialized: false
-	})
-)
-
-// passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
+
+
+//sessions
+app.use(
+	session({
+		secret: 'carolinekamran', //pick a random string to make the hash that is generated securer
+		resave: false,
+		saveUninitialized: false,
+	})
+)
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 //ROUTES
 app.use(routes);

@@ -110,6 +110,7 @@ router.post('/signup', (req, res) => {
         res.json(savedStaff)
       })
     }
+
   })
 });
 
@@ -122,24 +123,24 @@ router.post(
   },
   passport.authenticate('local'),
   (req, res) => {
-    console.log('logged in', req.user);
+    console.log(req.user);
+
     var userInfo = {
       email: req.user.email,
       id: req.user._id,
       admin: req.user.admin
     }
+
     res.send(userInfo);
   }
 )
 
-
-
-
 router.get('/', (req, res, next) => {
   console.log('===== user!!======')
-  console.log(req.staff)
-  if (req.staff) {
-    res.json({ staff: req.staff })
+  console.log(req.user);
+
+  if (req.user) {
+    res.json({ staff: req.user })
   } else {
     res.json({ staff: null })
   }
