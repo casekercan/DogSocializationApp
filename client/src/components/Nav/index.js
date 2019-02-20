@@ -51,8 +51,8 @@ class NavB extends Component {
 
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto" >
-                                <NavItem style={{ marginRight: '15px' }}><Link to="/doglist">All Dogs</Link></NavItem>
-                                <NavItem style={{ marginRight: '15px' }}><Link to="/stafflist">All Staff</Link></NavItem>
+                                <NavItem style={{ padding: '15px' }}><Link to="/doglist">All Dogs</Link></NavItem>
+                                <NavItem style={{ padding: '15px' }}><Link to="/stafflist">All Staff</Link></NavItem>
                             </Nav>
                             <Nav className="m1-auto" >
 
