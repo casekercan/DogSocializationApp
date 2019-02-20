@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { Navbar, Nav, NavItem, Button } from "react-bootstrap";
 
 
+
 class NavB extends Component {
     constructor() {
         super()
@@ -16,7 +17,6 @@ class NavB extends Component {
     logout = (event) => {
         event.preventDefault()
         API.logout().then(res => {
-            console.log(res.data)
             if (res.status === 200) {
                 this.updateUserLogout(this.props.id)
                 sessionStorage.clear();
