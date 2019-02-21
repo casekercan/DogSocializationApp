@@ -3,7 +3,7 @@ import "../../styles/style.css";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-// import AddEditStaff from "../AddEditStaff";
+import AddEditStaff from "../AddEditStaff";
 
 
 class VolunteerList extends Component {
@@ -53,12 +53,9 @@ class VolunteerList extends Component {
     }
 
     render() {
-
-        //let adminStaff = this.state.voteers.filter(staff => staff.admin === true);
-
-        // let modalClose = () => this.setState({ modalShow: false }, () => {
-        //     this.findAllStaff();
-        // });
+        let modalClose = () => this.setState({ modalShow: false }, () => {
+            this.findAllStaff();
+        });
 
         const isInactive = this.state.inactive;
         let button;
@@ -68,25 +65,25 @@ class VolunteerList extends Component {
             button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg" variant="primary" onClick={() => this.findInactiveStaff()}>Staff Not Logged-In</Button>;
         };
 
-        // let newSButtons;
-        // let isAdmin = sessionStorage.admin;
-        // if (isAdmin==="true"){
-        //     newSButtons = (
-        //     <div className="buttonSpace">
-        //     <Button style={{backgroundColor:'rgb(14,166,197)'}} className="btn btn-lg newStaffBtn" variant="primary" onClick={() => this.loadModal()}>New Staff</Button>
-        //     <AddEditStaff show={this.state.modalShow} onHide={modalClose}/>
-        //     {button}
-        //     </div>)
-        // } else {
-        //     newSButtons = (<div className="buttonSpace">
-        //        {button}
-        //     </div>)
-        // }
+        let newSButtons;
+        let isAdmin = sessionStorage.admin;
+        if (isAdmin==="true"){
+            newSButtons = (
+            <div className="buttonSpace">
+            <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg newStaffBtn" variant="primary" onClick={() => this.loadModal()}>New Staff</Button>
+            <AddEditStaff show={this.state.modalShow} onHide={modalClose}/>
+            {button}
+            </div>)
+        } else {
+            newSButtons = (<div className="buttonSpace">
+               {button}
+            </div>)
+        }
 
         return (
             <div className="container">
                 <div className="buttonSpace">
-                    {button}
+                    {newSButtons}
                 </div>
                 <table className="table table-striped">
                     <thead>
