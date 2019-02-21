@@ -19,7 +19,6 @@ class NavB extends Component {
         API.logout().then(res => {
             if (res.status === 200) {
                 this.updateUserLogout(this.props.id)
-                sessionStorage.clear();
                 this.props.updateStaff({
                     loggedIn: false,
                     username: null,
@@ -39,9 +38,6 @@ class NavB extends Component {
 
     render() {
         const loggedIn = this.props.loggedIn;
-        console.log('navbar render, props: ')
-        console.log(this.props);
-
         if (loggedIn === true) {
             return (
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -57,7 +53,7 @@ class NavB extends Component {
                             <Nav className="m1-auto" >
 
                                 <Button style={{ backgroundColor: 'rgb(14,166,197)', padding: '5px', width: "100px" }} className="btn" bg="dark" variant="warning" onClick={this.logout} block> Logout</Button>
-                        
+
                             </Nav>
                         </Navbar.Collapse>
 
