@@ -35,6 +35,17 @@ class StaffListWidget extends Component {
             this.findStaff();
         });
 
+        let showPic;
+        if (this.state.staff.pic){
+            showPic = (
+                <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" />
+            )
+        } else {
+            showPic = (
+                <img src="https://i.postimg.cc/3RmkQzvB/Someone.jpg" alt="staff pic" className="img-thumbnail" />
+            )
+        }
+
         let editStaffBtn;
         let isAdmin = sessionStorage.admin;
         if (isAdmin === "true") {
@@ -61,7 +72,8 @@ class StaffListWidget extends Component {
                     <div className="col infoContainer">
                         <hr />
                         <div className="d-flex">
-                            <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" />
+                            {/* <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" /> */}
+                            {showPic}
                             <div>
                                 <h3>
                                     <span name="staffName" className="labels">{this.state.staff.name}</span>
