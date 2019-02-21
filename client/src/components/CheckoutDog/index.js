@@ -13,6 +13,7 @@ class CheckoutDog extends Component {
             checkoutActivity: "",
             checkoutLocation: "",
             staffid: sessionStorage.id,
+            errorMessage: null
         };
     }
 
@@ -57,10 +58,15 @@ class CheckoutDog extends Component {
                 this.props.onHide()
 
             } else {
-                alert("Dog isn't in Kennel. Dog is located in: " + dog.location)
+                this.setState({
+                    errorMessage: "Dog isn't in Kennel. Dog is located in: " + dog.location
+                })
             }
+
         } else {
-            document.getElementById("error").innerHTML = '<div class="alert alert-danger" role="alert">Please select a socialization plan AND a location.</div>'
+            this.setState({
+                errorMessage: "Please select a socialization plan AND a location."
+            })
         }
 
     }
@@ -79,6 +85,13 @@ class CheckoutDog extends Component {
 
     render() {
         let dog = this.props.props;
+        let errorMessage;
+
+        if (this.state.errorMessage) {
+            errorMessage = <div className="alert alert-danger" role="alert"> {this.state.errorMessage} </div>
+        }
+
+
 
         return (
             <Modal
@@ -94,7 +107,7 @@ class CheckoutDog extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <h6 className="instructions">To SIGN OUT a dog select what socialization you are going to complete, and what location you and the dog wil be at, then click "Signout" </h6>
-                    <div id="error"></div>
+                    {errorMessage}
                     <hr />
                     <div>
                         <table>
@@ -149,7 +162,7 @@ class CheckoutDog extends Component {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button style={{backgroundColor:'rgb(14,166,197)'}} onClick={() => this.handleCheckout(dog)} >Signout</Button>
+                    <Button style={{ backgroundColor: 'rgb(14,166,197)' }} onClick={() => this.handleCheckout(dog)} >Signout</Button>
                 </Modal.Footer>
             </Modal>
         );

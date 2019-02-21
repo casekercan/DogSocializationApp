@@ -39,6 +39,7 @@ class App extends Component {
       .then(res => {
         console.log("Get Staff Response: ")
         console.log(res.data)
+
         if (res.data.staff) {
           this.setState({
             loggedIn: true,
@@ -84,12 +85,12 @@ class App extends Component {
             <Switch>
               <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
               <Route path="/signup" render={() => <Signup signup={this.signup} />} />
-              <Route exact path="/" component={Home} />
-              <Route exact path="/dog/:id" component={Dog} />
-              <Route exact path="/doglist" component={Doglist} />
-              <Route exact path="/stafflist" component={StaffList} />
-              <Route exact path="/staff/:id" component={Staff} />
-              <Route component={Nomatch} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/dog/:id" component={Dog} />
+                <Route exact path="/doglist" component={Doglist} />
+                <Route exact path="/stafflist" component={StaffList} />
+                <Route exact path="/staff/:id" component={Staff} />
+                <Route component={Nomatch} />
             </Switch>
           </div>
         </Router>

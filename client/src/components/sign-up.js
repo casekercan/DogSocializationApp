@@ -13,7 +13,8 @@ class SignupForm extends Component {
             password: '',
             name: "",
             confirmPassword: '',
-            redirectTo: ""
+            redirectTo: "",
+            errorMessage: null
         }
     }
 
@@ -39,19 +40,32 @@ class SignupForm extends Component {
                         redirectTo: '/login'
                     })
                 } else {
-                    document.getElementById("error").innerHTML = '<div class="alert alert-warning" role="alert">Email Already Taken.</div>'
+                    this.setState({
+                        errorMessage: "Email Already Taken."
+                    })
+
                 }
             }).catch(error => {
-                '<div class="alert alert-warning" role="alert">Sign Up Error.</div>'
+                this.setState({
+                    errorMessage: "Sign Up Error"
+                })
                 console.log(error)
             })
         } else {
-            document.getElementById("error").innerHTML = '<div class="alert alert-warning" role="alert"> Please fill out whole sign up form.</div>'
+            this.setState({
+                errorMessage: "Please fill out whole sign up form."
+            })
         }
     }
 
 
     render() {
+        let errorMessage;
+
+        if (this.state.errorMessage) {
+            errorMessage = <div className="alert alert-warning" role="alert"> {this.state.errorMessage} </div>
+        }
+
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
@@ -61,7 +75,7 @@ class SignupForm extends Component {
                     <Card bg="dark" className="text-white">
                         <Card.Title style={{ fontSize: '24px', textAlign: 'center' }}>Sign-Up</Card.Title>
                         <form className="form-horizontal">
-                            <div id="error"></div>
+                            {errorMessage}
                             <div className="form-group">
                                 <div className="col-1 col-ml-auto">
                                     <label className="form-label" htmlFor="email">Name</label>

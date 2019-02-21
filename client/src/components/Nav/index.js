@@ -57,7 +57,7 @@ class NavB extends Component {
                             <Nav className="m1-auto" >
 
                                 <Button style={{ backgroundColor: 'rgb(14,166,197)', padding: '5px', width: "100px" }} className="btn" bg="dark" variant="warning" onClick={this.logout} block> Logout</Button>
-                                {/* <NavItem style={{ marginRight: '10px' }}><Link onClick={this.logout} to="#">Logout</Link></NavItem> */}
+                        
                             </Nav>
                         </Navbar.Collapse>
 
