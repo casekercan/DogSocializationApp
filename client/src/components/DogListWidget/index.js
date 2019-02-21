@@ -83,9 +83,9 @@ class DogListWidget extends Component {
         const isInactive = this.state.inactive;
         let button;
         if (isInactive) {
-            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
         } else {
-            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg allDogsBtn" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
+            button = <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
         }
 
         let newButtons;
@@ -105,7 +105,9 @@ class DogListWidget extends Component {
 
         return (
             <div className="container">
-                {newButtons}
+                <div className="buttonSpace">
+                   {newButtons} 
+                </div>
                 <table className="table table-striped">
                     <thead>
                         <tr>
