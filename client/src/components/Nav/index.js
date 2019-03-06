@@ -10,7 +10,6 @@ class NavB extends Component {
         super()
         this.state = {
 
-
         }
     };
 
@@ -19,13 +18,17 @@ class NavB extends Component {
         API.logout().then(res => {
             if (res.status === 200) {
                 this.updateUserLogout(this.props.id)
+                sessionStorage.clear();
+
                 this.props.updateStaff({
                     loggedIn: false,
                     username: null,
-                    id: null
+                    id: null,
+                    permissions: null,
+                    name: null
                 })
             }
-        }).catch(error => {
+        }).then(window.location.replace("/login")).catch(error => {
             console.log('Logout error...' + error)
         })
     }
@@ -38,6 +41,11 @@ class NavB extends Component {
 
     render() {
         const loggedIn = this.props.loggedIn;
+        const name = this.props.name;
+
+        console.log('navbar render, props: ')
+        console.log(this.props);
+
         if (loggedIn === true) {
             return (
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -51,7 +59,7 @@ class NavB extends Component {
                                 <NavItem style={{ padding: '15px' }}><Link to="/stafflist">All Staff</Link></NavItem>
                             </Nav>
                             <Nav className="m1-auto" >
-
+                                <Navbar.Text> Hello {name}  </Navbar.Text>
                                 <Button style={{ backgroundColor: 'rgb(14,166,197)', padding: '5px', width: "100px" }} className="btn" bg="dark" variant="warning" onClick={this.logout} block> Logout</Button>
 
                             </Nav>
