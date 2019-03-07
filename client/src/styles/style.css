@@ -44,12 +44,6 @@
 .navbarTxt{
     color:lightgray
 }
-
-.navbar-dark .navbar-text {
-    color: white;
-    padding: 10px;
-}
-
 .navbar-expand { 
     justify-content: center;
 }
