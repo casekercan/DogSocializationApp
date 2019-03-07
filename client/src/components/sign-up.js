@@ -29,7 +29,7 @@ class SignupForm extends Component {
 
         let signupstaff = {
             name: this.state.name,
-            email: this.state.email.toLowerCase(),
+            email: this.state.email,
             password: this.state.password
         }
         if (this.state.name && this.state.email && this.state.password) {

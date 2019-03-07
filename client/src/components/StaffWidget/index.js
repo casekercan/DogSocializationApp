@@ -9,16 +9,12 @@ class StaffListWidget extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            staff: {},
-            permissions: null
+            staff: {}
         };
     };
 
     componentDidMount() {
         this.findStaff()
-        this.setState({
-            permissions: this.props.permissions
-        })
     }
 
     findStaff = () => {
@@ -40,7 +36,7 @@ class StaffListWidget extends Component {
         });
 
         let showPic;
-        if (this.state.staff.pic) {
+        if (this.state.staff.pic){
             showPic = (
                 <img src={this.state.staff.pic} alt="staff pic" className="img-thumbnail" />
             )
@@ -51,8 +47,8 @@ class StaffListWidget extends Component {
         }
 
         let editStaffBtn;
-        let permissions = this.state.permissions;
-        if (permissions === true) {
+        let isAdmin = sessionStorage.admin;
+        if (isAdmin === "true") {
             editStaffBtn = (
                 <div>
                     <Button
